@@ -1,7 +1,12 @@
 import "./App.css";
+import { Home } from "./components/Home/Home";
 
 function App() {
-  return <div className="App">Movies</div>;
+  return (
+    <>
+      <Home />
+    </>
+  )
 }
 
 export default App;
