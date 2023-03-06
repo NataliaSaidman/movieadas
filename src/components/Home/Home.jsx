@@ -5,17 +5,15 @@ import { MainCarousel } from "./MainCarousel/MainCarousel"
 
 const Home = () => {
 
-    const [trendingMovies, setTrendingMovies] = useState([])
+    const [trending, setTrending] = useState()
 
     const getMovies = (movieOrSerie) => {
         fetch(`https://api.themoviedb.org/3/trending/${movieOrSerie}/week?api_key=${apiKey}&language=es`)
             .then(res => res.json())
             .then(data => {
-                setTrendingMovies(data.results)
+                setTrending(data.results)
             })
     }
-
-    console.log(trendingMovies)
 
     useEffect(() => {
         const randomNumber = Math.round((Math.random() * 1))
@@ -25,9 +23,9 @@ const Home = () => {
 
     return (
         <div>
-            <MainCarousel
-
-            />
+            {trending ? <MainCarousel
+                trending={[trending[0], trending[1], trending[2]]}
+            /> : "Error"}
         </div>
     )
 }
