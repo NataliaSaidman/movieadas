@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdMonitor, MdLanguage } from "react-icons/md";
-import { BsSearch, BsMoonStars } from "react-icons/bs";
+import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
@@ -15,6 +15,8 @@ const NavBarMobile = () => {
   // const [menu, setMenu] = useState(false);
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
+  const [language, setLanguage] = useState("es");
+  const [dark, setDark] = useState(true);
   const context = useContext(menuContext);
 
   const handleClickMenu = () => {
@@ -31,6 +33,16 @@ const NavBarMobile = () => {
   };
   const handleDeleteInput = () => {
     setInput("");
+  };
+
+  const handleClickChangeLanguage = () => {
+    if (language === "es") {
+      return setLanguage("en");
+    } else return setLanguage("es");
+  };
+
+  const handleClickChangeColor = () => {
+    setDark(!dark);
   };
 
   return (
@@ -98,12 +110,18 @@ const NavBarMobile = () => {
           <span className={s.spanMenu}>
             <MdMonitor /> Series
           </span>
-          <span className={s.spanMenu}>
-            <MdLanguage /> Languages
+          <span className={s.spanMenu} onClick={handleClickChangeLanguage}>
+            <MdLanguage /> {language === "es" ? "Spanish" : "English"}
           </span>
-          <span span className={s.spanMenu}>
-            <BsMoonStars /> Dark
-          </span>
+          {dark ? (
+            <span className={s.spanMenu} onClick={handleClickChangeColor}>
+              <BsMoonStars /> Dark{" "}
+            </span>
+          ) : (
+            <span className={s.spanMenu} onClick={handleClickChangeColor}>
+              <BsSun /> Clear{" "}
+            </span>
+          )}
         </div>
       </div>
     </div>
