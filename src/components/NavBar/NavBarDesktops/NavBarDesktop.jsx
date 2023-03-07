@@ -4,7 +4,7 @@ import s from "./NavBarDesktop.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdMonitor } from "react-icons/md";
-import { BsSearch, BsMoonStars } from "react-icons/bs";
+import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
 import logo from "../../../assets/logo.png";
@@ -12,7 +12,8 @@ import logo from "../../../assets/logo.png";
 const NavBarDesktop = () => {
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
-  const [divLanguage, setDivLanguage] = useState(false);
+  const [language, setLanguage] = useState("es");
+  const [dark, setDark] = useState(true);
 
   const handleClickSearch = () => {
     setInputSearch(!inputSearch);
@@ -26,8 +27,14 @@ const NavBarDesktop = () => {
     setInput("");
   };
 
-  const handleClickDivLanguage = () => {
-    setDivLanguage(!divLanguage);
+  const handleClickChangeLanguage = () => {
+    if (language === "es") {
+      return setLanguage("en");
+    } else return setLanguage("es");
+  };
+
+  const handleClickChangeColor = () => {
+    setDark(!dark);
   };
   return (
     <div>
@@ -47,30 +54,32 @@ const NavBarDesktop = () => {
           <img className={s.logo} src={logo} alt="logo" />
         </div>
         <div className={s.containerSearchLanguage}>
-          <button className={s.buttonsSearchLanguage}>
-            <BsSearch className={s.icon} onClick={handleClickSearch} />
-          </button>
-          <button className={s.buttonsSearchLanguage}>
-            <BsMoonStars className={s.icon} />
+          <button
+            className={s.buttonsSearchLanguage}
+            onClick={handleClickSearch}
+          >
+            <BsSearch className={s.icon} />
           </button>
           <button
             className={s.buttonsSearchLanguage}
-            onClick={handleClickDivLanguage}
+            onClick={handleClickChangeColor}
           >
-            <span className={s.spanLanguage}>Es</span>
+            {dark ? (
+              <BsMoonStars className={s.icon} />
+            ) : (
+              <BsSun className={s.icon} />
+            )}
+          </button>
+          <button
+            className={s.buttonsSearchLanguage}
+            onClick={handleClickChangeLanguage}
+          >
+            <span className={s.spanLanguage}>
+              {language === "es" ? "Es" : "En"}
+            </span>
           </button>
         </div>
       </nav>
-      {divLanguage ? (
-        <div className={s.containerSelectLanguage}>
-          <select className={s.selectLanguage}>
-            <option>Español-Spanish</option>
-            <option>Inglés-English</option>
-          </select>
-        </div>
-      ) : (
-        ""
-      )}
       {inputSearch ? (
         <div className={s.containerInput}>
           {input === "" ? (

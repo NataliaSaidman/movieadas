@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./NavBarMobile.module.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdMonitor, MdLanguage } from "react-icons/md";
@@ -9,14 +9,17 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
 import logo from "../../../assets/logo.png";
+import { menuContext } from "../../../context/menuContext";
 
 const NavBarMobile = () => {
-  const [menu, setMenu] = useState(false);
+  // const [menu, setMenu] = useState(false);
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
+  const context = useContext(menuContext);
 
   const handleClickMenu = () => {
-    setMenu(!menu);
+    context.setMenu(!context.menu);
+    setInputSearch(false);
   };
 
   const handleClickSearch = () => {
@@ -35,15 +38,9 @@ const NavBarMobile = () => {
       <div className={s.navBarMobile}>
         <nav className={s.containerNav}>
           <div className={s.containerHamburguerNav}>
-            {menu ? (
-              <button onClick={handleClickMenu}>
-                <RxCross1 />
-              </button>
-            ) : (
-              <button onClick={handleClickMenu}>
-                <GiHamburgerMenu />
-              </button>
-            )}
+            <button onClick={handleClickMenu}>
+              <GiHamburgerMenu />
+            </button>
           </div>
 
           <div className={s.containerLogo}>
@@ -85,27 +82,29 @@ const NavBarMobile = () => {
         ) : (
           ""
         )}
-        {menu ? (
-          <div className={s.menuMobile}>
-            <span className={s.spanMenu}>
-              <AiOutlineHome /> Home
-            </span>
-            <span className={s.spanMenu}>
-              <BiCameraMovie /> Movies
-            </span>
-            <span className={s.spanMenu}>
-              <MdMonitor /> Series
-            </span>
-            <span className={s.spanMenu}>
-              <MdLanguage /> Languages
-            </span>
-            <span>
-              <BsMoonStars /> Dark
-            </span>
-          </div>
-        ) : (
-          ""
-        )}
+
+        <div
+          className={`${s.menuMobile} ${context.menu ? s.menuMobileOpen : ""}`}
+        >
+          <button onClick={handleClickMenu}>
+            <RxCross1 />
+          </button>
+          <span className={s.spanMenu}>
+            <AiOutlineHome /> Home
+          </span>
+          <span className={s.spanMenu}>
+            <BiCameraMovie /> Movies
+          </span>
+          <span className={s.spanMenu}>
+            <MdMonitor /> Series
+          </span>
+          <span className={s.spanMenu}>
+            <MdLanguage /> Languages
+          </span>
+          <span span className={s.spanMenu}>
+            <BsMoonStars /> Dark
+          </span>
+        </div>
       </div>
     </div>
   );
