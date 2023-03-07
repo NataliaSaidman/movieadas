@@ -10,11 +10,11 @@ const Footer = () => {
   return (
     <footer>
       <div className={s.authorsContainer}>
-        <span>
+        <span className={s.contactAuthor}>
           Mica Lay <AiFillGithub className={s.iconsFooter} />
           <AiOutlineLinkedin className={s.iconsFooter} />
         </span>
-        <span>
+        <span className={s.contactAuthor}>
           Nati Saidman <AiFillGithub className={s.iconsFooter} />
           <AiOutlineLinkedin className={s.iconsFooter} />
         </span>

@@ -16,8 +16,17 @@ footer {
   margin-left: 20px;
 }
 
-.authorsContainer:hover {
+.contactAuthor:hover {
   color: whitesmoke;
+}
+
+.contactAuthor {
+  display: flex;
+  align-items: center;
+}
+
+.iconsFooter {
+  margin-left: 5px;
 }
 
 .copyrightContainer {
