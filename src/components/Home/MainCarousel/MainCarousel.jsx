@@ -12,8 +12,6 @@ import { Card } from "./Card/Card"
 
 const MainCarousel = ({ trending }) => {
 
-  console.log(trending)
-
   return (
     <div className="carousel__container">
       <Swiper
