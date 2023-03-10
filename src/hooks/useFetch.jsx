@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../apiKey";
 
-const useFetch = (type, category, page, week) => {
+const UseFetch = (type, category, page, week) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const useFetch = (type, category, page, week) => {
   return data;
 };
 
-export { useFetch };
+export { UseFetch };

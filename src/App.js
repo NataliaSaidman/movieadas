@@ -6,7 +6,8 @@ function App() {
   return (
     <>
       {/* <Home /> */}
-      <SeriesAndMovies />
+      <SeriesAndMovies movieOrTv={"tv"} />
+      <SeriesAndMovies movieOrTv={"movie"} />
     </>
   );
 }
