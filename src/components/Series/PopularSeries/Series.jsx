@@ -11,7 +11,7 @@ const Series = ({ title, series }) => {
           <Card
             key={s.id}
             img={`https://image.tmdb.org/t/p/w300/${s.poster_path}`}
-            title={s.name}
+            title={s.title ? s.title : s.name}
           />
         ))}
       </div>
