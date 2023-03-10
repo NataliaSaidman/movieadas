@@ -1,7 +1,9 @@
 import s from "./App.module.css";
 import { NavBar } from "./components/NavBar/NavBar";
 import { menuContext } from "./context/menuContext";
+import { SeriesAndMovies } from "./components/SeriesAndMovies/SeriesAndMovies";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -12,10 +14,22 @@ function App() {
   };
   return (
     <menuContext.Provider value={menuOpen}>
-      <div className={s.app}>
-        <NavBar />
-        <div className={menuOpen.menu ? s.blur : ""}></div>
-      </div>
+      <BrowserRouter>
+        <div className={s.app}>
+          <NavBar />
+          <div className={menuOpen.menu ? s.blur : ""}></div>
+          <Routes>
+            <Route
+              path="/series"
+              element={<SeriesAndMovies movieOrTv={"tv"} />}
+            ></Route>
+            <Route
+              path="/movies"
+              element={<SeriesAndMovies movieOrTv={"movie"} />}
+            ></Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
     </menuContext.Provider>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import s from "./NavBarDesktop.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
@@ -43,12 +44,16 @@ const NavBarDesktop = () => {
           <span className={s.spanMenu}>
             <AiOutlineHome className={s.icon} /> Home
           </span>
-          <span className={s.spanMenu}>
-            <BiCameraMovie className={s.icon} /> Movies
-          </span>
-          <span className={s.spanMenu}>
-            <MdMonitor className={s.icon} /> Series
-          </span>
+          <Link to="/movies">
+            <span className={s.spanMenu}>
+              <BiCameraMovie className={s.icon} /> Movies
+            </span>
+          </Link>
+          <Link to="/series">
+            <span className={s.spanMenu}>
+              <MdMonitor className={s.icon} /> Series
+            </span>
+          </Link>
         </div>
         <div className={s.containerLogo}>
           <img className={s.logo} src={logo} alt="logo" />
