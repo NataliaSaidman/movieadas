@@ -1,6 +1,7 @@
 import { UseFetch } from "../../hooks/UseFetch"
 
 import { MainCarousel } from "./MainCarousel/MainCarousel"
+import { SecondaryCarousel } from "./SecondaryCarousel/SecondaryCarousel"
 
 const Home = () => {
 
@@ -19,6 +20,8 @@ const Home = () => {
                 />
             : "Error"
             }
+            <SecondaryCarousel trending={trendingSeries} />
+            <SecondaryCarousel trending={trendingMovies} />
         </div>
     )
 }
