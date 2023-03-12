@@ -1,0 +1,23 @@
+.title__container__cards {
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  color: whitesmoke;
+  font-size: 25px;
+}
+
+.container__cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .container__cards {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+}

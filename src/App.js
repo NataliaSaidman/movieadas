@@ -1,12 +1,15 @@
 import "./App.css";
-import { Home } from "./components/Home/Home";
+import { SeriesAndMovies } from "./components/Series/SeriesAndMovies";
+// import { Home } from "./components/Home/Home";
 
 function App() {
   return (
     <>
-      <Home />
+      {/* <Home /> */}
+      <SeriesAndMovies movieOrTv={"tv"} />
+      <SeriesAndMovies movieOrTv={"movie"} />
     </>
-  )
+  );
 }
 
 export default App;

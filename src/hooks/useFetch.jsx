@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
-import { apiKey } from "../apiKey"
+import { useState, useEffect } from "react";
+import { apiKey } from "../apiKey";
 
-const UseFetch = (type, category, week, page) => {
-
-    const [data, setData] = useState()
+const UseFetch = (type, category, page, week) => {
+  const [data, setData] = useState();
 
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/${type}/${category}/${week ? week : ""}?api_key=${apiKey}&language=es-AR&page=${page ? page : "1"}`
@@ -13,8 +12,21 @@ const UseFetch = (type, category, week, page) => {
                 setData(data.results)
             })
     }, [type, category, week, page])
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/${type}/${category}/${
+        week ? week : ""
+      }?api_key=${apiKey}&language=es-AR&page=${page ? page : "1"}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.results);
+      });
+  }, [category, page, type, week]);
 
-    return data
-}
+  return data;
+};
+
+export { UseFetch };
 
 export { UseFetch }
