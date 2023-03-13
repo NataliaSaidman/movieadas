@@ -48,7 +48,11 @@ const NavBarMobile = () => {
   return (
     <div>
       <div className={s.navBarMobile}>
-        <nav className={s.containerNav}>
+        <nav
+          className={`${s.containerNav} ${
+            context.menu ? s.containerNavOpacity : ""
+          }`}
+        >
           <div className={s.containerHamburguerNav}>
             <button onClick={handleClickMenu}>
               <GiHamburgerMenu />

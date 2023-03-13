@@ -1,3 +1,5 @@
-.seriesAndMovies__container {
-  margin-top: 80px;
+@media (min-width: 700px) {
+  .seriesAndMovies__container {
+    margin-top: 80px;
+  }
 }

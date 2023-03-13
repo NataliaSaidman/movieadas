@@ -16,18 +16,19 @@ function App() {
     <menuContext.Provider value={menuOpen}>
       <BrowserRouter>
         <div className={s.app}>
-          <NavBar />
-          <div className={menuOpen.menu ? s.blur : ""}></div>
-          <Routes>
-            <Route
-              path="/series"
-              element={<SeriesAndMovies movieOrTv={"tv"} />}
-            ></Route>
-            <Route
-              path="/movies"
-              element={<SeriesAndMovies movieOrTv={"movie"} />}
-            ></Route>
-          </Routes>
+          <div className={menuOpen.menu ? s.blur : ""}>
+            <NavBar />
+            <Routes>
+              <Route
+                path="/series"
+                element={<SeriesAndMovies movieOrTv={"tv"} />}
+              ></Route>
+              <Route
+                path="/movies"
+                element={<SeriesAndMovies movieOrTv={"movie"} />}
+              ></Route>
+            </Routes>
+          </div>
         </div>
       </BrowserRouter>
     </menuContext.Provider>

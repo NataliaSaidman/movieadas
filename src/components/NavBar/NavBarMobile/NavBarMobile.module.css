@@ -11,6 +11,10 @@
   justify-content: space-between;
 }
 
+.containerNavOpacity {
+  background-color: rgba(83, 83, 87, 0.482);
+}
+
 .containerHamburguerNav {
   width: 40%;
   padding: 2%;

@@ -1,5 +1,6 @@
 .NavBarMobile {
   display: block;
+  height: 80px;
 }
 
 .NavBarDesktop {
