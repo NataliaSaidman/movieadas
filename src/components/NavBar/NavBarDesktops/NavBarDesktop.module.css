@@ -28,6 +28,11 @@
   align-items: center;
 }
 
+.linkRoute {
+  text-decoration: none;
+  color: #ffffffb3;
+}
+
 .spanMenu:hover {
   color: whitesmoke;
 }
