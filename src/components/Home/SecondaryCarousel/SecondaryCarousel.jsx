@@ -8,31 +8,53 @@ import 'swiper/css/navigation'
 
 import './style.css'
 
-const SecondaryCarousel = ({ trending }) => {
+const SecondaryCarousel = ({ trending, title }) => {
 
-    return (
-        <>
-          <Swiper
-            loop={true}
-            spaceBetween={10}
-            slidesPerView={2}
-            pagination={{
-                type: 'fraction',
-            }}
-            navigation={true}
-            modules={[Navigation]}
-          >
-            {trending?.map((trend) => (
-                <SwiperSlide key={trend.id}>
-                    <Card
-                    img={trend.poster_path}
-                    title={trend.title ? trend.title : trend.name}
-                    />
-                </SwiperSlide>
-            ))}
-          </Swiper>
-        </>
-      );
+  return (
+    <>
+      <div className='category__container'>
+        <p>{title} Tendencias</p>
+      </div>
+      <div>
+        <Swiper
+          loop={true}
+          spaceBetween={10}
+          slidesPerView={2}
+          pagination={{
+            type: 'fraction',
+          }}
+          breakpoints={{
+            480: {
+              slidesPerView: 3,
+            },
+            700: {
+              slidesPerView: 4,
+            }, 
+            900: {
+              slidesPerView: 5,
+            }, 
+            1000: {
+              slidesPerView: 6,
+            }, 
+            1280: {
+              slidesPerView: 7,
+            }
+          }}
+          navigation={true}
+          modules={[Navigation]}
+        >
+          {trending?.map((trend) => (
+            <SwiperSlide key={trend.id}>
+              <Card
+                img={`https://image.tmdb.org/t/p/w300/${trend.poster_path}`}
+                title={trend.title ? trend.title : trend.name}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </>
+  )
 }
 
 export { SecondaryCarousel }
