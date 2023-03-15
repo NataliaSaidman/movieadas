@@ -2,6 +2,7 @@ import s from "./App.module.css";
 import { NavBar } from "./components/NavBar/NavBar";
 import { menuContext } from "./context/menuContext";
 import { SeriesAndMovies } from "./components/SeriesAndMovies/SeriesAndMovies";
+import { Home } from "./components/Home/Home";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function App() {
           <div className={menuOpen.menu ? s.blur : ""}>
             <NavBar />
             <Routes>
+              <Route path="/" element={<Home />}></Route>
               <Route
                 path="/series"
                 element={<SeriesAndMovies movieOrTv={"tv"} />}
