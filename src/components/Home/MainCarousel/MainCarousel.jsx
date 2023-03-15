@@ -1,5 +1,5 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
 import "swiper/css"
@@ -8,9 +8,9 @@ import './styles.css'
 
 // import required modules
 import { Navigation, Autoplay } from "swiper"
-import { Card } from "./Card/Card";
+import { Card } from "./Card/Card"
 
-const MainCarousel = () => {
+const MainCarousel = ({ trending }) => {
 
   return (
     <div className="carousel__container">
@@ -24,15 +24,14 @@ const MainCarousel = () => {
         }}
         modules={[Navigation, Autoplay]}
       >
-        <SwiperSlide>
-          <Card />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card />
-        </SwiperSlide>
+        {trending?.map((trend) => (
+          <SwiperSlide key={trend.id}>
+            <Card
+              img={trend.backdrop_path}
+              title={trend.title ? trend.title : trend.name}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )
