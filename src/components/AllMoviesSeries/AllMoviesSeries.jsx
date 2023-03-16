@@ -1,15 +1,15 @@
 import React from "react";
 import s from "./AllMoviesSeries.module.css";
-// import { useState } from "react";
+
 import { UseFetch } from "../../hooks/UseFetch";
-// import { UsePagination } from "../../hooks/UsePagination";
+import { UsePagination } from "../../hooks/UsePagination";
 import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 
 const AllMoviesSeries = ({ movieOrTv, category }) => {
   const seriesMoviesPopular = UseFetch(movieOrTv, category);
   const seriesMoviesTopRated = UseFetch(movieOrTv, category);
-  // const pagination = UsePagination(movieOrTv, category, currentPage);
+  const pagination = UsePagination(movieOrTv, category);
 
   return (
     <>
@@ -39,7 +39,7 @@ const AllMoviesSeries = ({ movieOrTv, category }) => {
               />
             ))}
       </div>
-      {/* <Pagination /> */}
+      <Pagination pagination={pagination} />
     </>
   );
 };

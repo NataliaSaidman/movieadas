@@ -1,57 +1,36 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 
-const Pagination = ({ setCurrentPage, pagination, currentPage }) => {
-  const pageNumbers = [];
+const Pagination = ({ pagination }) => {
+  console.log(pagination?.results);
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = pagination?.results;
 
-  console.log(pagination?.total_pages);
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(pagination?.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(pagination?.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, pagination]);
 
-  for (let i = 1; i <= pagination?.total_pages; i++) {
-    pageNumbers.push(i);
-  }
-
-  console.log(pageNumbers);
-
-  const previousPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
-
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const specificPage = (n) => {
-    setCurrentPage(n);
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % pagination?.length;
+    setItemOffset(newOffset);
   };
 
   return (
-    <nav
-      className="pagination is-centered"
-      role="navigation"
-      aria-label="pagination"
-    >
-      <button
-        className="pagination-previous has-text-white"
-        onClick={previousPage}
-      >
-        Previous
-      </button>
-      <button className="pagination-next has-text-white" onClick={nextPage}>
-        Next page
-      </button>
-      <ul className="pagination-list">
-        {pageNumbers.map((noPage) => (
-          <li key={noPage}>
-            <button
-              className={`pagination-link has-text-white
-              ${noPage === currentPage ? "is-current" : ""}`}
-              onClick={() => specificPage(noPage)}
-            >
-              {noPage}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      />
+    </>
   );
 };
 
