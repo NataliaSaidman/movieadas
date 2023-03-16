@@ -18,17 +18,17 @@ const Details = () => {
                         <span>05:17</span>
                     </div>
                     <div className={style.trailer__button}>
-                        <button>p</button>
+                        <button>TRAILER</button>
+                    </div>
+                    <div className={style.genres__list}>
+                        <p><span>lorem</span> <span>lorem</span> <span>lorem</span></p>
+                    </div>
+                    <div className={style.media__description}>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ducimus, quas provident tempore recusandae sunt voluptates reiciendis? Culpa eligendi perspiciatis voluptates mollitia ullam error? Laborum dolor ex velit voluptas nisi.</p>
                     </div>
                 </div>
             </div>
             <div className={style.media__details}>
-                <div className={style.media__description}>
-                    <p>description</p>
-                </div>
-                <div className={style.genres__list}>
-                    <p>Genres: <span>lorem,</span> <span>lorem,</span> <span>lorem</span></p>
-                </div>
             </div>
         </div>
     )
