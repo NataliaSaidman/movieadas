@@ -1,0 +1,17 @@
+.NavBarMobile {
+  display: block;
+}
+
+.NavBarDesktop {
+  display: none;
+}
+
+@media (min-width: 550px) {
+  .NavBarMobile {
+    display: none;
+  }
+
+  .NavBarDesktop {
+    display: block;
+  }
+}
