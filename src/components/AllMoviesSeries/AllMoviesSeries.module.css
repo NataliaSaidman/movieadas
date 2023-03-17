@@ -12,6 +12,11 @@
   color: whitesmoke;
 }
 
+.container__pagination {
+  width: 90%;
+  margin: auto;
+}
+
 @media (min-width: 500px) {
   .allMoviesSeries__container {
     width: 80%;
