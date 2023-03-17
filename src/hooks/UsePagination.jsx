@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { apiKey } from "../apiKey";
+import { apiKey } from "../ApiKey/apiKey";
 
 const UsePagination = (type, category, page) => {
   const [data, setData] = useState();

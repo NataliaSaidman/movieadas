@@ -1,5 +1,6 @@
 import { Card } from "../Card/Card";
 import { Link } from "react-router-dom";
+import { SecondaryCarousel } from "../../Home/SecondaryCarousel/SecondaryCarousel";
 import React from "react";
 import "./styles.css";
 
@@ -20,6 +21,9 @@ const PopularAndTopRated = ({ title, seriesMovies, route }) => {
             title={s.title ? s.title : s.name}
           />
         ))}
+      </div>
+      <div className="container__cards__mobile">
+        <SecondaryCarousel trending={seriesMovies} />
       </div>
     </div>
   );

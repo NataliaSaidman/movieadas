@@ -11,7 +11,7 @@ const AllMoviesSeries = ({ movieOrTv, category }) => {
   const [currentItems, setCurrentItems] = useState([]);
 
   return (
-    <>
+    <div className={s.main__container}>
       {category === "popular" ? (
         <h2 className={s.allMoviesSeries__title}>
           {movieOrTv === "tv" ? "Popular series" : "Popular movies"}
@@ -39,7 +39,7 @@ const AllMoviesSeries = ({ movieOrTv, category }) => {
           setCurrentPage={setCurrentPage}
         />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,5 @@
 .app {
-  display: grid;
   min-height: 100vh;
-  grid-template-rows: 100px auto 60px;
 }
 
 .blur {

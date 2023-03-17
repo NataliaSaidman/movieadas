@@ -1,3 +1,11 @@
+.container__cards__mobile {
+  display: block;
+}
+
+.container__cards {
+  display: none;
+}
+
 .title__container__cards {
   width: 80%;
   margin: auto;
@@ -6,18 +14,18 @@
   font-size: 25px;
 }
 
-.container__cards {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-@media (max-width: 500px) {
+@media (min-width: 900px) {
   .container__cards {
-    overflow-x: auto;
-    flex-wrap: nowrap;
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .container__cards__mobile {
+    display: none;
   }
 }

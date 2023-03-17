@@ -1,5 +1,6 @@
 import s from "./App.module.css";
 import { NavBar } from "./components/NavBar/NavBar";
+import { Footer } from "./components/Footer/Footer";
 import { menuContext } from "./context/menuContext";
 import { SeriesAndMovies } from "./components/SeriesAndMovies/SeriesAndMovies";
 import { Home } from "./components/Home/Home";
@@ -55,6 +56,7 @@ function App() {
                 }
               ></Route>
             </Routes>
+            <Footer />
           </div>
         </div>
       </BrowserRouter>
