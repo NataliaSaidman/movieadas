@@ -32,6 +32,7 @@ const AllMoviesSeries = ({ movieOrTv, category }) => {
             ))
           : "Error"}
       </div>
+
       <Pagination
         seriesMovies={seriesMovies}
         setCurrentItems={setCurrentItems}
