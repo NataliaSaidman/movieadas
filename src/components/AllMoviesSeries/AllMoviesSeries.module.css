@@ -1,0 +1,32 @@
+.allMoviesSeries__container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.allMoviesSeries__title {
+  margin-left: 20px;
+  color: whitesmoke;
+}
+
+.container__pagination {
+  width: 90%;
+  margin: auto;
+}
+
+@media (min-width: 500px) {
+  .allMoviesSeries__container {
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  .allMoviesSeries__title {
+    margin-left: 150px;
+    color: whitesmoke;
+  }
+}

@@ -1,16 +1,16 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 15%;
+  width: 80%;
   height: 400px;
-  margin-left: 20px;
   overflow: hidden;
   box-sizing: border;
+  margin: 20px 10px;
 }
 
 .container__image {
   width: 100%;
-  height: 80%;
+  height: 100%;
 }
 .card__image {
   width: 100%;
@@ -28,8 +28,16 @@
   color: whitesmoke;
 }
 
-@media (max-width: 500px) {
-  .Card {
-    width: 800px;
+@media (min-width: 300px) {
+  .card {
+    width: 40%;
+    height: 350px;
+  }
+}
+
+@media (min-width: 700px) {
+  .card {
+    width: 20%;
+    height: 470px;
   }
 }

@@ -10,6 +10,7 @@ import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
 import logo from "../../../assets/logo.png";
 import { menuContext } from "../../../context/menuContext";
+import { Link } from "react-router-dom";
 
 const NavBarMobile = () => {
   // const [menu, setMenu] = useState(false);
@@ -108,12 +109,16 @@ const NavBarMobile = () => {
           <span className={s.spanMenu}>
             <AiOutlineHome /> Home
           </span>
-          <span className={s.spanMenu}>
-            <BiCameraMovie /> Movies
-          </span>
-          <span className={s.spanMenu}>
-            <MdMonitor /> Series
-          </span>
+          <Link to="/movies" className={s.linkRoute}>
+            <span>
+              <BiCameraMovie /> Movies
+            </span>
+          </Link>
+          <Link to="/series" className={s.linkRoute}>
+            <span>
+              <MdMonitor /> Series
+            </span>
+          </Link>
           <span className={s.spanMenu} onClick={handleClickChangeLanguage}>
             <MdLanguage /> {language === "es" ? "Spanish" : "English"}
           </span>

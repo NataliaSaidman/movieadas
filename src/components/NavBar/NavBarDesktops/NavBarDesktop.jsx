@@ -44,12 +44,12 @@ const NavBarDesktop = () => {
           <span className={s.spanMenu}>
             <AiOutlineHome className={s.icon} /> Home
           </span>
-          <Link to="/movies">
+          <Link to="/movies" className={s.linkRoute}>
             <span className={s.spanMenu}>
               <BiCameraMovie className={s.icon} /> Movies
             </span>
           </Link>
-          <Link to="/series">
+          <Link to="/series" className={s.linkRoute}>
             <span className={s.spanMenu}>
               <MdMonitor className={s.icon} /> Series
             </span>
