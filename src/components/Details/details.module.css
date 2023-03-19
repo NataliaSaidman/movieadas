@@ -13,7 +13,7 @@
 }
 
 .main__details {
-    margin-left: 16px;
+    margin-inline: 16px;
     margin-top: -20%;
     margin-bottom: 24px;
     display: flex;
@@ -27,18 +27,28 @@
     text-shadow: -2px 0px 20px rgba(0,0,0,9);
 }
 
-.media__year {
-    margin-right: 16px;
-    font-size: 1.1rem;
-}
-
 .media__time {
     margin-bottom: 10px;
     font-size: 1.1rem;
+    display: flex;
+    align-items: center;
 }
 
-.media__year, .media__time {
+.media__time span {
+    margin-right: 16px;
+    font-size: 1.1rem;
     text-shadow: -2px 0px 20px rgba(0,0,0,9);
+}
+
+.media__ranking {
+    margin-bottom: 10px;
+}
+
+.media__ranking span {
+    display: flex;
+    align-items: center;
+    color: #f8ce07;
+    font-size: 1.5rem;
 }
 
 .trailer__button button {
@@ -60,13 +70,15 @@
 
 .genres__list span {
     background-color: rgba(0, 0, 0, 0.422);
-    padding: 8px;
+    padding: 10px 16px;
+    font-weight: bold;
     border-radius: 5px;
     margin-right: 5px;
 }
 
 .media__description {
     margin: 8px;
+    font-size: 1.1rem;
 }
 
 .poster__container {
@@ -75,7 +87,7 @@
 
 @media (min-width: 400px) {
     .main__details {
-        margin-top: -13%;
+        margin-top: -10%;
     }
 }
 
@@ -86,7 +98,7 @@
 
     .poster__container {
         display: block;
-        width: 80%;
+        width: 50%;
         margin-right: 20px;
     }
 
@@ -96,14 +108,22 @@
         box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.4);
     }
 
+    .info__container {
+        width: 100%;
+    }
+
     .media__description {
-        width: 70%;
+        width: 80%;
     }
 }
 
 @media (min-width: 900px) {
     .poster__container {
         width: 50%;
+    }
+
+    .media__description {
+        width: 70%;
     }
 }
 

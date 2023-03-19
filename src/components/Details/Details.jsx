@@ -1,17 +1,17 @@
 import style from "./details.module.css"
+
 import { useRef } from "react"
 import { useParams, Link } from "react-router-dom"
 import { UseDetails } from "../../hooks/UseDetails"
+
+import { AiFillStar } from "react-icons/ai"
+import { AiOutlineStar } from "react-icons/ai"
 
 const Details = () => {
   const windowSize = useRef(window.innerWidth)
 
   const params = useParams()
   const mediaDetails = UseDetails(params.type, params.id)
-  console.log(mediaDetails)
-//   console.log(windowSize)
-  /* 804150, movie */
-  /* 100088, serie */
 
   const shortYear = (date) => {
     const newDate = date.slice(0, 4)
@@ -22,6 +22,26 @@ const Details = () => {
     const hours = Math.floor(time / 60)
     const minutes = time % 60
     return `${hours}hr ${minutes}min`
+  }
+
+  const getRanking = (rank) => {
+    const ranking = Math.round(rank * (5 / (10 - 0)))
+    const fullStars = []
+    const emptyStars = []
+    for (let i = 0; i < 5; i++) {
+        if (i < ranking) {
+          fullStars.push(<AiFillStar key={i} />)
+        } else {
+          emptyStars.push(<AiOutlineStar key={i} />)
+        }
+    }
+    return [fullStars, emptyStars]
+  }
+
+  const generateTrailerLink = (APIObject) => {
+    const getKey = APIObject.results[0].key
+    const youtubeLink = `https://www.youtube.com/watch?v=${getKey}`
+    return youtubeLink
   }
 
   return (
@@ -44,25 +64,35 @@ const Details = () => {
                     alt={mediaDetails.title ? mediaDetails.title : mediaDetails.name}
                     />
                 </div>
-                <div>
+                <div className={style.info__container}>
                     <h2 className={style.media__title}>
                         {mediaDetails.title ? mediaDetails.title : mediaDetails.name}
                     </h2>
                     <div className={style.media__time}>
-                        <span className={style.media__year}>
-                            {shortYear(mediaDetails.release_date)}
+                        <span>
+                            {shortYear(mediaDetails.release_date ? mediaDetails.release_date : mediaDetails.first_air_date)}
                         </span>
                         <span>
-                            {runtime(mediaDetails.runtime)}
+                            {mediaDetails.runtime ? runtime(mediaDetails.runtime) : `${mediaDetails.number_of_episodes} Episodes`}
+                        </span>
+                    </div>
+                    <div className={style.media__ranking}>
+                        <span>
+                            {getRanking(mediaDetails.vote_average)}
                         </span>
                     </div>
                     <div className={style.trailer__button}>
-                        <Link><button>TRAILER</button></Link>
+                        <Link 
+                            to={generateTrailerLink(mediaDetails.videos)}
+                            target="_blank"
+                        >
+                            <button>TRAILER</button>
+                        </Link>
                     </div>
                     <div className={style.genres__list}>
                         <p>
                             {mediaDetails.genres.map((genre) => (
-                                <span>{genre.name}</span>
+                                <span key={genre.id}>{genre.name}</span>
                             ))}
                         </p>
                     </div>
