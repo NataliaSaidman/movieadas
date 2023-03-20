@@ -23,11 +23,11 @@ const AllMoviesSeries = ({ movieOrTv, category }) => {
       )}
       <div className={s.allMoviesSeries__container}>
         {currentItems
-          ? currentItems.map((smp) => (
+          ? currentItems.map((sm) => (
               <Card
-                key={smp.id}
-                img={`https://image.tmdb.org/t/p/w300/${smp.poster_path}`}
-                title={smp.title ? smp.title : smp.name}
+                key={sm.id}
+                img={`https://image.tmdb.org/t/p/w300/${sm.poster_path}`}
+                title={sm.title ? sm.title : sm.name}
               />
             ))
           : "Error"}
