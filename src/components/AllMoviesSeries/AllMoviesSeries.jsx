@@ -4,21 +4,23 @@ import { useState } from "react";
 import { UsePagination } from "../../hooks/UsePagination";
 import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
+import { useParams } from "react-router-dom";
 
 const AllMoviesSeries = ({ movieOrTv, category }) => {
+  const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const seriesMovies = UsePagination(movieOrTv, category, currentPage);
+  const seriesMovies = UsePagination(params.type, params.category, currentPage);
   const [currentItems, setCurrentItems] = useState([]);
 
   return (
     <div className={s.main__container}>
-      {category === "popular" ? (
+      {params.category === "popular" ? (
         <h2 className={s.allMoviesSeries__title}>
-          {movieOrTv === "tv" ? "Popular series" : "Popular movies"}
+          {params.type === "tv" ? "Popular series" : "Popular movies"}
         </h2>
       ) : (
         <h2 className={s.allMoviesSeries__title}>
-          {movieOrTv === "tv" ? "Best rated Series" : "Best rated movies "}
+          {params.type === "tv" ? "Best rated Series" : "Best rated movies "}
         </h2>
       )}
       <div className={s.allMoviesSeries__container}>

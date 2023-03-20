@@ -24,41 +24,13 @@ function App() {
           <div className={menuOpen.menu ? s.blur : ""}>
             <Routes>
               <Route path="/" element={<Home />}></Route>
+              <Route path="/:type" element={<SeriesAndMovies />}></Route>
               <Route
-                path="/series"
-                element={<SeriesAndMovies movieOrTv={"tv"} />}
-              ></Route>
-              <Route
-                path="/movies"
-                element={<SeriesAndMovies movieOrTv={"movie"} />}
-              ></Route>
-              <Route
-                path="/movies/popular"
-                element={
-                  <AllMoviesSeries movieOrTv={"movie"} category={"popular"} />
-                }
-              ></Route>
-              <Route
-                path="/series/popular"
-                element={
-                  <AllMoviesSeries movieOrTv={"tv"} category={"popular"} />
-                }
-              ></Route>
-              <Route
-                path="/movies/top_rated"
-                element={
-                  <AllMoviesSeries movieOrTv={"movie"} category={"top_rated"} />
-                }
-              ></Route>
-              <Route
-                path="/series/top_rated"
-                element={
-                  <AllMoviesSeries movieOrTv={"tv"} category={"top_rated"} />
-                }
+                path="/:type/:category"
+                element={<AllMoviesSeries />}
               ></Route>
               <Route path="search/:wordSearch" element={<Search />}></Route>
             </Routes>
-
             <Footer />
           </div>
         </div>
