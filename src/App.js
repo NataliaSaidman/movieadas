@@ -7,6 +7,7 @@ import { Home } from "./components/Home/Home";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AllMoviesSeries } from "./components/AllMoviesSeries/AllMoviesSeries";
+import { Search } from "./components/Search/Search";
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -55,7 +56,9 @@ function App() {
                   <AllMoviesSeries movieOrTv={"tv"} category={"top_rated"} />
                 }
               ></Route>
+              <Route path="search/:wordSearch" element={<Search />}></Route>
             </Routes>
+
             <Footer />
           </div>
         </div>

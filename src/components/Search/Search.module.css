@@ -1,0 +1,20 @@
+.main__container {
+  width: 90%;
+  padding-top: 80px;
+  margin: auto;
+}
+
+.searchMoviesSeries__container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchMoviesSeries__title {
+  margin-left: 20px;
+  color: whitesmoke;
+  font-size: 30px;
+}

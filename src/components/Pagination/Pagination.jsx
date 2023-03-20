@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import "./style.css";
 
-const Pagination = ({ seriesMovies, setCurrentItems, setCurrentPage }) => {
+const Pagination = ({
+  seriesMovies,
+  totalPages,
+  setCurrentItems,
+  setCurrentPage,
+}) => {
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     setCurrentItems(seriesMovies?.results);
-    setPageCount(500);
-  }, [seriesMovies, setCurrentItems]);
+    setPageCount(totalPages ? totalPages.total_pages : 500);
+  }, [seriesMovies, setCurrentItems, totalPages]);
 
   const handlePageClick = (event) => {
     const newOffset = event.selected + 1;

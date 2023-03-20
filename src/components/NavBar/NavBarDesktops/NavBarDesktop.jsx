@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import s from "./NavBarDesktop.module.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
@@ -11,10 +11,16 @@ import { FiArrowLeft } from "react-icons/fi";
 import logo from "../../../assets/logo.png";
 
 const NavBarDesktop = () => {
+  const navigate = useNavigate();
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search/${input}`);
+  };
 
   const handleClickSearch = () => {
     setInputSearch(!inputSearch);
@@ -94,13 +100,15 @@ const NavBarDesktop = () => {
               <FiArrowLeft className={s.iconSearch} />
             </button>
           )}
-          <input
-            className={s.inputSearch}
-            onChange={handleChangeInput}
-            type="text"
-            placeholder="¿What are you looking for?"
-            value={input}
-          />
+          <form className={s.formInputSearch} onSubmit={handleSubmit}>
+            <input
+              className={s.inputSearch}
+              onChange={handleChangeInput}
+              type="text"
+              placeholder="¿What are you looking for?"
+              value={input}
+            />
+          </form>
           {input !== "" && (
             <button
               className={s.iconClose}
