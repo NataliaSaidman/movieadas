@@ -4,23 +4,30 @@ import { useState } from "react";
 import { UsePagination } from "../../hooks/UsePagination";
 import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
+import { useParams } from "react-router-dom";
 
-const AllMoviesSeries = ({ movieOrTv, category }) => {
+const AllMoviesSeries = () => {
+  const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const seriesMovies = UsePagination(movieOrTv, category, currentPage);
+  const seriesMovies = params.category
+    ? UsePagination(params.type, params.category, false, currentPage)
+    : UsePagination("trending", params.type, "week", currentPage);
   const [currentItems, setCurrentItems] = useState([]);
+
+  const setTitle = () => {
+    const paramsType = params.type === "tv" ? "series" : "movies";
+    if (params.category) {
+      const paramsCategory = params.category;
+      const capitalLetter =
+        paramsCategory.charAt(0).toUpperCase() + paramsCategory.slice(1);
+
+      return `${capitalLetter} ${paramsType}`;
+    } else return `Trending ${paramsType}`;
+  };
 
   return (
     <div className={s.main__container}>
-      {category === "popular" ? (
-        <h2 className={s.allMoviesSeries__title}>
-          {movieOrTv === "tv" ? "Popular series" : "Popular movies"}
-        </h2>
-      ) : (
-        <h2 className={s.allMoviesSeries__title}>
-          {movieOrTv === "tv" ? "Best rated Series" : "Best rated movies "}
-        </h2>
-      )}
+      <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
       <div className={s.allMoviesSeries__container}>
         {currentItems
           ? currentItems.map((sm) => (

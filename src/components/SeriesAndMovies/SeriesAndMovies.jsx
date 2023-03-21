@@ -1,18 +1,20 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
 import { UseFetch } from "../../hooks/UseFetch";
 import s from "./SeriesAndMovies.module.css";
 
-const SeriesAndMovies = ({ movieOrTv }) => {
-  const seriesMoviesPopular = UseFetch(movieOrTv, "popular");
-  const seriesMoviesTopRated = UseFetch(movieOrTv, "top_rated");
+const SeriesAndMovies = () => {
+  const params = useParams();
+  const seriesMoviesPopular = UseFetch(params.type, "popular");
+  const seriesMoviesTopRated = UseFetch(params.type, "top_rated");
 
   return (
     <div className={s.seriesAndMovies__container}>
       {seriesMoviesPopular ? (
         <PopularAndTopRated
-          title={movieOrTv === "tv" ? "Popular Series" : "Popular Movies"}
-          route={movieOrTv === "tv" ? "/series/popular" : "/movies/popular"}
+          title={params.type === "tv" ? "Popular Series" : "Popular Movies"}
+          route={params.type === "tv" ? "/tv/popular" : "/movie/popular"}
           seriesMovies={seriesMoviesPopular.slice(0, 5)}
         />
       ) : (
@@ -21,8 +23,10 @@ const SeriesAndMovies = ({ movieOrTv }) => {
 
       {seriesMoviesTopRated ? (
         <PopularAndTopRated
-          title={movieOrTv === "tv" ? "Best rated series" : "Best rated movies"}
-          route={movieOrTv === "tv" ? "/series/top_rated" : "/movies/top_rated"}
+          title={
+            params.type === "tv" ? "Best rated series" : "Best rated movies"
+          }
+          route={params.type === "tv" ? "/tv/top_rated" : "/movie/top_rated"}
           seriesMovies={seriesMoviesTopRated.slice(0, 5)}
         />
       ) : (

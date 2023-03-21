@@ -69,7 +69,7 @@
 
 .containerInput {
   width: 90%;
-  height: 40px;
+  height: 50px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -78,6 +78,13 @@
   background-color: #303030;
   border-radius: 5px;
   margin: 0 5%;
+}
+
+.formInputSearch {
+  width: 90%;
+  height: 42px;
+  margin-top: -7px;
+  display: flex;
 }
 
 .inputSearch {
@@ -90,6 +97,7 @@
   border: none;
   color: white;
   margin-left: 2px;
+  font-size: 17px;
 }
 
 .iconSearch {
@@ -107,12 +115,14 @@ button {
   border: none;
   color: whitesmoke;
   font-size: 25px;
+  display: flex;
+  align-items: center;
 }
 
 .iconClose {
   left: unset;
-  right: 20px;
   font-size: 20px;
+  margin-right: 10px;
 }
 
 .linkRoute {
@@ -120,4 +130,8 @@ button {
   color: whitesmoke;
   font-size: 20px;
   margin: 15px 10px 0;
+}
+
+.linkRoute:hover {
+  color: whitesmoke;
 }

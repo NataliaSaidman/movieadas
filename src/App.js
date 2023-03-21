@@ -24,13 +24,14 @@ function App() {
           <div className={menuOpen.menu ? s.blur : ""}>
             <Routes>
               <Route path="/" element={<Home />}></Route>
+              <Route path="/:type" element={<SeriesAndMovies />}></Route>
               <Route
-                path="/series"
-                element={<SeriesAndMovies movieOrTv={"tv"} />}
+                path="/:type/:category"
+                element={<AllMoviesSeries />}
               ></Route>
               <Route
-                path="/movies"
-                element={<SeriesAndMovies movieOrTv={"movie"} />}
+                path="/trending/:type"
+                element={<AllMoviesSeries />}
               ></Route>
               <Route
                 path="/movies/popular"
