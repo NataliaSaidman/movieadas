@@ -12,6 +12,7 @@ const Details = () => {
 
   const params = useParams()
   const mediaDetails = UseDetails(params.type, params.id)
+  console.log(mediaDetails)
 
   const shortYear = (date) => {
     const newDate = date.slice(0, 4)
@@ -25,7 +26,7 @@ const Details = () => {
   }
 
   const getRanking = (rank) => {
-    const ranking = Math.round(rank * (5 / (10 - 0)))
+    const ranking = Math.round(rank * (5 / 10))
     const fullStars = []
     const emptyStars = []
     for (let i = 0; i < 5; i++) {
@@ -43,6 +44,7 @@ const Details = () => {
     const youtubeLink = `https://www.youtube.com/watch?v=${getKey}`
     return youtubeLink
   }
+
 
   return (
     <>
@@ -81,14 +83,16 @@ const Details = () => {
                             {getRanking(mediaDetails.vote_average)}
                         </span>
                     </div>
-                    <div className={style.trailer__button}>
-                        <Link 
+                    {mediaDetails.videos.results.length !== 0 && 
+                        <div className={style.trailer__button}>
+                            <Link 
                             to={generateTrailerLink(mediaDetails.videos)}
                             target="_blank"
-                        >
-                            <button>TRAILER</button>
-                        </Link>
-                    </div>
+                            >
+                                <button>TRAILER</button>
+                            </Link>
+                        </div>
+                    }
                     <div className={style.genres__list}>
                         <p>
                             {mediaDetails.genres.map((genre) => (

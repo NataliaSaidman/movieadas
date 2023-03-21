@@ -26,16 +26,10 @@ const MainCarousel = ({ trending }) => {
         modules={[Navigation, Autoplay]}
       >
         {trending?.map((trend) => (
-          <SwiperSlide>
-            <Link
-              to={`/details/${trend.media_type}/${trend.id}`}
-              key={trend.id}
-            >
+          <SwiperSlide key={trend.id}>
               <Card
-                img={trend.backdrop_path}
-                title={trend.title ? trend.title : trend.name}
-              />{" "}
-            </Link>
+                trend={trend}
+              />
           </SwiperSlide>
         ))}
       </Swiper>

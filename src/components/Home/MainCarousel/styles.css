@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.swiper-slide a {
+  text-decoration: none;
+}
+
 .swiper-button-next:after,
 .swiper-button-prev:after {
   color: white;
