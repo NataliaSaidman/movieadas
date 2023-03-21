@@ -6,7 +6,7 @@ import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 import { useParams } from "react-router-dom";
 
-const AllMoviesSeries = ({ movieOrTv, category }) => {
+const AllMoviesSeries = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const seriesMovies = UsePagination(params.type, params.category, currentPage);

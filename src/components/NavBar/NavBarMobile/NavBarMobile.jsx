@@ -10,15 +10,20 @@ import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
 import logo from "../../../assets/logo.png";
 import { menuContext } from "../../../context/menuContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBarMobile = () => {
-  // const [menu, setMenu] = useState(false);
+  const navigate = useNavigate();
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
   const context = useContext(menuContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search/${input}`);
+  };
 
   const handleClickMenu = () => {
     context.setMenu(!context.menu);
@@ -78,13 +83,15 @@ const NavBarMobile = () => {
                 <FiArrowLeft className={s.iconSearch} />
               </button>
             )}
-            <input
-              className={s.inputSearch}
-              onChange={handleChangeInput}
-              type="text"
-              placeholder="¿What are you looking for?"
-              value={input}
-            />
+            <form className={s.formInputSearch} onSubmit={handleSubmit}>
+              <input
+                className={s.inputSearch}
+                onChange={handleChangeInput}
+                type="text"
+                placeholder="¿What are you looking for?"
+                value={input}
+              />
+            </form>
             {input !== "" && (
               <button
                 onClick={() => {
@@ -106,15 +113,17 @@ const NavBarMobile = () => {
           <button onClick={handleClickMenu}>
             <RxCross1 />
           </button>
-          <span className={s.spanMenu}>
-            <AiOutlineHome /> Home
-          </span>
-          <Link to="/movies" className={s.linkRoute}>
+          <Link to="/" className={s.linkRoute} onClick={handleClickMenu}>
+            <span>
+              <AiOutlineHome /> Home
+            </span>
+          </Link>
+          <Link to="/movie" className={s.linkRoute} onClick={handleClickMenu}>
             <span>
               <BiCameraMovie /> Movies
             </span>
           </Link>
-          <Link to="/series" className={s.linkRoute}>
+          <Link to="/tv" className={s.linkRoute} onClick={handleClickMenu}>
             <span>
               <MdMonitor /> Series
             </span>

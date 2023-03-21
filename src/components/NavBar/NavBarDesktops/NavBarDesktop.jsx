@@ -45,85 +45,89 @@ const NavBarDesktop = () => {
   };
   return (
     <div>
-      <nav className={s.containerNavBar}>
-        <div className={s.menuNavBar}>
-          <span className={s.spanMenu}>
-            <AiOutlineHome className={s.icon} /> Home
-          </span>
-          <Link to="/movie" className={s.linkRoute}>
-            <span className={s.spanMenu}>
-              <BiCameraMovie className={s.icon} /> Movies
-            </span>
-          </Link>
-          <Link to="/tv" className={s.linkRoute}>
-            <span className={s.spanMenu}>
-              <MdMonitor className={s.icon} /> Series
-            </span>
-          </Link>
-        </div>
-        <div className={s.containerLogo}>
-          <img className={s.logo} src={logo} alt="logo" />
-        </div>
-        <div className={s.containerSearchLanguage}>
-          <button
-            className={s.buttonsSearchLanguage}
-            onClick={handleClickSearch}
-          >
-            <BsSearch className={s.icon} />
-          </button>
-          <button
-            className={s.buttonsSearchLanguage}
-            onClick={handleClickChangeColor}
-          >
-            {dark ? (
-              <BsMoonStars className={s.icon} />
-            ) : (
-              <BsSun className={s.icon} />
-            )}
-          </button>
-          <button
-            className={s.buttonsSearchLanguage}
-            onClick={handleClickChangeLanguage}
-          >
-            <span className={s.spanLanguage}>
-              {language === "es" ? "Es" : "En"}
-            </span>
-          </button>
-        </div>
-      </nav>
-      {inputSearch ? (
-        <div className={s.containerInput}>
-          {input === "" ? (
-            <BsSearch className={s.iconSearch} />
-          ) : (
-            <button onClick={handleDeleteInput}>
-              <FiArrowLeft className={s.iconSearch} />
-            </button>
-          )}
-          <form className={s.formInputSearch} onSubmit={handleSubmit}>
-            <input
-              className={s.inputSearch}
-              onChange={handleChangeInput}
-              type="text"
-              placeholder="¿What are you looking for?"
-              value={input}
-            />
-          </form>
-          {input !== "" && (
+      <div className={s.navBarDesktop}>
+        <nav className={s.containerNavBar}>
+          <div className={s.menuNavBar}>
+            <Link to="/" className={s.linkRoute}>
+              <span className={s.spanMenu}>
+                <AiOutlineHome className={s.icon} /> Home
+              </span>
+            </Link>
+            <Link to="/movie" className={s.linkRoute}>
+              <span className={s.spanMenu}>
+                <BiCameraMovie className={s.icon} /> Movies
+              </span>
+            </Link>
+            <Link to="/tv" className={s.linkRoute}>
+              <span className={s.spanMenu}>
+                <MdMonitor className={s.icon} /> Series
+              </span>
+            </Link>
+          </div>
+          <div className={s.containerLogo}>
+            <img className={s.logo} src={logo} alt="logo" />
+          </div>
+          <div className={s.containerSearchLanguage}>
             <button
-              className={s.iconClose}
-              onClick={() => {
-                handleClickSearch();
-                handleDeleteInput();
-              }}
+              className={s.buttonsSearchLanguage}
+              onClick={handleClickSearch}
             >
-              <RxCross1 />
+              <BsSearch className={s.icon} />
             </button>
-          )}
-        </div>
-      ) : (
-        ""
-      )}
+            <button
+              className={s.buttonsSearchLanguage}
+              onClick={handleClickChangeColor}
+            >
+              {dark ? (
+                <BsMoonStars className={s.icon} />
+              ) : (
+                <BsSun className={s.icon} />
+              )}
+            </button>
+            <button
+              className={s.buttonsSearchLanguage}
+              onClick={handleClickChangeLanguage}
+            >
+              <span className={s.spanLanguage}>
+                {language === "es" ? "Es" : "En"}
+              </span>
+            </button>
+          </div>
+        </nav>
+        {inputSearch ? (
+          <div className={s.containerInput}>
+            {input === "" ? (
+              <BsSearch className={s.iconSearch} />
+            ) : (
+              <button onClick={handleDeleteInput}>
+                <FiArrowLeft className={s.iconSearch} />
+              </button>
+            )}
+            <form className={s.formInputSearch} onSubmit={handleSubmit}>
+              <input
+                className={s.inputSearch}
+                onChange={handleChangeInput}
+                type="text"
+                placeholder="¿What are you looking for?"
+                value={input}
+              />
+            </form>
+            {input !== "" && (
+              <button
+                className={s.iconClose}
+                onClick={() => {
+                  handleClickSearch();
+                  handleDeleteInput();
+                }}
+              >
+                <RxCross1 />
+              </button>
+            )}
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };
