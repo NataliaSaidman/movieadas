@@ -7,6 +7,7 @@ import { Home } from "./components/Home/Home";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AllMoviesSeries } from "./components/AllMoviesSeries/AllMoviesSeries";
+import { Details } from "./components/Details/Details";
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -55,6 +56,7 @@ function App() {
                   <AllMoviesSeries movieOrTv={"tv"} category={"top_rated"} />
                 }
               ></Route>
+              <Route path="/details/:type/:id" element={<Details />}></Route>
             </Routes>
             <Footer />
           </div>
