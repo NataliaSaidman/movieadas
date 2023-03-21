@@ -46,8 +46,7 @@ const SecondaryCarousel = ({ trending, title }) => {
           {trending?.map((trend) => (
             <SwiperSlide key={trend.id}>
               <Card
-                img={`https://image.tmdb.org/t/p/w300/${trend.poster_path}`}
-                title={trend.title ? trend.title : trend.name}
+                trend={trend}
               />
             </SwiperSlide>
           ))}
