@@ -8,6 +8,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AllMoviesSeries } from "./components/AllMoviesSeries/AllMoviesSeries";
 import { Details } from "./components/Details/Details";
+import { Search } from "react-router";
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -33,31 +34,8 @@ function App() {
                 path="/trending/:type"
                 element={<AllMoviesSeries />}
               ></Route>
-              <Route
-                path="/movies/popular"
-                element={
-                  <AllMoviesSeries movieOrTv={"movie"} category={"popular"} />
-                }
-              ></Route>
-              <Route
-                path="/series/popular"
-                element={
-                  <AllMoviesSeries movieOrTv={"tv"} category={"popular"} />
-                }
-              ></Route>
-              <Route
-                path="/movies/top_rated"
-                element={
-                  <AllMoviesSeries movieOrTv={"movie"} category={"top_rated"} />
-                }
-              ></Route>
-              <Route
-                path="/series/top_rated"
-                element={
-                  <AllMoviesSeries movieOrTv={"tv"} category={"top_rated"} />
-                }
-              ></Route>
               <Route path="/details/:type/:id" element={<Details />}></Route>
+              <Route path="search/:wordSearch" element={<Search />}></Route>
             </Routes>
             <Footer />
           </div>
