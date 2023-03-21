@@ -29,6 +29,10 @@ function App() {
                 path="/:type/:category"
                 element={<AllMoviesSeries />}
               ></Route>
+              <Route
+                path="/trending/:type"
+                element={<AllMoviesSeries />}
+              ></Route>
               <Route path="search/:wordSearch" element={<Search />}></Route>
             </Routes>
             <Footer />

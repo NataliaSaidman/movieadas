@@ -9,20 +9,25 @@ import { useParams } from "react-router-dom";
 const AllMoviesSeries = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const seriesMovies = UsePagination(params.type, params.category, currentPage);
+  const seriesMovies = params.category
+    ? UsePagination(params.type, params.category, false, currentPage)
+    : UsePagination("trending", params.type, "week", currentPage);
   const [currentItems, setCurrentItems] = useState([]);
+
+  const setTitle = () => {
+    const paramsType = params.type === "tv" ? "series" : "movies";
+    if (params.category) {
+      const paramsCategory = params.category;
+      const capitalLetter =
+        paramsCategory.charAt(0).toUpperCase() + paramsCategory.slice(1);
+
+      return `${capitalLetter} ${paramsType}`;
+    } else return `Trending ${paramsType}`;
+  };
 
   return (
     <div className={s.main__container}>
-      {params.category === "popular" ? (
-        <h2 className={s.allMoviesSeries__title}>
-          {params.type === "tv" ? "Popular series" : "Popular movies"}
-        </h2>
-      ) : (
-        <h2 className={s.allMoviesSeries__title}>
-          {params.type === "tv" ? "Best rated Series" : "Best rated movies "}
-        </h2>
-      )}
+      <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
       <div className={s.allMoviesSeries__container}>
         {currentItems
           ? currentItems.map((sm) => (

@@ -1,13 +1,12 @@
 import { UseFetch } from "../../hooks/UseFetch";
 import { MainCarousel } from "./MainCarousel/MainCarousel";
 import { SecondaryCarousel } from "./SecondaryCarousel/SecondaryCarousel";
-
+import { useParams } from "react-router";
 import style from "./Home.module.css";
 
 const Home = () => {
   const trendingMovies = UseFetch("trending", "movie", "week");
   const trendingSeries = UseFetch("trending", "tv", "week");
-
   const moviesOrSeries = Math.round(Math.random() * 1);
 
   return (
@@ -29,11 +28,15 @@ const Home = () => {
         <SecondaryCarousel
           trending={trendingSeries}
           title={"Series"}
-          route={"/trending/tv/week"}
+          route={"/trending/tv"}
         />
       </div>
       <div className={style.moviesTrending__container}>
-        <SecondaryCarousel trending={trendingMovies} title={"Películas"} />
+        <SecondaryCarousel
+          trending={trendingMovies}
+          title={"Películas"}
+          route={"/trending/movie"}
+        />
       </div>
     </div>
   );
