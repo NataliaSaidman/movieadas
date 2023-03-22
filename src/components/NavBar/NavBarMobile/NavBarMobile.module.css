@@ -1,0 +1,137 @@
+.containerNav {
+  width: 100%;
+  height: 60px;
+  background-color: #141414;
+  border-bottom: 1px solid whitesmoke;
+  color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerNavOpacity {
+  background-color: rgba(83, 83, 87, 0.482);
+}
+
+.containerHamburguerNav {
+  width: 40%;
+  padding: 2%;
+  display: flex;
+  font-size: 25px;
+  align-items: center;
+}
+
+.containerLogo {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.logo {
+  width: 30px;
+}
+
+.containerSearch {
+  width: 40%;
+  padding: 2%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  align-items: center;
+}
+
+.menuMobile {
+  box-sizing: border-box;
+  background-color: #141414;
+  position: relative;
+  width: 60%;
+  min-height: 100vh;
+  top: -60px;
+  left: -100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: whitesmoke;
+  padding: 10px;
+  font-size: 20px;
+  z-index: 1000;
+  transition: 0.5s left ease;
+}
+
+.menuMobileOpen {
+  left: 0;
+  transition: 0.5s left ease;
+}
+.spanMenu {
+  margin: 15px 10px 0;
+}
+
+.containerInput {
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  padding: 2% 0;
+  background-color: #303030;
+  border-radius: 5px;
+  margin: 0 5%;
+}
+
+.formInputSearch {
+  width: 90%;
+  height: 42px;
+  margin-top: -7px;
+  display: flex;
+}
+
+.inputSearch {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 35px;
+  background-color: #303030;
+  border-radius: 5px;
+  outline-style: none;
+  border: none;
+  color: white;
+  margin-left: 2px;
+  font-size: 17px;
+}
+
+.iconSearch {
+  color: whitesmoke;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+button {
+  background: none;
+  border: none;
+  color: whitesmoke;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.iconClose {
+  left: unset;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.linkRoute {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 20px;
+  margin: 15px 10px 0;
+}
+
+.linkRoute:hover {
+  color: whitesmoke;
+}

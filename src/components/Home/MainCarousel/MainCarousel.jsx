@@ -2,16 +2,16 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css"
-import "swiper/css/navigation"
-import './styles.css'
+import "swiper/css";
+import "swiper/css/navigation";
+import "./styles.css";
 
 // import required modules
-import { Navigation, Autoplay } from "swiper"
+import { Navigation, Autoplay } from "swiper";
 import { Card } from "./Card/Card";
 
-const MainCarousel = () => {
-
+const MainCarousel = ({ trending }) => {
+  console.log(trending);
   return (
     <div className="carousel__container">
       <Swiper
@@ -20,22 +20,20 @@ const MainCarousel = () => {
         speed={800}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: true
+          disableOnInteraction: true,
         }}
         modules={[Navigation, Autoplay]}
       >
-        <SwiperSlide>
-          <Card />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card />
-        </SwiperSlide>
+        {trending?.map((trend) => (
+          <SwiperSlide key={trend.id}>
+              <Card
+                trend={trend}
+              />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
-  )
-}
+  );
+};
 
-export { MainCarousel }
+export { MainCarousel };

@@ -1,0 +1,31 @@
+.container__cards__mobile {
+  display: block;
+}
+
+.container__cards {
+  display: none;
+}
+
+.title__container__cards {
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  color: whitesmoke;
+  font-size: 25px;
+}
+
+@media (min-width: 900px) {
+  .container__cards {
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .container__cards__mobile {
+    display: none;
+  }
+}

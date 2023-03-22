@@ -1,18 +1,24 @@
 import style from './Card.module.css'
+import { Link } from 'react-router-dom'
 
-const Card = () => {
+const Card = ({ trend }) => {
     return (
-        <div
-        className={style.card__container}
-        style={{
-            backgroundImage: `url("https://image.tmdb.org/t/p/original/a6ptrTUH1c5OdWanjyYtAkOuYD0.jpg")`
-        }}
+        <Link
+        to={`/details/${trend.media_type}/${trend.id}`}
+        className={style.link__container}
         >
-            <div className={style.card__details}>
-                <h2 className={style.card__title}>One Piece</h2>
-                <button className={style.card__button}>MÁS INFO</button>
+            <div
+            className={style.card__container}
+            style={{
+                backgroundImage: `url("https://image.tmdb.org/t/p/original${trend.backdrop_path}")`
+            }}
+            >
+                <div className={style.card__details}>
+                    <h2 className={style.card__title}>{trend.title ? trend.title : trend.name}</h2>
+                    <button className={style.card__button}>MÁS INFO</button>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

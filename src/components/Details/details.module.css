@@ -1,0 +1,137 @@
+.details__container {
+    color: white;
+    min-height: 100vh;
+}
+
+.background__image {
+    width: 100%;
+    height: 60vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0px -20px 60px 0px black;
+}
+
+.main__details {
+    margin-inline: 16px;
+    margin-top: -20%;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.media__title {
+    font-size: 2.5rem;
+    margin: 0;
+    margin-bottom: 8px;
+    text-shadow: -2px 0px 20px rgba(0,0,0,9);
+}
+
+.media__time {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.media__time span {
+    margin-right: 16px;
+    font-size: 1.1rem;
+    text-shadow: -2px 0px 20px rgba(0,0,0,9);
+}
+
+.media__ranking {
+    margin-bottom: 16px;
+}
+
+.media__ranking span {
+    display: flex;
+    align-items: center;
+    color: #f8ce07;
+    font-size: 1.5rem;
+}
+
+.trailer__button button {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 1.1rem;
+}
+
+.trailer__button button:hover {
+    color: black;
+    background-color: #f9f9f9;
+}
+
+.genres__list span {
+    background-color: rgba(0, 0, 0, 0.422);
+    padding: 10px 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.media__description {
+    margin: 8px;
+    margin-top: 16px;
+    font-size: 1.1rem;
+}
+
+.poster__container {
+    display: none;
+}
+
+@media (min-width: 400px) {
+    .main__details {
+        margin-top: -10%;
+    }
+}
+
+@media (min-width: 700px) {
+    .background__image {
+        height: 70vh;
+    }
+
+    .poster__container {
+        display: block;
+        width: 50%;
+        margin-right: 20px;
+    }
+
+    .poster__container img {
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.4);
+    }
+
+    .info__container {
+        width: 100%;
+    }
+
+    .media__description {
+        width: 80%;
+    }
+}
+
+@media (min-width: 900px) {
+    .poster__container {
+        width: 50%;
+    }
+
+    .media__description {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .poster__container {
+        width: 30%;
+    }
+}

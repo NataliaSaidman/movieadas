@@ -1,0 +1,143 @@
+.containerNavBar {
+  width: 100%;
+  height: 60px;
+  background-color: #141414;
+  color: #ffffffb3;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.menuNavBar {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  margin-left: 5%;
+  font-weight: bold;
+}
+
+.spanMenu {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.linkRoute {
+  text-decoration: none;
+  color: #ffffffb3;
+}
+
+.spanMenu:hover {
+  color: whitesmoke;
+}
+
+.icon {
+  margin-right: 5px;
+  font-size: 25px;
+}
+
+.containerLogo {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.logo {
+  margin-top: 10px;
+  width: 50px;
+}
+
+.containerSearchLanguage {
+  width: 40%;
+  padding: 2%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 16px;
+  align-items: center;
+  margin-right: 5%;
+}
+
+.containerSearchLanguage .icon {
+  margin-left: 20px;
+  color: #ffffffb3;
+}
+
+.containerSearchLanguage .icon:hover {
+  color: whitesmoke;
+}
+
+.buttonsSearchLanguage {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #ffffffb3;
+}
+
+.buttonsSearchLanguage:hover {
+  color: whitesmoke;
+}
+
+.spanLanguage {
+  border: solid 1px #ffffffb3;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 20px;
+  padding: 4px;
+}
+
+.containerInput {
+  width: 70%;
+  height: 45px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 10;
+  padding: 10px 0;
+  background-color: #303030;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 60px;
+}
+
+.formInputSearch {
+  width: 90%;
+  height: 45px;
+  margin-top: -10px;
+}
+.inputSearch {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 35px;
+  background-color: #303030;
+  border-radius: 5px;
+  outline-style: none;
+  border: none;
+  color: white;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.iconSearch {
+  color: whitesmoke;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.iconClose {
+  left: unset;
+  font-size: 20px;
+}
