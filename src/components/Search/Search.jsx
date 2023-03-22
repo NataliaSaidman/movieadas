@@ -18,11 +18,10 @@ const Search = () => {
       </h2>
       <div className={s.searchMoviesSeries__container}>
         {currentItems
-          ? currentItems.map((sm) => (
+          ? currentItems.map((media) => (
               <Card
-                key={sm.id}
-                img={`https://image.tmdb.org/t/p/w300/${sm.poster_path}`}
-                title={sm.title ? sm.title : sm.name}
+                key={media.id}
+                media={media}
               />
             ))
           : "Error"}

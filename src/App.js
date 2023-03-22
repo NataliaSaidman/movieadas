@@ -8,7 +8,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AllMoviesSeries } from "./components/AllMoviesSeries/AllMoviesSeries";
 import { Details } from "./components/Details/Details";
-import { Search } from "react-router";
+import { Search } from "./components/Search/Search";
 
 function App() {
   const [menu, setMenu] = useState(false);
@@ -35,7 +35,7 @@ function App() {
                 element={<AllMoviesSeries />}
               ></Route>
               <Route path="/details/:type/:id" element={<Details />}></Route>
-              <Route path="search/:wordSearch" element={<Search />}></Route>
+              <Route path="/search/:wordSearch" element={<Search />}></Route>
             </Routes>
             <Footer />
           </div>

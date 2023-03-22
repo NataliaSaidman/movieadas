@@ -30,11 +30,11 @@ const AllMoviesSeries = () => {
       <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
       <div className={s.allMoviesSeries__container}>
         {currentItems
-          ? currentItems.map((sm) => (
+          ? currentItems.map((media) => (
               <Card
-                key={sm.id}
-                img={`https://image.tmdb.org/t/p/w300/${sm.poster_path}`}
-                title={sm.title ? sm.title : sm.name}
+                key={media.id}
+                media={media}
+                mediaType={params.type}
               />
             ))
           : "Error"}

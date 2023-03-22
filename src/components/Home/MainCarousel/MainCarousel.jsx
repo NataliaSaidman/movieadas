@@ -9,7 +9,6 @@ import "./styles.css";
 // import required modules
 import { Navigation, Autoplay } from "swiper";
 import { Card } from "./Card/Card";
-import { Link } from "react-router-dom";
 
 const MainCarousel = ({ trending }) => {
   console.log(trending);

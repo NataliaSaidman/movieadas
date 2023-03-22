@@ -6,6 +6,7 @@
   overflow: hidden;
   box-sizing: border;
   margin: 20px 10px;
+  text-decoration: none;
 }
 
 .container__image {

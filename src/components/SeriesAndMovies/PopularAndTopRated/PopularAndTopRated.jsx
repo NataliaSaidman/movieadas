@@ -14,11 +14,10 @@ const PopularAndTopRated = ({ title, seriesMovies, route }) => {
         </Link>
       </h2>
       <div className="container__cards">
-        {seriesMovies.map((s) => (
+        {seriesMovies.map((media) => (
           <Card
-            key={s.id}
-            img={`https://image.tmdb.org/t/p/w300/${s.poster_path}`}
-            title={s.title ? s.title : s.name}
+            media={media}
+            key={media.id}
           />
         ))}
       </div>

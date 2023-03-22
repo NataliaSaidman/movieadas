@@ -1,7 +1,6 @@
 import { UseFetch } from "../../hooks/UseFetch";
 import { MainCarousel } from "./MainCarousel/MainCarousel";
 import { SecondaryCarousel } from "./SecondaryCarousel/SecondaryCarousel";
-import { useParams } from "react-router";
 import style from "./Home.module.css";
 
 const Home = () => {

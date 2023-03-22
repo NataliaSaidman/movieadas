@@ -12,7 +12,18 @@ const Details = () => {
 
   const params = useParams()
   const mediaDetails = UseDetails(params.type, params.id)
-  console.log(mediaDetails)
+
+  const setBackgroundImage = () => {
+    if (mediaDetails.backdrop_path !== null) {
+        if (windowSize.current >= 700) {
+            return `url('https://image.tmdb.org/t/p/original${mediaDetails.backdrop_path}')`
+        } 
+        else {
+            return `url('https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}')`
+        }
+    } 
+    else return "url('https://demofree.sirv.com/nope-not-here.jpg')"
+  }
 
   const shortYear = (date) => {
     const newDate = date.slice(0, 4)
@@ -52,17 +63,14 @@ const Details = () => {
         <div className={style.details__container}>
             <div
                 className={style.background__image}
-                style={{
-                backgroundImage:
-                    windowSize.current >= 700
-                    ? `url('https://image.tmdb.org/t/p/original${mediaDetails.backdrop_path}')`
-                    : `url('https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}')`
-                }}
+                style={{backgroundImage: setBackgroundImage()}}
             ></div>
             <div className={style.main__details}>
                 <div className={style.poster__container}>
                     <img
-                    src={`https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}`}
+                    src={mediaDetails.poster_path !== null 
+                        ? `https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}` 
+                        : "https://demofree.sirv.com/nope-not-here.jpg"}
                     alt={mediaDetails.title ? mediaDetails.title : mediaDetails.name}
                     />
                 </div>
