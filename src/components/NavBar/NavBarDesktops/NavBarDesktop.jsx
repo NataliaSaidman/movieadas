@@ -1,14 +1,17 @@
-import React from "react";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import s from "./NavBarDesktop.module.css";
+
+import { useState } from "react";
+
+import { Link, useNavigate } from "react-router-dom";
+
+import logo from "../../../assets/logo.png";
+
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdMonitor } from "react-icons/md";
 import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
-import logo from "../../../assets/logo.png";
 
 const NavBarDesktop = () => {
   const navigate = useNavigate();

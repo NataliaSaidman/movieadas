@@ -1,13 +1,23 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
-import { UseFetch } from "../../hooks/UseFetch";
 import s from "./SeriesAndMovies.module.css";
+
+import { useEffect } from "react";
+
+import { useParams } from "react-router-dom";
+
+import { UseFetch } from "../../hooks/UseFetch";
+
+import { scrollToTop } from "../../utils/scrollToTop"
+
+import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
 
 const SeriesAndMovies = () => {
   const params = useParams();
   const seriesMoviesPopular = UseFetch(params.type, "popular");
   const seriesMoviesTopRated = UseFetch(params.type, "top_rated");
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
     <div className={s.seriesAndMovies__container}>

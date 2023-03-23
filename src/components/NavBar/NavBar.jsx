@@ -1,12 +1,9 @@
-import React from "react";
-// import { useRef } from "react";
-import { NavBarMobile } from "./NavBarMobile/NavBarMobile";
-import { NavBarDesktop } from "./NavBarDesktops/NavBarDesktop";
 import s from "./NavBar.module.css";
 
-const NavBar = () => {
-  // const windowSize = useRef([window.innerWidth, window.innerHeight]);
+import { NavBarMobile } from "./NavBarMobile/NavBarMobile";
+import { NavBarDesktop } from "./NavBarDesktops/NavBarDesktop";
 
+const NavBar = () => {
   return (
     <>
       <div className={s.NavBarMobile}>

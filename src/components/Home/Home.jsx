@@ -1,12 +1,20 @@
+import style from "./Home.module.css";
+
 import { UseFetch } from "../../hooks/UseFetch";
+import { useEffect } from "react";
+
 import { MainCarousel } from "./MainCarousel/MainCarousel";
 import { SecondaryCarousel } from "./SecondaryCarousel/SecondaryCarousel";
-import style from "./Home.module.css";
+import { scrollToTop } from '../../utils/scrollToTop';
 
 const Home = () => {
   const trendingMovies = UseFetch("trending", "movie", "week");
   const trendingSeries = UseFetch("trending", "tv", "week");
   const moviesOrSeries = Math.round(Math.random() * 1);
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
     <div className={style.home__container}>

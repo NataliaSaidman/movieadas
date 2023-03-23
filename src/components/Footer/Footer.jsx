@@ -1,5 +1,5 @@
-import React from "react";
 import s from "./Footer.module.css";
+
 import {
   AiOutlineCopyrightCircle,
   AiFillGithub,

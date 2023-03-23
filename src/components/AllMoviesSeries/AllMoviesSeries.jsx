@@ -1,18 +1,27 @@
-import React from "react";
 import s from "./AllMoviesSeries.module.css";
+
+import React, { useEffect } from "react";
 import { useState } from "react";
+
+import { useParams } from "react-router-dom";
 import { UsePagination } from "../../hooks/UsePagination";
+
 import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
-import { useParams } from "react-router-dom";
+
+import { scrollToTop } from "../../utils/scrollToTop";
 
 const AllMoviesSeries = () => {
+
   const params = useParams();
+  
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentItems, setCurrentItems] = useState([]);
+  
   const seriesMovies = params.category
     ? UsePagination(params.type, params.category, false, currentPage)
     : UsePagination("trending", params.type, "week", currentPage);
-  const [currentItems, setCurrentItems] = useState([]);
+    
 
   const setTitle = () => {
     const paramsType = params.type === "tv" ? "series" : "movies";
@@ -24,6 +33,10 @@ const AllMoviesSeries = () => {
       return `${capitalLetter} ${paramsType}`;
     } else return `Trending ${paramsType}`;
   };
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
     <div className={s.main__container}>

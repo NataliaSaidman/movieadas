@@ -1,8 +1,11 @@
 import style from "./details.module.css"
 
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
+
 import { useParams, Link } from "react-router-dom"
+
 import { UseDetails } from "../../hooks/UseDetails"
+import { scrollToTop } from "../../utils/scrollToTop"
 
 import { AiFillStar } from "react-icons/ai"
 import { AiOutlineStar } from "react-icons/ai"
@@ -55,6 +58,10 @@ const Details = () => {
     const youtubeLink = `https://www.youtube.com/watch?v=${getKey}`
     return youtubeLink
   }
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
 
   return (

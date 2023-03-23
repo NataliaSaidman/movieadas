@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom"
 import s from "./Card.module.css";
+
+import { Link } from "react-router-dom"
 
 const Card = ({ media, mediaType }) => {
   return (

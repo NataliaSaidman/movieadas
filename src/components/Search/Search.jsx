@@ -1,15 +1,26 @@
-import { React, useState } from "react";
-import { UseSearch } from "../../hooks/UseSearch";
-import { useParams } from "react-router-dom";
-import { Card } from "../SeriesAndMovies/Card/Card";
 import s from "./Search.module.css";
+
+import { useEffect, useState } from "react";
+
+import { UseSearch } from "../../hooks/UseSearch";
+
+import { useParams } from "react-router-dom";
+
+import { scrollToTop } from "../../utils/scrollToTop"
+
+import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 
 const Search = () => {
-  const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const search = UseSearch(params.wordSearch, currentPage);
   const [currentItems, setCurrentItems] = useState([]);
+
+  const params = useParams();
+  const search = UseSearch(params.wordSearch, currentPage);
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
     <div className={s.main__container}>

@@ -1,8 +1,9 @@
-import { Card } from "../Card/Card";
-import { Link } from "react-router-dom";
-import { SecondaryCarousel } from "../../Home/SecondaryCarousel/SecondaryCarousel";
-import React from "react";
 import "./styles.css";
+
+import { Link } from "react-router-dom";
+
+import { SecondaryCarousel } from "../../Home/SecondaryCarousel/SecondaryCarousel";
+import { Card } from "../Card/Card";
 
 const PopularAndTopRated = ({ title, seriesMovies, route }) => {
   return (

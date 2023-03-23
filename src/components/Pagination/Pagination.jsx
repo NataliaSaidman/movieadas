@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
 import "./style.css";
+
+import { useState, useEffect } from "react";
+
+import ReactPaginate from "react-paginate";
 
 const Pagination = ({
   seriesMovies,

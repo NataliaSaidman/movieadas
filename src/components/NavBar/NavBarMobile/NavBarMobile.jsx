@@ -1,6 +1,13 @@
-import React from "react";
 import s from "./NavBarMobile.module.css";
+
 import { useState, useContext } from "react";
+
+import { menuContext } from "../../../context/menuContext";
+
+import { Link, useNavigate } from "react-router-dom";
+
+import logo from "../../../assets/logo.png";
+
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdMonitor, MdLanguage } from "react-icons/md";
@@ -8,9 +15,6 @@ import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
-import logo from "../../../assets/logo.png";
-import { menuContext } from "../../../context/menuContext";
-import { Link, useNavigate } from "react-router-dom";
 
 const NavBarMobile = () => {
   const navigate = useNavigate();
