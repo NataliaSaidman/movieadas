@@ -59,7 +59,7 @@ const NavBarMobile = () => {
   };
 
   return (
-    <div className={s.mainContianer}>
+    <div className={s.navBarMobile}>
       <nav
         className={`${s.containerNav} ${
           context.menu ? s.containerNavOpacity : ""
