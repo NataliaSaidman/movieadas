@@ -63,7 +63,7 @@
   background-color: #141414;
   position: relative;
   position: fixed;
-  width: 80%;
+  width: 70%;
   height: 100%;
   top: 0;
   left: -1000px;
@@ -84,6 +84,7 @@
 }
 
 .spanMenu {
+  width: 90%;
   margin: 15px 10px 0;
 }
 
@@ -144,12 +145,9 @@ button {
 }
 
 .linkRoute {
+  width: 90%;
   text-decoration: none;
   color: whitesmoke;
   font-size: 20px;
   margin: 15px 10px 0;
-}
-
-.linkRoute:hover {
-  color: whitesmoke;
 }

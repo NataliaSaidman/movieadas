@@ -50,7 +50,7 @@ const Details = () => {
           emptyStars.push(<AiOutlineStar key={i} />)
         }
     }
-    return [fullStars, emptyStars]
+    return {stars: [fullStars, emptyStars], number: ranking}
   }
 
   const generateTrailerLink = (APIObject) => {
@@ -94,8 +94,8 @@ const Details = () => {
                         </span>
                     </div>
                     <div className={style.media__ranking}>
-                        <span>
-                            {getRanking(mediaDetails.vote_average)}
+                        <span aria-label={`${getRanking(mediaDetails.vote_average).number} stars ranking`}>
+                            {getRanking(mediaDetails.vote_average).stars}
                         </span>
                     </div>
                     {mediaDetails.videos.results.length !== 0 && 
@@ -109,11 +109,11 @@ const Details = () => {
                         </div>
                     }
                     <div className={style.genres__list}>
-                        <p>
+                        <ul>
                             {mediaDetails.genres.map((genre) => (
-                                <span key={genre.id}>{genre.name}</span>
+                                <li key={genre.id}>{genre.name}</li>
                             ))}
-                        </p>
+                        </ul>
                     </div>
                     <div className={style.media__description}>
                         <p>
