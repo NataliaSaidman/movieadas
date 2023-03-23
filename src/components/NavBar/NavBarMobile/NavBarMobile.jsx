@@ -18,10 +18,13 @@ import { FiArrowLeft } from "react-icons/fi";
 
 const NavBarMobile = () => {
   const navigate = useNavigate();
+
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
+
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
+
   const context = useContext(menuContext);
 
   const handleSubmit = (e) => {
@@ -56,61 +59,59 @@ const NavBarMobile = () => {
   };
 
   return (
-    <div>
-      <div className={s.navBarMobile}>
-        <nav
-          className={`${s.containerNav} ${
-            context.menu ? s.containerNavOpacity : ""
-          }`}
-        >
-          <div className={s.containerHamburguerNav}>
-            <button onClick={handleClickMenu}>
-              <GiHamburgerMenu />
+    <div className={s.mainContianer}>
+      <nav
+        className={`${s.containerNav} ${
+          context.menu ? s.containerNavOpacity : ""
+        }`}
+      >
+        <div className={s.containerHamburguerNav}>
+          <button onClick={handleClickMenu}>
+            <GiHamburgerMenu />
+          </button>
+        </div>
+        <div className={s.containerLogo}>
+          <img className={s.logo} src={logo} alt="logo" />
+        </div>
+        <div className={s.containerSearch}>
+          <button onClick={handleClickSearch}>
+            <BsSearch />
+          </button>
+        </div>
+      </nav>
+      {inputSearch ? (
+        <div className={s.containerInput}>
+          {input === "" ? (
+            <BsSearch className={s.iconSearch} />
+          ) : (
+            <button onClick={handleDeleteInput}>
+              <FiArrowLeft className={s.iconSearch} />
             </button>
-          </div>
-
-          <div className={s.containerLogo}>
-            <img className={s.logo} src={logo} alt="logo" />
-          </div>
-          <div className={s.containerSearch}>
-            <button onClick={handleClickSearch}>
-              <BsSearch />
+          )}
+          <form className={s.formInputSearch} onSubmit={handleSubmit}>
+            <input
+              className={s.inputSearch}
+              onChange={handleChangeInput}
+              type="text"
+              placeholder="¿What are you looking for?"
+              value={input}
+            />
+          </form>
+          {input !== "" && (
+            <button
+              onClick={() => {
+                handleClickSearch();
+                handleDeleteInput();
+              }}
+            >
+              <RxCross1 className={s.iconClose} />
             </button>
-          </div>
-        </nav>
-        {inputSearch ? (
-          <div className={s.containerInput}>
-            {input === "" ? (
-              <BsSearch className={s.iconSearch} />
-            ) : (
-              <button onClick={handleDeleteInput}>
-                <FiArrowLeft className={s.iconSearch} />
-              </button>
-            )}
-            <form className={s.formInputSearch} onSubmit={handleSubmit}>
-              <input
-                className={s.inputSearch}
-                onChange={handleChangeInput}
-                type="text"
-                placeholder="¿What are you looking for?"
-                value={input}
-              />
-            </form>
-            {input !== "" && (
-              <button
-                onClick={() => {
-                  handleClickSearch();
-                  handleDeleteInput();
-                }}
-              >
-                <RxCross1 className={s.iconClose} />
-              </button>
-            )}
-          </div>
-        ) : (
-          ""
-        )}
-
+          )}
+        </div>
+      ) : (
+        ""
+      )}
+      <div className={context.menu ? s.menuContainerShow : s.menuContainerHide}>
         <div
           className={`${s.menuMobile} ${context.menu ? s.menuMobileOpen : ""}`}
         >

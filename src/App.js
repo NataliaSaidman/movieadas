@@ -22,7 +22,6 @@ function App() {
       <BrowserRouter>
         <div className={s.app}>
           <NavBar />
-          <div className={menuOpen.menu ? s.blur : ""}>
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/:type" element={<SeriesAndMovies />}></Route>
@@ -38,7 +37,6 @@ function App() {
               <Route path="/search/:wordSearch" element={<Search />}></Route>
             </Routes>
             <Footer />
-          </div>
         </div>
       </BrowserRouter>
     </menuContext.Provider>

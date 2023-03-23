@@ -41,10 +41,6 @@ footer {
   margin-right: 20px;
 }
 
-.copyrightContainer:hover {
-  color: whitesmoke;
-}
-
 @media (max-width: 300px) {
   .copyrightContainer {
     width: 80%;
