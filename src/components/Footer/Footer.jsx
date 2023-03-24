@@ -1,4 +1,4 @@
-import s from "./Footer.module.css";
+import style from "./Footer.module.css";
 
 import {
   AiOutlineCopyrightCircle,
@@ -9,17 +9,17 @@ import {
 const Footer = () => {
   return (
     <footer>
-      <div className={s.authorsContainer}>
-        <span className={s.contactAuthor}>
-          Mica Lay <AiFillGithub className={s.iconsFooter} />
-          <AiOutlineLinkedin className={s.iconsFooter} />
+      <div className={style.authorsContainer}>
+        <span className={style.contactAuthor}>
+          Mica Lay <AiFillGithub className={style.iconsFooter} />
+          <AiOutlineLinkedin className={style.iconsFooter} />
         </span>
-        <span className={s.contactAuthor}>
-          Nati Saidman <AiFillGithub className={s.iconsFooter} />
-          <AiOutlineLinkedin className={s.iconsFooter} />
+        <span className={style.contactAuthor}>
+          Nati Saidman <AiFillGithub className={style.iconsFooter} />
+          <AiOutlineLinkedin className={style.iconsFooter} />
         </span>
       </div>
-      <div className={s.copyrightContainer}>
+      <div className={style.copyrightContainer}>
         <span>
           <AiOutlineCopyrightCircle /> MicayNatiMedia, LLC.
         </span>

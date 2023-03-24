@@ -1,4 +1,4 @@
-import s from "./NavBarMobile.module.css";
+import style from "./NavBarMobile.module.css";
 
 import { useState, useContext } from "react";
 
@@ -59,38 +59,38 @@ const NavBarMobile = () => {
   };
 
   return (
-    <div className={s.navBarMobile}>
+    <div className={style.navBarMobile}>
       <nav
-        className={`${s.containerNav} ${
-          context.menu ? s.containerNavOpacity : ""
+        className={`${style.containerNav} ${
+          context.menu ? style.containerNavOpacity : ""
         }`}
       >
-        <div className={s.containerHamburguerNav}>
+        <div className={style.containerHamburguerNav}>
           <button onClick={handleClickMenu}>
             <GiHamburgerMenu />
           </button>
         </div>
-        <div className={s.containerLogo}>
-          <img className={s.logo} src={logo} alt="logo" />
+        <div className={style.containerLogo}>
+          <img className={style.logo} src={logo} alt="logo" />
         </div>
-        <div className={s.containerSearch}>
+        <div className={style.containerSearch}>
           <button onClick={handleClickSearch}>
             <BsSearch />
           </button>
         </div>
       </nav>
       {inputSearch ? (
-        <div className={s.containerInput}>
+        <div className={style.containerInput}>
           {input === "" ? (
-            <BsSearch className={s.iconSearch} />
+            <BsSearch className={style.iconSearch} />
           ) : (
             <button onClick={handleDeleteInput}>
-              <FiArrowLeft className={s.iconSearch} />
+              <FiArrowLeft className={style.iconSearch} />
             </button>
           )}
-          <form className={s.formInputSearch} onSubmit={handleSubmit}>
+          <form className={style.formInputSearch} onSubmit={handleSubmit}>
             <input
-              className={s.inputSearch}
+              className={style.inputSearch}
               onChange={handleChangeInput}
               type="text"
               placeholder="¿What are you looking for?"
@@ -104,44 +104,44 @@ const NavBarMobile = () => {
                 handleDeleteInput();
               }}
             >
-              <RxCross1 className={s.iconClose} />
+              <RxCross1 className={style.iconClose} />
             </button>
           )}
         </div>
       ) : (
         ""
       )}
-      <div className={context.menu ? s.menuContainerShow : s.menuContainerHide}>
+      <div className={context.menu ? style.menuContainerShow : style.menuContainerHide}>
         <div
-          className={`${s.menuMobile} ${context.menu ? s.menuMobileOpen : ""}`}
+          className={`${style.menuMobile} ${context.menu ? style.menuMobileOpen : ""}`}
         >
           <button onClick={handleClickMenu}>
             <RxCross1 />
           </button>
-          <Link to="/" className={s.linkRoute} onClick={handleClickMenu}>
+          <Link to="/" className={style.linkRoute} onClick={handleClickMenu}>
             <span>
               <AiOutlineHome /> Home
             </span>
           </Link>
-          <Link to="/movie" className={s.linkRoute} onClick={handleClickMenu}>
+          <Link to="/movie" className={style.linkRoute} onClick={handleClickMenu}>
             <span>
               <BiCameraMovie /> Movies
             </span>
           </Link>
-          <Link to="/tv" className={s.linkRoute} onClick={handleClickMenu}>
+          <Link to="/tv" className={style.linkRoute} onClick={handleClickMenu}>
             <span>
               <MdMonitor /> Series
             </span>
           </Link>
-          <span className={s.spanMenu} onClick={handleClickChangeLanguage}>
+          <span className={style.spanMenu} onClick={handleClickChangeLanguage}>
             <MdLanguage /> {language === "es" ? "Spanish" : "English"}
           </span>
           {dark ? (
-            <span className={s.spanMenu} onClick={handleClickChangeColor}>
+            <span className={style.spanMenu} onClick={handleClickChangeColor}>
               <BsMoonStars /> Dark{" "}
             </span>
           ) : (
-            <span className={s.spanMenu} onClick={handleClickChangeColor}>
+            <span className={style.spanMenu} onClick={handleClickChangeColor}>
               <BsSun /> Clear{" "}
             </span>
           )}

@@ -1,4 +1,4 @@
-import s from "./Search.module.css";
+import style from "./Search.module.css";
 
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 import { scrollToTop } from "../../utils/scrollToTop"
 
-import { Card } from "../SeriesAndMovies/Card/Card";
+import { Card } from "../Home/SecondaryCarousel/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 
 const Search = () => {
@@ -23,11 +23,11 @@ const Search = () => {
   }, [])
 
   return (
-    <div className={s.main__container}>
-      <h2 className={s.searchMoviesSeries__title}>
+    <div className={style.main__container}>
+      <h2 className={style.searchMoviesSeries__title}>
         Resultados para: {params.wordSearch}
       </h2>
-      <div className={s.searchMoviesSeries__container}>
+      <div className={style.searchMoviesSeries__container}>
         {currentItems
           ? currentItems.map((media) => (
               <Card

@@ -1,4 +1,4 @@
-import s from "./SeriesAndMovies.module.css";
+import style from "./SeriesAndMovies.module.css";
 
 import { useEffect } from "react";
 
@@ -20,7 +20,7 @@ const SeriesAndMovies = () => {
   }, [])
 
   return (
-    <div className={s.seriesAndMovies__container}>
+    <div className={style.seriesAndMovies__container}>
       {seriesMoviesPopular ? (
         <PopularAndTopRated
           title={params.type === "tv" ? "Popular Series" : "Popular Movies"}

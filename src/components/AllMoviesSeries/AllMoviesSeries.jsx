@@ -1,4 +1,4 @@
-import s from "./AllMoviesSeries.module.css";
+import style from "./AllMoviesSeries.module.css";
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { UsePagination } from "../../hooks/UsePagination";
 
-import { Card } from "../SeriesAndMovies/Card/Card";
+import { Card } from "../Home/SecondaryCarousel/Card/Card"
 import { Pagination } from "../Pagination/Pagination";
 
 import { scrollToTop } from "../../utils/scrollToTop";
@@ -39,9 +39,9 @@ const AllMoviesSeries = () => {
   }, [])
 
   return (
-    <div className={s.main__container}>
-      <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
-      <div className={s.allMoviesSeries__container}>
+    <div className={style.main__container}>
+      <h2 className={style.allMoviesSeries__title}>{setTitle()}</h2>
+      <div className={style.allMoviesSeries__container}>
         {currentItems
           ? currentItems.map((media) => (
               <Card
@@ -52,7 +52,7 @@ const AllMoviesSeries = () => {
             ))
           : "Error"}
       </div>
-      <div className={s.container__pagination}>
+      <div className={style.container__pagination}>
         <Pagination
           seriesMovies={seriesMovies}
           setCurrentItems={setCurrentItems}
