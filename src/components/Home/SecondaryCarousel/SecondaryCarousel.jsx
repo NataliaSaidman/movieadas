@@ -3,7 +3,7 @@ import "./style.css";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Card } from "./Card/Card";
+import { Card } from "../../Card/Card";
 
 import { Link } from "react-router-dom";
 

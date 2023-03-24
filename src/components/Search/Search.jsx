@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 import { scrollToTop } from "../../utils/scrollToTop"
 
-import { Card } from "../Home/SecondaryCarousel/Card/Card";
+import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 
 const Search = () => {

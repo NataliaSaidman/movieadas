@@ -3,7 +3,7 @@ import style from "./PopularAndTopRated.module.css"
 import { Link } from "react-router-dom";
 
 import { SecondaryCarousel } from "../../Home/SecondaryCarousel/SecondaryCarousel";
-import { Card } from "../../Home/SecondaryCarousel/Card/Card";
+import { Card } from "../../Card/Card";
 
 import { IoIosArrowForward } from "react-icons/io"
 

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { UsePagination } from "../../hooks/UsePagination";
 
-import { Card } from "../Home/SecondaryCarousel/Card/Card"
+import { Card } from "../Card/Card"
 import { Pagination } from "../Pagination/Pagination";
 
 import { scrollToTop } from "../../utils/scrollToTop";
