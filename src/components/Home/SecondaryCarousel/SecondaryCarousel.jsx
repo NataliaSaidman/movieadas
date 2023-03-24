@@ -16,8 +16,8 @@ import "swiper/css/navigation";
 
 const SecondaryCarousel = ({ trending, title, route }) => {
   return (
-    <>
-      <div className="category__container">
+    <div>
+      <div className={title ? "category__container" : "hide"}>
         <Link to={route}>
           <p>{title} Tendencias</p>
           <IoIosArrowForward className="arrow__icon" />
@@ -26,7 +26,7 @@ const SecondaryCarousel = ({ trending, title, route }) => {
       <div>
         <Swiper
           loop={true}
-          spaceBetween={10}
+          spaceBetween={15}
           slidesPerView={2}
           pagination={{
             type: "fraction",
@@ -41,10 +41,10 @@ const SecondaryCarousel = ({ trending, title, route }) => {
             900: {
               slidesPerView: 5,
             },
-            1000: {
+            1100: {
               slidesPerView: 6,
             },
-            1280: {
+            1700: {
               slidesPerView: 7,
             },
           }}
@@ -54,13 +54,13 @@ const SecondaryCarousel = ({ trending, title, route }) => {
           {trending?.map((trend) => (
             <SwiperSlide key={trend.id}>
               <Card
-                trend={trend}
+                media={trend}
               />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-    </>
+    </div>
   );
 };
 

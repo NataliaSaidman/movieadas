@@ -1,28 +1,31 @@
-import "./styles.css";
+import style from "./PopularAndTopRated.module.css"
 
 import { Link } from "react-router-dom";
 
 import { SecondaryCarousel } from "../../Home/SecondaryCarousel/SecondaryCarousel";
-import { Card } from "../Card/Card";
+import { Card } from "../../Home/SecondaryCarousel/Card/Card";
+
+import { IoIosArrowForward } from "react-icons/io"
 
 const PopularAndTopRated = ({ title, seriesMovies, route }) => {
   return (
-    <div>
-      <h2 className="title__container__cards">
-        {title}
+    <div className={style.main__container}>
+      <div className={style.category__container}>
         <Link to={route}>
-          <button>{">"}</button>
+          <h2>{title}</h2>
+          <IoIosArrowForward className={style.arrow__icon} />
         </Link>
-      </h2>
-      <div className="container__cards">
+      </div>
+      <div className={style.container__cards}>
         {seriesMovies.map((media) => (
-          <Card
-            media={media}
-            key={media.id}
-          />
+          <div className={style.card} key={media.id}>
+            <Card
+              media={media}
+            />
+          </div>
         ))}
       </div>
-      <div className="container__cards__mobile">
+      <div className={style.container__cards__mobile}>
         <SecondaryCarousel trending={seriesMovies} />
       </div>
     </div>

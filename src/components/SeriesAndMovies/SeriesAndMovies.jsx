@@ -25,7 +25,7 @@ const SeriesAndMovies = () => {
         <PopularAndTopRated
           title={params.type === "tv" ? "Popular Series" : "Popular Movies"}
           route={params.type === "tv" ? "/tv/popular" : "/movie/popular"}
-          seriesMovies={seriesMoviesPopular.slice(0, 5)}
+          seriesMovies={seriesMoviesPopular.slice(0, 12)}
         />
       ) : (
         "Error"
@@ -37,7 +37,7 @@ const SeriesAndMovies = () => {
             params.type === "tv" ? "Best rated series" : "Best rated movies"
           }
           route={params.type === "tv" ? "/tv/top_rated" : "/movie/top_rated"}
-          seriesMovies={seriesMoviesTopRated.slice(0, 5)}
+          seriesMovies={seriesMoviesTopRated.slice(0, 12)}
         />
       ) : (
         "Error"

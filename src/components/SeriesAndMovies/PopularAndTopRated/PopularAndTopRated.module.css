@@ -1,0 +1,60 @@
+.main__container {
+  margin-inline: 5%;
+}
+
+.container__cards__mobile {
+  display: block;
+}
+
+.container__cards {
+  display: none;
+}
+
+.category__container {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.category__container h2, .arrow__icon {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.category__container a {
+  display: flex;
+  align-items: center;
+  color:#e5e5e5;
+  margin-bottom: 16px;
+  transition: 0.2s;
+}
+
+.category__container a:hover {
+  color: white;
+}
+
+.arrow__icon {
+  transition: 0.2s;
+}
+
+.category__container a:hover .arrow__icon {
+  color: #1496c4;
+  margin-left: 8px;
+}
+
+@media (min-width: 1200px) {
+  .container__cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 16%;
+  }
+
+  .container__cards__mobile {
+    display: none;
+  }
+}

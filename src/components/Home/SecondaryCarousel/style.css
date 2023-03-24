@@ -14,7 +14,6 @@
 }
 
 .category__container {
-  margin-left: 20px;
   color: white;
   font-size: 25px;
   font-weight: bold;
@@ -41,4 +40,8 @@
 .category__container a:hover .arrow__icon {
   color: #1496c4;
   margin-left: 8px;
+}
+
+.hide {
+  display: none;
 }

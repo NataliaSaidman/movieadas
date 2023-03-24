@@ -20,10 +20,6 @@ footer {
   margin-left: 20px;
 }
 
-.contactAuthor:hover {
-  color: whitesmoke;
-}
-
 .contactAuthor {
   display: flex;
   align-items: center;
