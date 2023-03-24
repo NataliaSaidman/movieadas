@@ -97,12 +97,6 @@
     display: none;
 }
 
-@media (min-width: 400px) {
-    .poster__container {
-        margin-top: -10%;
-    }
-}
-
 @media (min-width: 700px) {
     .background__image {
         height: 70vh;
@@ -112,6 +106,7 @@
         display: block;
         width: 50%;
         margin-right: 20px;
+        margin-top: -30%;
     }
 
     .poster__container img {
@@ -132,6 +127,7 @@
 @media (min-width: 900px) {
     .poster__container {
         width: 50%;
+        margin-top: -20%;
     }
 
     .media__description {
@@ -142,5 +138,6 @@
 @media (min-width: 1200px) {
     .poster__container {
         width: 30%;
+        margin-top: -10%;
     }
 }

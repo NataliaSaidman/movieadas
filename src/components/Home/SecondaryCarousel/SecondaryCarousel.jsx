@@ -1,21 +1,26 @@
+import "./style.css";
+
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import { Card } from "./Card/Card";
+
 import { Link } from "react-router-dom";
+
+import { IoIosArrowForward } from "react-icons/io"
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import "./style.css";
 
 const SecondaryCarousel = ({ trending, title, route }) => {
   return (
     <>
       <div className="category__container">
-        <p>{title} Tendencias</p>{" "}
         <Link to={route}>
-          <button>{">"}</button>
+          <p>{title} Tendencias</p>
+          <IoIosArrowForward className="arrow__icon" />
         </Link>
       </div>
       <div>

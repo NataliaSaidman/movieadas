@@ -18,7 +18,7 @@ const Details = () => {
 
   const setBackgroundImage = () => {
     if (mediaDetails.backdrop_path !== null) {
-        if (windowSize.current >= 700) {
+        if (windowSize.current >= 500) {
             return `url('https://image.tmdb.org/t/p/original${mediaDetails.backdrop_path}')`
         } 
         else {

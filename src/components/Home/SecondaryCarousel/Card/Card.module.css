@@ -1,16 +1,14 @@
 .card {
-  display: flex;
-  flex-direction: column;
   width: 100%;
+  height: 400px;
   margin-left: 20px;
-  overflow: hidden;
-  box-sizing: border;
   cursor: pointer;
 }
 
 .container__image {
-  width: 100%;
-  height: 200px;
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .card__image {
@@ -22,14 +20,18 @@
 
 .card__image:hover {
   transform: scale(1.1);
+  transform-origin: 50% 50%;
 }
 
 .title__serie {
-  margin-top: 20px;
   color: whitesmoke;
 }
 
 @media (min-width: 1400px) {
+  .card {
+    height: 500px;
+  }
+
   .container__image {
     height: 400px;
   }
