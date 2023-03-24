@@ -24,10 +24,10 @@ const Search = () => {
 
   return (
     <div className={style.main__container}>
-      <h2 className={style.searchMoviesSeries__title}>
-        Resultados para: {params.wordSearch}
+      <h2 className={style.search__title}>
+        Results for: {params.wordSearch}
       </h2>
-      <div className={style.searchMoviesSeries__container}>
+      <div className={style.cards__container}>
         {currentItems
           ? currentItems.map((media) => (
               <Card
@@ -37,12 +37,14 @@ const Search = () => {
             ))
           : "Error"}
       </div>
-      <Pagination
-        seriesMovies={search}
-        totalPages={search}
-        setCurrentItems={setCurrentItems}
-        setCurrentPage={setCurrentPage}
-      />
+      <div className={style.pagination__container}>
+        <Pagination
+          seriesMovies={search}
+          totalPages={search}
+          setCurrentItems={setCurrentItems}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };

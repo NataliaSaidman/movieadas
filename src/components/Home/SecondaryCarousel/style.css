@@ -1,6 +1,5 @@
 .swiper {
   width: 100%;
-  margin-bottom: 1rem;
 }
 
 .swiper-slide img {
@@ -11,6 +10,11 @@
 .swiper-wrapper {
   display: flex;
   align-items: center;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px;
 }
 
 .category__container {

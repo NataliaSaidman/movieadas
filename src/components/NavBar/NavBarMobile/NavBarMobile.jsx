@@ -71,7 +71,9 @@ const NavBarMobile = () => {
           </button>
         </div>
         <div className={style.containerLogo}>
-          <img className={style.logo} src={logo} alt="logo" />
+          <Link to={"/"}>
+            <img className={style.logo} src={logo} alt="logo" />
+          </Link>
         </div>
         <div className={style.containerSearch}>
           <button onClick={handleClickSearch}>
@@ -111,7 +113,7 @@ const NavBarMobile = () => {
       ) : (
         ""
       )}
-      <div className={context.menu ? style.menuContainerShow : style.menuContainerHide}>
+      <div className={context.menu ? style.menuContainerShow : style.menuContainerHide} onClick={context.menu ? handleClickMenu : undefined}>
         <div
           className={`${style.menuMobile} ${context.menu ? style.menuMobileOpen : ""}`}
         >

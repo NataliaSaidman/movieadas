@@ -68,17 +68,19 @@ const NavBarDesktop = () => {
             </Link>
           </div>
           <div className={style.containerLogo}>
-            <img className={style.logo} src={logo} alt="logo" />
+            <Link to={"/"}>
+              <img className={style.logo} src={logo} alt="logo" />
+            </Link>
           </div>
           <div className={style.containerSearchLanguage}>
             <button
-              className={style.buttonsSearchLanguage}
+              className={style.rightSideButtons}
               onClick={handleClickSearch}
             >
               <BsSearch className={style.icon} />
             </button>
             <button
-              className={style.buttonsSearchLanguage}
+              className={style.rightSideButtons}
               onClick={handleClickChangeColor}
             >
               {dark ? (
@@ -88,7 +90,7 @@ const NavBarDesktop = () => {
               )}
             </button>
             <button
-              className={style.buttonsSearchLanguage}
+              className={style.rightSideButtons}
               onClick={handleClickChangeLanguage}
             >
               <span className={style.spanLanguage}>

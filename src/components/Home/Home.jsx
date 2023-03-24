@@ -41,7 +41,7 @@ const Home = () => {
       <div className={style.moviesTrending__container}>
         <SecondaryCarousel
           trending={trendingMovies}
-          title={"Películas"}
+          title={"Movies"}
           route={"/trending/movie"}
         />
       </div>

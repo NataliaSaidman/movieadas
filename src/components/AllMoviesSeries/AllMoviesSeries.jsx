@@ -1,6 +1,6 @@
 import style from "./AllMoviesSeries.module.css";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
@@ -21,17 +21,14 @@ const AllMoviesSeries = () => {
   const seriesMovies = params.category
     ? UsePagination(params.type, params.category, false, currentPage)
     : UsePagination("trending", params.type, "week", currentPage);
-    
 
   const setTitle = () => {
-    const paramsType = params.type === "tv" ? "series" : "movies";
+    const type = params.type === "tv" ? "Series" : "Movies";
     if (params.category) {
-      const paramsCategory = params.category;
-      const capitalLetter =
-        paramsCategory.charAt(0).toUpperCase() + paramsCategory.slice(1);
-
-      return `${capitalLetter} ${paramsType}`;
-    } else return `Trending ${paramsType}`;
+      const category = params.category === "top_rated" ? "Best Rated" : "Popular"
+      return `${category} ${type}`
+    }
+    else return `Trending ${type}`
   };
 
   useEffect(() => {
@@ -40,19 +37,20 @@ const AllMoviesSeries = () => {
 
   return (
     <div className={style.main__container}>
-      <h2 className={style.allMoviesSeries__title}>{setTitle()}</h2>
-      <div className={style.allMoviesSeries__container}>
+      <h2 className={style.category__title}>
+        All {setTitle()}
+      </h2>
+      <div className={style.cards__container}>
         {currentItems
           ? currentItems.map((media) => (
               <Card
                 key={media.id}
                 media={media}
-                mediaType={params.type}
               />
             ))
           : "Error"}
       </div>
-      <div className={style.container__pagination}>
+      <div className={style.pagination__container}>
         <Pagination
           seriesMovies={seriesMovies}
           setCurrentItems={setCurrentItems}

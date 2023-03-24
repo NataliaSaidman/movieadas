@@ -85,16 +85,17 @@
   color: whitesmoke;
 }
 
-.buttonsSearchLanguage {
+.rightSideButtons {
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
   color: #ffffffb3;
+  cursor: pointer;
 }
 
-.buttonsSearchLanguage:hover {
+.rightSideButtons:hover {
   color: whitesmoke;
 }
 
@@ -146,9 +147,11 @@
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .iconClose {
   left: unset;
   font-size: 20px;
+  cursor: pointer;
 }

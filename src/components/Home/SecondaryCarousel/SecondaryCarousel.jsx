@@ -19,7 +19,7 @@ const SecondaryCarousel = ({ trending, title, route }) => {
     <div>
       <div className={title ? "category__container" : "hide"}>
         <Link to={route}>
-          <p>{title} Tendencias</p>
+          <p>Trending {title}</p>
           <IoIosArrowForward className="arrow__icon" />
         </Link>
       </div>
