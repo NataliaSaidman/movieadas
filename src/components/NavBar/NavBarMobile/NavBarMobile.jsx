@@ -21,9 +21,9 @@ const NavBarMobile = () => {
 
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
-
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
+  const [transparency, setTransparency] = useState(false);
 
   const context = useContext(menuContext);
 
@@ -57,13 +57,19 @@ const NavBarMobile = () => {
   const handleClickChangeColor = () => {
     setDark(!dark);
   };
+  
+  const changeTransparencyBackground = () => {
+    window.scrollY >= 150 ? setTransparency(true) : setTransparency(false);
+  };
+
+  window.addEventListener("scroll", changeTransparencyBackground);
 
   return (
     <div className={style.navBarMobile}>
       <nav
         className={`${style.containerNav} ${
           context.menu ? style.containerNavOpacity : ""
-        }`}
+        } ${transparency ? style.active : ""}`}
       >
         <div className={style.containerHamburguerNav}>
           <button onClick={handleClickMenu}>

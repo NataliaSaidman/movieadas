@@ -19,8 +19,10 @@ const Details = () => {
   const params = useParams()
   const mediaDetails = UseDetails(params.type, params.id)
 
+  console.log(mediaDetails)
+
   const setBackgroundImage = () => {
-    if (mediaDetails.backdrop_path !== null) {
+    if (mediaDetails.backdrop_path !== null || mediaDetails.known_for.backdrop_path !== null) {
         if (windowSize.current >= 500) {
             return `url('https://image.tmdb.org/t/p/original${mediaDetails.backdrop_path}')`
         } 

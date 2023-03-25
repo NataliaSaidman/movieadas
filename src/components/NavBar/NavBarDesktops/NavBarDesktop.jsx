@@ -19,6 +19,7 @@ const NavBarDesktop = () => {
   const [input, setInput] = useState("");
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
+  const [transparency, setTransparency] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,10 +47,23 @@ const NavBarDesktop = () => {
   const handleClickChangeColor = () => {
     setDark(!dark);
   };
+
+  const changeTransparencyBackground = () => {
+    window.scrollY >= 150 ? setTransparency(true) : setTransparency(false);
+  };
+
+  window.addEventListener("scroll", changeTransparencyBackground);
+
   return (
     <div>
       <div className={style.navBarDesktop}>
-        <nav className={style.containerNavBar}>
+        <nav 
+          className={
+            transparency
+            ? `${style.containerNavBar} ${style.active}`
+            : style.containerNavBar
+          }
+        >
           <div className={style.menuNavBar}>
             <Link to="/" className={style.linkRoute}>
               <span className={style.spanMenu}>
