@@ -2,6 +2,8 @@ import "./style.css";
 
 import { useState, useEffect } from "react";
 
+import { scrollToTop } from '../../utils/scrollToTop';
+
 import ReactPaginate from "react-paginate";
 
 const Pagination = ({
@@ -18,6 +20,7 @@ const Pagination = ({
   }, [seriesMovies, setCurrentItems, totalPages]);
 
   const handlePageClick = (event) => {
+    scrollToTop()
     const newOffset = event.selected + 1;
     setCurrentPage(newOffset);
   };

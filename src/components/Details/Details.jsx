@@ -90,7 +90,7 @@ const Details = () => {
                     </h2>
                     <div className={style.media__time}>
                         <span>
-                            {shortYear(mediaDetails.release_date ? mediaDetails.release_date : mediaDetails.first_air_date)}
+                            {shortYear(mediaDetails.release_date !== null ? mediaDetails.release_date : mediaDetails.first_air_date)}
                         </span>
                         <span>
                             {mediaDetails.runtime ? runtime(mediaDetails.runtime) : `${mediaDetails.number_of_episodes} Episodes`}

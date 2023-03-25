@@ -29,7 +29,7 @@ const Search = () => {
       </h2>
       <div className={style.cards__container}>
         {currentItems
-          ? currentItems.map((media) => (
+          ? currentItems.map((media) => media.media_type !== "person" && (
               <Card
                 key={media.id}
                 media={media}
