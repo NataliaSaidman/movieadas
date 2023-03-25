@@ -10,6 +10,9 @@ import { scrollToTop } from "../../utils/scrollToTop"
 import { AiFillStar } from "react-icons/ai"
 import { AiOutlineStar } from "react-icons/ai"
 
+import notFound from "../../assets/no-image.png"
+import notFoundHeader from "../../assets/image-header.png"
+
 const Details = () => {
   const windowSize = useRef(window.innerWidth)
 
@@ -25,7 +28,7 @@ const Details = () => {
             return `url('https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}')`
         }
     } 
-    else return "url('https://demofree.sirv.com/nope-not-here.jpg')"
+    else return `url(${notFoundHeader})`
   }
 
   const shortYear = (date) => {
@@ -77,7 +80,7 @@ const Details = () => {
                     <img
                     src={mediaDetails.poster_path !== null 
                         ? `https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}` 
-                        : "https://demofree.sirv.com/nope-not-here.jpg"}
+                        : notFound}
                     alt={mediaDetails.title ? mediaDetails.title : mediaDetails.name}
                     />
                 </div>
