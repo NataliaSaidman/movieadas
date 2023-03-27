@@ -1,18 +1,15 @@
-import React from "react";
-// import { useRef } from "react";
+import style from "./NavBar.module.css";
+
 import { NavBarMobile } from "./NavBarMobile/NavBarMobile";
 import { NavBarDesktop } from "./NavBarDesktops/NavBarDesktop";
-import s from "./NavBar.module.css";
 
 const NavBar = () => {
-  // const windowSize = useRef([window.innerWidth, window.innerHeight]);
-
   return (
     <>
-      <div className={s.NavBarMobile}>
+      <div className={style.NavBarMobile}>
         <NavBarMobile />
       </div>
-      <div className={s.NavBarDesktop}>
+      <div className={style.NavBarDesktop}>
         <NavBarDesktop />
       </div>
     </>

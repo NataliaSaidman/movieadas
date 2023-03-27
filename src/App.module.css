@@ -1,12 +1,3 @@
 .app {
   min-height: 100vh;
 }
-
-.blur {
-  width: 100%;
-  min-height: 100vh;
-  background-color: rgba(83, 83, 87, 0.482);
-  z-index: 900;
-  top: 60px;
-  left: 0;
-}

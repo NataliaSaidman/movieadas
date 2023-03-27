@@ -1,14 +1,17 @@
-import React from "react";
+import style from "./NavBarDesktop.module.css";
+
 import { useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
-import s from "./NavBarDesktop.module.css";
+
+import logo from "../../../assets/logo.png";
+
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdMonitor } from "react-icons/md";
 import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
-import logo from "../../../assets/logo.png";
 
 const NavBarDesktop = () => {
   const navigate = useNavigate();
@@ -16,6 +19,7 @@ const NavBarDesktop = () => {
   const [input, setInput] = useState("");
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
+  const [transparency, setTransparency] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,69 +47,84 @@ const NavBarDesktop = () => {
   const handleClickChangeColor = () => {
     setDark(!dark);
   };
+
+  const changeTransparencyBackground = () => {
+    window.scrollY >= 150 ? setTransparency(true) : setTransparency(false);
+  };
+
+  window.addEventListener("scroll", changeTransparencyBackground);
+
   return (
     <div>
-      <div className={s.navBarDesktop}>
-        <nav className={s.containerNavBar}>
-          <div className={s.menuNavBar}>
-            <Link to="/" className={s.linkRoute}>
-              <span className={s.spanMenu}>
-                <AiOutlineHome className={s.icon} /> Home
+      <div className={style.navBarDesktop}>
+        <nav 
+          className={
+            transparency
+            ? `${style.containerNavBar} ${style.active}`
+            : style.containerNavBar
+          }
+        >
+          <div className={style.menuNavBar}>
+            <Link to="/" className={style.linkRoute}>
+              <span className={style.spanMenu}>
+                <AiOutlineHome className={style.icon} /> Home
               </span>
             </Link>
-            <Link to="/movie" className={s.linkRoute}>
-              <span className={s.spanMenu}>
-                <BiCameraMovie className={s.icon} /> Movies
+            <Link to="/movie" className={style.linkRoute}>
+              <span className={style.spanMenu}>
+                <BiCameraMovie className={style.icon} /> Movies
               </span>
             </Link>
-            <Link to="/tv" className={s.linkRoute}>
-              <span className={s.spanMenu}>
-                <MdMonitor className={s.icon} /> Series
+            <Link to="/tv" className={style.linkRoute}>
+              <span className={style.spanMenu}>
+                <MdMonitor className={style.icon} /> Series
               </span>
             </Link>
           </div>
-          <div className={s.containerLogo}>
-            <img className={s.logo} src={logo} alt="logo" />
+          <div className={style.containerLogo}>
+            <Link to={"/"}>
+              <img className={style.logo} src={logo} alt="logo" />
+            </Link>
           </div>
-          <div className={s.containerSearchLanguage}>
+          <div className={style.containerSearchLanguage}>
             <button
-              className={s.buttonsSearchLanguage}
+              className={style.rightSideButtons}
               onClick={handleClickSearch}
             >
-              <BsSearch className={s.icon} />
+              <BsSearch className={style.icon} />
             </button>
             <button
-              className={s.buttonsSearchLanguage}
+              className={style.rightSideButtons}
               onClick={handleClickChangeColor}
             >
               {dark ? (
-                <BsMoonStars className={s.icon} />
+                <BsMoonStars className={style.icon} />
               ) : (
-                <BsSun className={s.icon} />
+                <BsSun className={style.icon} />
               )}
             </button>
             <button
-              className={s.buttonsSearchLanguage}
+              className={style.rightSideButtons}
               onClick={handleClickChangeLanguage}
             >
-              <span className={s.spanLanguage}>
+              <span className={style.spanLanguage}>
                 {language === "es" ? "Es" : "En"}
               </span>
             </button>
           </div>
         </nav>
         {inputSearch ? (
-          <div className={s.containerInput}>
+          <div className={style.containerInput}>
             {input === "" ? (
-              <BsSearch className={s.iconSearch} />
+              <BsSearch className={style.iconSearch} />
             ) : (
               <button onClick={handleDeleteInput}>
-                <FiArrowLeft className={s.iconSearch} />
+                <FiArrowLeft className={style.iconSearch} />
               </button>
             )}
-            <form className={s.formInputSearch} onSubmit={handleSubmit}>
+            <form className={style.formInputSearch} onSubmit={handleSubmit}>
               <input
-                className={s.inputSearch}
+                className={style.inputSearch}
                 onChange={handleChangeInput}
                 type="text"
                 placeholder="¿What are you looking for?"
@@ -114,7 +133,7 @@ const NavBarDesktop = () => {
             </form>
             {input !== "" && (
               <button
-                className={s.iconClose}
+                className={style.iconClose}
                 onClick={() => {
                   handleClickSearch();
                   handleDeleteInput();

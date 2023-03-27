@@ -1,24 +1,35 @@
-import { React, useState } from "react";
+import style from "./Search.module.css";
+
+import { useEffect, useState } from "react";
+
 import { UseSearch } from "../../hooks/UseSearch";
+
 import { useParams } from "react-router-dom";
-import { Card } from "../SeriesAndMovies/Card/Card";
-import s from "./Search.module.css";
+
+import { scrollToTop } from "../../utils/scrollToTop"
+
+import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 
 const Search = () => {
-  const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const search = UseSearch(params.wordSearch, currentPage);
   const [currentItems, setCurrentItems] = useState([]);
 
+  const params = useParams();
+  const search = UseSearch(params.wordSearch, currentPage);
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
+
   return (
-    <div className={s.main__container}>
-      <h2 className={s.searchMoviesSeries__title}>
-        Resultados para: {params.wordSearch}
+    <div className={style.main__container}>
+      <h2 className={style.search__title}>
+        Results for: {params.wordSearch}
       </h2>
-      <div className={s.searchMoviesSeries__container}>
+      <div className={style.cards__container}>
         {currentItems
-          ? currentItems.map((media) => (
+          ? currentItems.map((media) => media.media_type !== "person" && (
               <Card
                 key={media.id}
                 media={media}
@@ -26,12 +37,14 @@ const Search = () => {
             ))
           : "Error"}
       </div>
-      <Pagination
-        seriesMovies={search}
-        totalPages={search}
-        setCurrentItems={setCurrentItems}
-        setCurrentPage={setCurrentPage}
-      />
+      <div className={style.pagination__container}>
+        <Pagination
+          seriesMovies={search}
+          totalPages={search}
+          setCurrentItems={setCurrentItems}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };

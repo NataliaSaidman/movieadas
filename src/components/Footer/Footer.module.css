@@ -20,10 +20,6 @@ footer {
   margin-left: 20px;
 }
 
-.contactAuthor:hover {
-  color: whitesmoke;
-}
-
 .contactAuthor {
   display: flex;
   align-items: center;
@@ -39,10 +35,6 @@ footer {
   flex-direction: column;
   align-items: flex-end;
   margin-right: 20px;
-}
-
-.copyrightContainer:hover {
-  color: whitesmoke;
 }
 
 @media (max-width: 300px) {

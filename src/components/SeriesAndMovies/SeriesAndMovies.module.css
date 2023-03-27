@@ -1,5 +1,9 @@
-@media (min-width: 700px) {
+.seriesAndMovies__container {
+  margin-top: 40px;
+}
+
+@media (min-width: 750px) {
   .seriesAndMovies__container {
-    padding-top: 30px;
-  }
+    margin-top: calc(3rem + 60px);
+  }  
 }

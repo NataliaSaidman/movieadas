@@ -1,36 +1,51 @@
 .main__container {
-  padding-top: 80px;
-}
-
-.allMoviesSeries__container {
-  width: 100%;
+  margin-top: 40px;
+  margin-inline: 5%;
   min-height: 100vh;
+}
+
+.category__title {
+  margin-bottom: 16px;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.cards__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.pagination__container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-}
-
-.allMoviesSeries__title {
-  margin-left: 20px;
-  color: whitesmoke;
-}
-
-.container__pagination {
-  width: 90%;
-  margin: auto;
 }
 
 @media (min-width: 500px) {
-  .allMoviesSeries__container {
-    width: 80%;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+  .cards__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 750px) {
+  .main__container {
+    margin-top: calc(3rem + 60px);
   }
 
-  .allMoviesSeries__title {
-    margin-left: 150px;
-    color: whitesmoke;
+  .cards__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cards__container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1050px) {
+  .cards__container {
+    grid-template-columns: repeat(6, 1fr);
   }
 }

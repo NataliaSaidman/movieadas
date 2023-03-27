@@ -1,6 +1,13 @@
-import React from "react";
-import s from "./NavBarMobile.module.css";
+import style from "./NavBarMobile.module.css";
+
 import { useState, useContext } from "react";
+
+import { menuContext } from "../../../context/menuContext";
+
+import { Link, useNavigate } from "react-router-dom";
+
+import logo from "../../../assets/logo.png";
+
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdMonitor, MdLanguage } from "react-icons/md";
@@ -8,16 +15,16 @@ import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
-import logo from "../../../assets/logo.png";
-import { menuContext } from "../../../context/menuContext";
-import { Link, useNavigate } from "react-router-dom";
 
 const NavBarMobile = () => {
   const navigate = useNavigate();
+
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
+  const [transparency, setTransparency] = useState(false);
+
   const context = useContext(menuContext);
 
   const handleSubmit = (e) => {
@@ -50,93 +57,99 @@ const NavBarMobile = () => {
   const handleClickChangeColor = () => {
     setDark(!dark);
   };
+  
+  const changeTransparencyBackground = () => {
+    window.scrollY >= 150 ? setTransparency(true) : setTransparency(false);
+  };
+
+  window.addEventListener("scroll", changeTransparencyBackground);
 
   return (
-    <div>
-      <div className={s.navBarMobile}>
-        <nav
-          className={`${s.containerNav} ${
-            context.menu ? s.containerNavOpacity : ""
-          }`}
-        >
-          <div className={s.containerHamburguerNav}>
-            <button onClick={handleClickMenu}>
-              <GiHamburgerMenu />
+    <div className={style.navBarMobile}>
+      <nav
+        className={`${style.containerNav} ${
+          context.menu ? style.containerNavOpacity : ""
+        } ${transparency ? style.active : ""}`}
+      >
+        <div className={style.containerHamburguerNav}>
+          <button onClick={handleClickMenu}>
+            <GiHamburgerMenu />
+          </button>
+        </div>
+        <div className={style.containerLogo}>
+          <Link to={"/"}>
+            <img className={style.logo} src={logo} alt="logo" />
+          </Link>
+        </div>
+        <div className={style.containerSearch}>
+          <button onClick={handleClickSearch}>
+            <BsSearch />
+          </button>
+        </div>
+      </nav>
+      {inputSearch ? (
+        <div className={style.containerInput}>
+          {input === "" ? (
+            <BsSearch className={style.iconSearch} />
+          ) : (
+            <button onClick={handleDeleteInput}>
+              <FiArrowLeft className={style.iconSearch} />
             </button>
-          </div>
-
-          <div className={s.containerLogo}>
-            <img className={s.logo} src={logo} alt="logo" />
-          </div>
-          <div className={s.containerSearch}>
-            <button onClick={handleClickSearch}>
-              <BsSearch />
+          )}
+          <form className={style.formInputSearch} onSubmit={handleSubmit}>
+            <input
+              className={style.inputSearch}
+              onChange={handleChangeInput}
+              type="text"
+              placeholder="¿What are you looking for?"
+              value={input}
+            />
+          </form>
+          {input !== "" && (
+            <button
+              onClick={() => {
+                handleClickSearch();
+                handleDeleteInput();
+              }}
+            >
+              <RxCross1 className={style.iconClose} />
             </button>
-          </div>
-        </nav>
-        {inputSearch ? (
-          <div className={s.containerInput}>
-            {input === "" ? (
-              <BsSearch className={s.iconSearch} />
-            ) : (
-              <button onClick={handleDeleteInput}>
-                <FiArrowLeft className={s.iconSearch} />
-              </button>
-            )}
-            <form className={s.formInputSearch} onSubmit={handleSubmit}>
-              <input
-                className={s.inputSearch}
-                onChange={handleChangeInput}
-                type="text"
-                placeholder="¿What are you looking for?"
-                value={input}
-              />
-            </form>
-            {input !== "" && (
-              <button
-                onClick={() => {
-                  handleClickSearch();
-                  handleDeleteInput();
-                }}
-              >
-                <RxCross1 className={s.iconClose} />
-              </button>
-            )}
-          </div>
-        ) : (
-          ""
-        )}
-
+          )}
+        </div>
+      ) : (
+        ""
+      )}
+      <div className={context.menu ? style.menuContainerShow : style.menuContainerHide} onClick={context.menu ? handleClickMenu : undefined}>
         <div
-          className={`${s.menuMobile} ${context.menu ? s.menuMobileOpen : ""}`}
+          className={`${style.menuMobile} ${context.menu ? style.menuMobileOpen : ""}`}
         >
           <button onClick={handleClickMenu}>
             <RxCross1 />
           </button>
-          <Link to="/" className={s.linkRoute} onClick={handleClickMenu}>
+          <Link to="/" className={style.linkRoute} onClick={handleClickMenu}>
             <span>
               <AiOutlineHome /> Home
             </span>
           </Link>
-          <Link to="/movie" className={s.linkRoute} onClick={handleClickMenu}>
+          <Link to="/movie" className={style.linkRoute} onClick={handleClickMenu}>
             <span>
               <BiCameraMovie /> Movies
             </span>
           </Link>
-          <Link to="/tv" className={s.linkRoute} onClick={handleClickMenu}>
+          <Link to="/tv" className={style.linkRoute} onClick={handleClickMenu}>
             <span>
               <MdMonitor /> Series
             </span>
           </Link>
-          <span className={s.spanMenu} onClick={handleClickChangeLanguage}>
+          <span className={style.spanMenu} onClick={handleClickChangeLanguage}>
             <MdLanguage /> {language === "es" ? "Spanish" : "English"}
           </span>
           {dark ? (
-            <span className={s.spanMenu} onClick={handleClickChangeColor}>
+            <span className={style.spanMenu} onClick={handleClickChangeColor}>
               <BsMoonStars /> Dark{" "}
             </span>
           ) : (
-            <span className={s.spanMenu} onClick={handleClickChangeColor}>
+            <span className={style.spanMenu} onClick={handleClickChangeColor}>
               <BsSun /> Clear{" "}
             </span>
           )}
