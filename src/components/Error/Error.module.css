@@ -199,31 +199,3 @@
     }
   }
 }
-
-/* .loader::after,
-.loader::before {
-  animation: loader 2s linear infinite;
-  content: "";
-  border: 4px solid white;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  border-radius: 80%;
-}
-
-@keyframes loader {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.loader::after {
-  opacity: 0;
-  animation-delay: 1s;
-} */

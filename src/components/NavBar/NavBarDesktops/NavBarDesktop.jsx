@@ -14,7 +14,6 @@ const NavBarDesktop = () => {
   const navigate = useNavigate();
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
-  const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
 
   const handleSubmit = (e) => {
@@ -32,12 +31,6 @@ const NavBarDesktop = () => {
 
   const handleDeleteInput = () => {
     setInput("");
-  };
-
-  const handleClickChangeLanguage = () => {
-    if (language === "es") {
-      return setLanguage("en");
-    } else return setLanguage("es");
   };
 
   const handleClickChangeColor = () => {
@@ -83,14 +76,6 @@ const NavBarDesktop = () => {
               ) : (
                 <BsSun className={s.icon} />
               )}
-            </button>
-            <button
-              className={s.buttonsSearchLanguage}
-              onClick={handleClickChangeLanguage}
-            >
-              <span className={s.spanLanguage}>
-                {language === "es" ? "Es" : "En"}
-              </span>
             </button>
           </div>
         </nav>

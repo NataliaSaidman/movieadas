@@ -21,6 +21,14 @@
   margin: auto;
 }
 
+.container__loader {
+  width: 100%;
+  padding-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (min-width: 500px) {
   .allMoviesSeries__container {
     width: 80%;
@@ -32,5 +40,10 @@
   .allMoviesSeries__title {
     margin-left: 150px;
     color: whitesmoke;
+  }
+
+  .container__loader {
+    margin-top: 60px;
+    padding-right: 100px;
   }
 }

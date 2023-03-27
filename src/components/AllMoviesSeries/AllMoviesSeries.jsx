@@ -5,11 +5,12 @@ import { UsePagination } from "../../hooks/UsePagination";
 import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 import { useParams } from "react-router-dom";
+import { Loading } from "../Loading/Loading";
 
 const AllMoviesSeries = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
-  const seriesMovies = params.category
+  const { data: seriesMovies, isLoading } = params.category
     ? UsePagination(params.type, params.category, false, currentPage)
     : UsePagination("trending", params.type, "week", currentPage);
   const [currentItems, setCurrentItems] = useState([]);
@@ -27,15 +28,16 @@ const AllMoviesSeries = () => {
 
   return (
     <div className={s.main__container}>
-      <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
+      {!isLoading && <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>}
+      {isLoading && (
+        <div className={s.container__loader}>
+          <Loading />
+        </div>
+      )}
       <div className={s.allMoviesSeries__container}>
         {currentItems
           ? currentItems.map((media) => (
-              <Card
-                key={media.id}
-                media={media}
-                mediaType={params.type}
-              />
+              <Card key={media.id} media={media} mediaType={params.type} />
             ))
           : "Error"}
       </div>

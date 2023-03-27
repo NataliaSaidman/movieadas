@@ -13,7 +13,7 @@ const Pagination = ({
   useEffect(() => {
     setCurrentItems(seriesMovies?.results);
     setPageCount(totalPages ? totalPages.total_pages : 500);
-  }, [seriesMovies, setCurrentItems, totalPages]);
+  }, [seriesMovies, setCurrentItems, totalPages, setCurrentPage]);
 
   const handlePageClick = (event) => {
     const newOffset = event.selected + 1;

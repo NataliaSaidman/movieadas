@@ -18,12 +18,7 @@ const Search = () => {
       </h2>
       <div className={s.searchMoviesSeries__container}>
         {currentItems
-          ? currentItems.map((media) => (
-              <Card
-                key={media.id}
-                media={media}
-              />
-            ))
+          ? currentItems.map((media) => <Card key={media.id} media={media} />)
           : "Error"}
       </div>
       <Pagination
