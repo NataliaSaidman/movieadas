@@ -11,7 +11,6 @@ import { Navigation, Autoplay } from "swiper";
 import { Card } from "./Card/Card";
 
 const MainCarousel = ({ trending }) => {
-  console.log(trending);
   return (
     <div className="carousel__container">
       <Swiper
@@ -26,9 +25,7 @@ const MainCarousel = ({ trending }) => {
       >
         {trending?.map((trend) => (
           <SwiperSlide key={trend.id}>
-              <Card
-                trend={trend}
-              />
+            <Card trend={trend} />
           </SwiperSlide>
         ))}
       </Swiper>
