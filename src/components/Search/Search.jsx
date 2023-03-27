@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { UseSearch } from "../../hooks/UseSearch";
 import { useParams } from "react-router-dom";
 import { Card } from "../SeriesAndMovies/Card/Card";
@@ -10,6 +10,10 @@ const Search = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const search = UseSearch(params.wordSearch, currentPage);
   const [currentItems, setCurrentItems] = useState([]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [params.wordSearch]);
 
   return (
     <div className={s.main__container}>

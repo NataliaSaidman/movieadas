@@ -23,10 +23,10 @@
 
 .container__loader {
   width: 100%;
+  min-height: 90vh;
   padding-right: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 @media (min-width: 500px) {

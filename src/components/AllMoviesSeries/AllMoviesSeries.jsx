@@ -28,26 +28,29 @@ const AllMoviesSeries = () => {
 
   return (
     <div className={s.main__container}>
-      {!isLoading && <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>}
-      {isLoading && (
+      {isLoading ? (
         <div className={s.container__loader}>
           <Loading />
         </div>
+      ) : (
+        <div>
+          <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
+          <div className={s.allMoviesSeries__container}>
+            {currentItems
+              ? currentItems.map((media) => (
+                  <Card key={media.id} media={media} mediaType={params.type} />
+                ))
+              : "Error"}
+          </div>
+          <div className={s.container__pagination}>
+            <Pagination
+              seriesMovies={seriesMovies}
+              setCurrentItems={setCurrentItems}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>{" "}
+        </div>
       )}
-      <div className={s.allMoviesSeries__container}>
-        {currentItems
-          ? currentItems.map((media) => (
-              <Card key={media.id} media={media} mediaType={params.type} />
-            ))
-          : "Error"}
-      </div>
-      <div className={s.container__pagination}>
-        <Pagination
-          seriesMovies={seriesMovies}
-          setCurrentItems={setCurrentItems}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
     </div>
   );
 };
