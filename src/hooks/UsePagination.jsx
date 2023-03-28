@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const UsePagination = (type, category, week, page) => {
+const usePagination = (type, category, week, page) => {
   const [data, setData] = useState();
 
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/${type}/${category}/${
         week ? week : ""
-      }?api_key=${apiKey}&language=es-AR&page=${page ? page : "1"}`
+      }?api_key=${apiKey}&language=en-US&page=${page ? page : "1"}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -19,4 +19,4 @@ const UsePagination = (type, category, week, page) => {
   return data;
 };
 
-export { UsePagination };
+export { usePagination };

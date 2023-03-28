@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const UseSearch = (search, page) => {
+const useSearch = (search, page) => {
   const [data, setData] = useState();
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${search}&language=es-AR&page=${
+      `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${search}&language=en-US&page=${
         page ? page : "1"
       }`
     )
@@ -19,4 +19,4 @@ const UseSearch = (search, page) => {
   return data;
 };
 
-export { UseSearch };
+export { useSearch };

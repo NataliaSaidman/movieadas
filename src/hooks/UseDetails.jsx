@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const UseDetails = (type, id, videos) => {
+const useDetails = (type, id, videos) => {
   const [data, setData] = useState();
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=videos&language=es-AR`
+      `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=videos&language=en-US`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -17,4 +17,4 @@ const UseDetails = (type, id, videos) => {
   return data;
 };
 
-export { UseDetails };
+export { useDetails };

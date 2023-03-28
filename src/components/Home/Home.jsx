@@ -1,6 +1,6 @@
 import style from "./Home.module.css";
 
-import { UseFetch } from "../../hooks/UseFetch";
+import { useFetch } from "../../hooks/useFetch";
 import { useEffect } from "react";
 
 import { MainCarousel } from "./MainCarousel/MainCarousel";
@@ -8,8 +8,8 @@ import { SecondaryCarousel } from "./SecondaryCarousel/SecondaryCarousel";
 import { scrollToTop } from '../../utils/scrollToTop';
 
 const Home = () => {
-  const trendingMovies = UseFetch("trending", "movie", "week");
-  const trendingSeries = UseFetch("trending", "tv", "week");
+  const trendingMovies = useFetch("trending", "movie", "week");
+  const trendingSeries = useFetch("trending", "tv", "week");
   const moviesOrSeries = Math.round(Math.random() * 1);
 
   useEffect(() => {

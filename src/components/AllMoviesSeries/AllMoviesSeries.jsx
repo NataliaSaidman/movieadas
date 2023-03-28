@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
-import { UsePagination } from "../../hooks/UsePagination";
+import { usePagination } from "../../hooks/usePagination";
 
 import { Card } from "../Card/Card"
 import { Pagination } from "../Pagination/Pagination";
@@ -12,15 +12,17 @@ import { Pagination } from "../Pagination/Pagination";
 import { scrollToTop } from "../../utils/scrollToTop";
 
 const AllMoviesSeries = () => {
-
+  
   const params = useParams();
   
   const [currentPage, setCurrentPage] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
-  
-  const seriesMovies = params.category
-    ? UsePagination(params.type, params.category, false, currentPage)
-    : UsePagination("trending", params.type, "week", currentPage);
+
+  const paramsTernary = params.category 
+    ? [params.type, params.category, false, currentPage] 
+    : ["trending", params.type, "week", currentPage];
+
+  const seriesMovies = usePagination(...paramsTernary);
 
   const setTitle = () => {
     const type = params.type === "tv" ? "Series" : "Movies";

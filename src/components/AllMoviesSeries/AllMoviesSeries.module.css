@@ -1,5 +1,5 @@
 .main__container {
-  margin-top: 40px;
+  margin-top: calc(3rem + 60px);
   margin-inline: 5%;
   min-height: 100vh;
 }
@@ -29,10 +29,6 @@
 }
 
 @media (min-width: 750px) {
-  .main__container {
-    margin-top: calc(3rem + 60px);
-  }
-
   .cards__container {
     grid-template-columns: repeat(4, 1fr);
   }

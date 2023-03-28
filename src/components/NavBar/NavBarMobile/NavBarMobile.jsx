@@ -4,17 +4,16 @@ import { useState, useContext } from "react";
 
 import { menuContext } from "../../../context/menuContext";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import logo from "../../../assets/logo.png";
 
-import { AiOutlineHome } from "react-icons/ai";
-import { BiCameraMovie } from "react-icons/bi";
-import { MdMonitor, MdLanguage } from "react-icons/md";
+import { MdLanguage } from "react-icons/md";
 import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
+import { tabs } from "../tabs";
 
 const NavBarMobile = () => {
   const navigate = useNavigate();
@@ -24,6 +23,8 @@ const NavBarMobile = () => {
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
   const [transparency, setTransparency] = useState(false);
+  const location = useLocation();
+  const [tabSelected, setTabSelected] = useState(location.pathname)
 
   const context = useContext(menuContext);
 
@@ -59,7 +60,7 @@ const NavBarMobile = () => {
   };
   
   const changeTransparencyBackground = () => {
-    window.scrollY >= 150 ? setTransparency(true) : setTransparency(false);
+    window.scrollY >= 100 ? setTransparency(true) : setTransparency(false);
   };
 
   window.addEventListener("scroll", changeTransparencyBackground);
@@ -126,30 +127,22 @@ const NavBarMobile = () => {
           <button onClick={handleClickMenu}>
             <RxCross1 />
           </button>
-          <Link to="/" className={style.linkRoute} onClick={handleClickMenu}>
-            <span>
-              <AiOutlineHome /> Home
-            </span>
-          </Link>
-          <Link to="/movie" className={style.linkRoute} onClick={handleClickMenu}>
-            <span>
-              <BiCameraMovie /> Movies
-            </span>
-          </Link>
-          <Link to="/tv" className={style.linkRoute} onClick={handleClickMenu}>
-            <span>
-              <MdMonitor /> Series
-            </span>
-          </Link>
-          <span className={style.spanMenu} onClick={handleClickChangeLanguage}>
+          {tabs.map(({ name, path, Icon}, i) => (
+            <Link to={path} onClick={() => setTabSelected(path)} key={`${name}-${i}`} className={style.linkRoute}>
+              <span className={tabSelected === path ? `${style.spanMenu} ${style.activeTab}` : `${style.spanMenu}`}>
+                <Icon className={style.icon} />  {name}
+              </span>
+            </Link>
+            ))}
+          <span className={style.rightSideButtons} onClick={handleClickChangeLanguage}>
             <MdLanguage /> {language === "es" ? "Spanish" : "English"}
           </span>
           {dark ? (
-            <span className={style.spanMenu} onClick={handleClickChangeColor}>
+            <span className={style.rightSideButtons} onClick={handleClickChangeColor}>
               <BsMoonStars /> Dark{" "}
             </span>
           ) : (
-            <span className={style.spanMenu} onClick={handleClickChangeColor}>
+            <span className={style.rightSideButtons} onClick={handleClickChangeColor}>
               <BsSun /> Clear{" "}
             </span>
           )}

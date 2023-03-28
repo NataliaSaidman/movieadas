@@ -2,16 +2,14 @@ import style from "./NavBarDesktop.module.css";
 
 import { useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import logo from "../../../assets/logo.png";
 
-import { AiOutlineHome } from "react-icons/ai";
-import { BiCameraMovie } from "react-icons/bi";
-import { MdMonitor } from "react-icons/md";
 import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
+import { tabs } from "../tabs";
 
 const NavBarDesktop = () => {
   const navigate = useNavigate();
@@ -20,6 +18,9 @@ const NavBarDesktop = () => {
   const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
   const [transparency, setTransparency] = useState(false);
+  const location = useLocation();
+  const [tabSelected, setTabSelected] = useState(location.pathname)
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +50,7 @@ const NavBarDesktop = () => {
   };
 
   const changeTransparencyBackground = () => {
-    window.scrollY >= 150 ? setTransparency(true) : setTransparency(false);
+    window.scrollY >= 100 ? setTransparency(true) : setTransparency(false);
   };
 
   window.addEventListener("scroll", changeTransparencyBackground);
@@ -65,21 +66,13 @@ const NavBarDesktop = () => {
           }
         >
           <div className={style.menuNavBar}>
-            <Link to="/" className={style.linkRoute}>
-              <span className={style.spanMenu}>
-                <AiOutlineHome className={style.icon} /> Home
+            {tabs.map(({ name, path, Icon}, i) => (
+            <Link to={path} onClick={() => setTabSelected(path)} key={`${name}-${i}`} className={style.linkRoute}>
+              <span className={tabSelected === path ? `${style.spanMenu} ${style.activeTab}` : `${style.spanMenu}`}>
+                <Icon className={style.icon} />  {name}
               </span>
             </Link>
-            <Link to="/movie" className={style.linkRoute}>
-              <span className={style.spanMenu}>
-                <BiCameraMovie className={style.icon} /> Movies
-              </span>
-            </Link>
-            <Link to="/tv" className={style.linkRoute}>
-              <span className={style.spanMenu}>
-                <MdMonitor className={style.icon} /> Series
-              </span>
-            </Link>
+            ))}
           </div>
           <div className={style.containerLogo}>
             <Link to={"/"}>
