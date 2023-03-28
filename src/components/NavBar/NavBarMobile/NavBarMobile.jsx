@@ -60,7 +60,7 @@ const NavBarMobile = () => {
   };
   
   const changeTransparencyBackground = () => {
-    window.scrollY >= 150 ? setTransparency(true) : setTransparency(false);
+    window.scrollY >= 100 ? setTransparency(true) : setTransparency(false);
   };
 
   window.addEventListener("scroll", changeTransparencyBackground);

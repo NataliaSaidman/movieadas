@@ -90,6 +90,7 @@
 }
 
 .spanMenu {
+  font-weight: bold;
   width: 90%;
   color: #ffffffb3;
   transition: 0.2s;
@@ -100,6 +101,7 @@
 }
 
 .rightSideButtons {
+  font-weight: bold;
   width: 90%;
   color: #ffffffb3;
   transition: 0.2s;

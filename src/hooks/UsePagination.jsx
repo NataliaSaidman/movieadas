@@ -8,7 +8,7 @@ const usePagination = (type, category, week, page) => {
     fetch(
       `https://api.themoviedb.org/3/${type}/${category}/${
         week ? week : ""
-      }?api_key=${apiKey}&language=es-AR&page=${page ? page : "1"}`
+      }?api_key=${apiKey}&language=en-US&page=${page ? page : "1"}`
     )
       .then((res) => res.json())
       .then((data) => {

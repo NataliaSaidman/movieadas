@@ -39,7 +39,7 @@ const Footer = () => {
         <p>
           <AiOutlineCopyrightCircle /> MicayNatiMedia, LLC.
         </p>
-        <p>Todos los derechos reservados</p>
+        <p>All rights reserved</p>
       </div>
     </footer>
   );

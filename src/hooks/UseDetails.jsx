@@ -6,7 +6,7 @@ const useDetails = (type, id, videos) => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=videos&language=es-AR`
+      `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=videos&language=en-US`
     )
       .then((res) => res.json())
       .then((data) => {
