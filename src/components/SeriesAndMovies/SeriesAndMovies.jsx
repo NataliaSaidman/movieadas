@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { useParams } from "react-router-dom";
 
-import { UseFetch } from "../../hooks/UseFetch";
+import { useFetch } from "../../hooks/useFetch";
 
 import { scrollToTop } from "../../utils/scrollToTop"
 
@@ -12,8 +12,8 @@ import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
 
 const SeriesAndMovies = () => {
   const params = useParams();
-  const seriesMoviesPopular = UseFetch(params.type, "popular");
-  const seriesMoviesTopRated = UseFetch(params.type, "top_rated");
+  const seriesMoviesPopular = useFetch(params.type, "popular");
+  const seriesMoviesTopRated = useFetch(params.type, "top_rated");
 
   useEffect(() => {
     scrollToTop()

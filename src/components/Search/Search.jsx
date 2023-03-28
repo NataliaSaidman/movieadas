@@ -12,15 +12,16 @@ import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 
 const Search = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
 
   const params = useParams();
-  const search = UseSearch(params.wordSearch, currentPage);
+  const search = UseSearch(params.wordSearch, currentPage + 1);
 
   useEffect(() => {
     scrollToTop()
-  }, [])
+    setCurrentPage(0)
+  }, [params])
 
   return (
     <div className={style.main__container}>
@@ -43,6 +44,7 @@ const Search = () => {
           totalPages={search}
           setCurrentItems={setCurrentItems}
           setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
         />
       </div>
     </div>

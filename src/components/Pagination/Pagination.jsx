@@ -11,19 +11,20 @@ const Pagination = ({
   totalPages,
   setCurrentItems,
   setCurrentPage,
+  currentPage
 }) => {
-  const [pageCount, setPageCount] = useState(0);
+  const [pageCount, setPageCount] = useState();
+
+  const handlePageClick = (event) => {
+    scrollToTop()
+    const newOffset = event.selected;
+    setCurrentPage(newOffset);
+  };
 
   useEffect(() => {
     setCurrentItems(seriesMovies?.results);
     setPageCount(totalPages ? totalPages.total_pages : 500);
   }, [seriesMovies, setCurrentItems, totalPages]);
-
-  const handlePageClick = (event) => {
-    scrollToTop()
-    const newOffset = event.selected + 1;
-    setCurrentPage(newOffset);
-  };
 
   return (
     <>
@@ -32,6 +33,7 @@ const Pagination = ({
         nextLabel="next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
+        forcePage={currentPage}
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}

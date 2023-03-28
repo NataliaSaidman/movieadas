@@ -48,6 +48,10 @@
   transition: 0.2s;
 }
 
+.spanMenu.activeTab {
+  color: white;
+}
+
 .linkRoute {
   text-decoration: none;
 }
