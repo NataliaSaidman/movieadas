@@ -15,7 +15,7 @@ const Card = ({ trend }) => {
             >
                 <div className={style.card__details}>
                     <h2 className={style.card__title}>{trend.title ? trend.title : trend.name}</h2>
-                    <button className={style.card__button}>MORE INFO</button>
+                    <button className={style.card__button}>MORE</button>
                 </div>
             </div>
         </Link>

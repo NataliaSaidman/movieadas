@@ -128,7 +128,6 @@ const NavBarDesktop = () => {
               <button
                 className={style.iconClose}
                 onClick={() => {
-                  handleClickSearch();
                   handleDeleteInput();
                 }}
               >

@@ -37,6 +37,7 @@
   flex-direction: row;
   font-size: 16px;
   font-weight: bold;
+  margin-left: 5%;
 }
 
 .spanMenu {
@@ -84,6 +85,7 @@
   justify-content: flex-end;
   font-size: 16px;
   align-items: center;
+  margin-right: 5%;
 }
 
 .containerSearchLanguage .icon {
@@ -119,33 +121,33 @@
 
 .containerInput {
   width: 70%;
-  height: 45px;
+  height: 50px;
   display: flex;
   position: fixed;
   z-index: 10;
-  padding: 10px 0;
   background-color: #303030;
   border: 1px solid #ffffffb3;
   border-radius: 5px;
   margin: auto;
-  margin-top: 62px;
+  margin-top: 75px;
 }
 
 .formInputSearch {
   width: 90%;
-  height: 45px;
-  margin-top: -10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
 }
+
 .inputSearch {
   width: 100%;
   box-sizing: border-box;
-  padding: 10px 10px 10px 35px;
   background-color: #303030;
   border-radius: 5px;
   outline-style: none;
   border: none;
   color: white;
-  margin-left: 20px;
+  margin-left: 50px;
   font-size: 16px;
 }
 

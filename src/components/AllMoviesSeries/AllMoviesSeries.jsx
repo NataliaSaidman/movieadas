@@ -15,12 +15,12 @@ const AllMoviesSeries = () => {
   
   const params = useParams();
   
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
 
   const paramsTernary = params.category 
-    ? [params.type, params.category, false, currentPage] 
-    : ["trending", params.type, "week", currentPage];
+    ? [params.type, params.category, false, currentPage + 1] 
+    : ["trending", params.type, "week", currentPage + 1];
 
   const seriesMovies = usePagination(...paramsTernary);
 
@@ -34,6 +34,7 @@ const AllMoviesSeries = () => {
   };
 
   useEffect(() => {
+    setCurrentPage(0)
     scrollToTop()
   }, [])
 
