@@ -3,7 +3,7 @@ import s from "./NavBarMobile.module.css";
 import { useState, useContext } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
-import { MdMonitor, MdLanguage } from "react-icons/md";
+import { MdMonitor } from "react-icons/md";
 import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
@@ -16,7 +16,7 @@ const NavBarMobile = () => {
   const navigate = useNavigate();
   const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
-  const [language, setLanguage] = useState("es");
+
   const [dark, setDark] = useState(true);
   const context = useContext(menuContext);
 
@@ -39,12 +39,6 @@ const NavBarMobile = () => {
   };
   const handleDeleteInput = () => {
     setInput("");
-  };
-
-  const handleClickChangeLanguage = () => {
-    if (language === "es") {
-      return setLanguage("en");
-    } else return setLanguage("es");
   };
 
   const handleClickChangeColor = () => {
@@ -128,9 +122,6 @@ const NavBarMobile = () => {
               <MdMonitor /> Series
             </span>
           </Link>
-          <span className={s.spanMenu} onClick={handleClickChangeLanguage}>
-            <MdLanguage /> {language === "es" ? "Spanish" : "English"}
-          </span>
           {dark ? (
             <span className={s.spanMenu} onClick={handleClickChangeColor}>
               <BsMoonStars /> Dark{" "}

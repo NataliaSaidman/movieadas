@@ -24,6 +24,7 @@
 .container__loader {
   width: 100%;
   min-height: 90vh;
+  padding-top: 30px;
   padding-right: 50px;
   display: flex;
   justify-content: center;

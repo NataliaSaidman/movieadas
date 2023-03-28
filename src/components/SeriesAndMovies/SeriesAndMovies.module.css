@@ -1,5 +1,19 @@
+.container__loader {
+  width: 100%;
+  min-height: 90vh;
+  padding-top: 60px;
+  padding-right: 50px;
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 700px) {
   .seriesAndMovies__container {
     padding-top: 30px;
+  }
+
+  .container__loader {
+    margin-top: 60px;
+    padding-right: 100px;
   }
 }
