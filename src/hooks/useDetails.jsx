@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const useSearch = (search, page) => {
+const useDetails = (type, id, videos) => {
   const [data, setData] = useState();
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${search}&language=en-US&page=${
-        page ? page : "1"
-      }`
+      `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&append_to_response=videos&language=en-US`
     )
       .then((res) => res.json())
       .then((data) => {
         setData(data);
       });
-  }, [search, page]);
+  }, [type, id, videos]);
 
   return data;
 };
 
-export { useSearch };
+export { useDetails };
