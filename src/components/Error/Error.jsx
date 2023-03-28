@@ -2,8 +2,6 @@ import React from "react";
 import s from "./Error.module.css";
 import img from "../../assets/error.png";
 import { Link } from "react-router-dom";
-// import imgOne from "../../assets/error.png";
-// import imgTwo from "../../assets/error.jpg";
 
 const Error = () => {
   return (

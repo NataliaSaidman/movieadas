@@ -2,6 +2,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { MainCarousel } from "./MainCarousel/MainCarousel";
 import { SecondaryCarousel } from "./SecondaryCarousel/SecondaryCarousel";
 import { Loading } from "../Loading/Loading";
+import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 import style from "./Home.module.css";
 
 const Home = () => {
@@ -35,7 +36,7 @@ const Home = () => {
                 }
               />
             ) : (
-              "Error"
+              <ErrorApi />
             )}
           </div>
           <div className={style.seriesTrending__container}>

@@ -4,6 +4,7 @@ import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
 import { useFetch } from "../../hooks/useFetch";
 import { Loading } from "../Loading/Loading";
 import s from "./SeriesAndMovies.module.css";
+import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 
 const SeriesAndMovies = () => {
   const params = useParams();
@@ -31,7 +32,7 @@ const SeriesAndMovies = () => {
               seriesMovies={seriesMoviesPopular.slice(0, 5)}
             />
           ) : (
-            "Error"
+            <ErrorApi />
           )}
 
           {seriesMoviesTopRated ? (
@@ -45,7 +46,7 @@ const SeriesAndMovies = () => {
               seriesMovies={seriesMoviesTopRated.slice(0, 5)}
             />
           ) : (
-            "Error"
+            <ErrorApi />
           )}
         </div>
       )}

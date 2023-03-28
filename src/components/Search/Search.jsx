@@ -5,6 +5,7 @@ import { Card } from "../SeriesAndMovies/Card/Card";
 import s from "./Search.module.css";
 import { Pagination } from "../Pagination/Pagination";
 import { Loading } from "../Loading/Loading";
+import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 
 const Search = () => {
   const params = useParams();
@@ -31,11 +32,11 @@ const Search = () => {
             Resultados para: {params.wordSearch}
           </h2>
           <div className={s.searchMoviesSeries__container}>
-            {currentItems
-              ? currentItems.map((media) => (
-                  <Card key={media.id} media={media} />
-                ))
-              : "Error"}
+            {currentItems ? (
+              currentItems.map((media) => <Card key={media.id} media={media} />)
+            ) : (
+              <ErrorApi />
+            )}
           </div>
           <Pagination
             seriesMovies={search}

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDetails } from "../../hooks/useDetails";
 import { Loading } from "../Loading/Loading";
+import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
@@ -134,7 +135,7 @@ const Details = () => {
               </div>
             </div>
           ) : (
-            "Error"
+            <ErrorApi />
           )}
         </div>
       )}

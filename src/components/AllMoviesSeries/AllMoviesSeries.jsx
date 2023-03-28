@@ -1,10 +1,13 @@
 import React from "react";
 import s from "./AllMoviesSeries.module.css";
+
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+
 import { usePagination } from "../../hooks/usePagination";
 import { Card } from "../SeriesAndMovies/Card/Card";
 import { Pagination } from "../Pagination/Pagination";
-import { useParams } from "react-router-dom";
+import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 import { Loading } from "../Loading/Loading";
 
 const AllMoviesSeries = () => {
@@ -41,11 +44,13 @@ const AllMoviesSeries = () => {
         <div>
           <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
           <div className={s.allMoviesSeries__container}>
-            {currentItems
-              ? currentItems.map((media) => (
-                  <Card key={media.id} media={media} mediaType={params.type} />
-                ))
-              : "Error"}
+            {currentItems ? (
+              currentItems.map((media) => (
+                <Card key={media.id} media={media} mediaType={params.type} />
+              ))
+            ) : (
+              <ErrorApi />
+            )}
           </div>
           <div className={s.container__pagination}>
             <Pagination
