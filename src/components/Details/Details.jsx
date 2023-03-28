@@ -19,8 +19,6 @@ const Details = () => {
   const params = useParams()
   const mediaDetails = useDetails(params.type, params.id)
 
-  console.log(mediaDetails)
-
   const setBackgroundImage = () => {
     if (mediaDetails.backdrop_path && mediaDetails.backdrop_path !== null) {
         if (windowSize.current >= 500) {
