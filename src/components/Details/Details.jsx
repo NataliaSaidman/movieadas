@@ -1,13 +1,19 @@
 import style from "./details.module.css";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+
 import { useParams, Link } from "react-router-dom";
+
 import { useDetails } from "../../hooks/useDetails";
+import { scrollToTop } from "../../utils/scrollToTop";
 import { Loading } from "../Loading/Loading";
 import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
+
+import notFound from "../../assets/no-image.png";
+import notFoundHeader from "../../assets/image-header.png";
 
 const Details = () => {
   const windowSize = useRef(window.innerWidth);
@@ -19,13 +25,16 @@ const Details = () => {
   );
 
   const setBackgroundImage = () => {
-    if (mediaDetails.backdrop_path !== null) {
-      if (windowSize.current >= 700) {
+    if (mediaDetails.backdrop_path && mediaDetails.backdrop_path !== null) {
+      if (windowSize.current >= 500) {
         return `url('https://image.tmdb.org/t/p/original${mediaDetails.backdrop_path}')`;
-      } else {
+      } else if (
+        mediaDetails.poster_path &&
+        mediaDetails.poster_path !== null
+      ) {
         return `url('https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}')`;
       }
-    } else return "url('https://demofree.sirv.com/nope-not-here.jpg')";
+    } else return `url(${notFoundHeader})`;
   };
 
   const shortYear = (date) => {
@@ -50,7 +59,7 @@ const Details = () => {
         emptyStars.push(<AiOutlineStar key={i} />);
       }
     }
-    return [fullStars, emptyStars];
+    return { stars: [fullStars, emptyStars], number: ranking };
   };
 
   const generateTrailerLink = (APIObject) => {
@@ -58,6 +67,10 @@ const Details = () => {
     const youtubeLink = `https://www.youtube.com/watch?v=${getKey}`;
     return youtubeLink;
   };
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return (
     <>
@@ -79,7 +92,7 @@ const Details = () => {
                     src={
                       mediaDetails.poster_path !== null
                         ? `https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}`
-                        : "https://demofree.sirv.com/nope-not-here.jpg"
+                        : notFound
                     }
                     alt={
                       mediaDetails.title
@@ -97,7 +110,8 @@ const Details = () => {
                   <div className={style.media__time}>
                     <span>
                       {shortYear(
-                        mediaDetails.release_date
+                        mediaDetails.release_date &&
+                          mediaDetails.release_date !== null
                           ? mediaDetails.release_date
                           : mediaDetails.first_air_date
                       )}
@@ -109,7 +123,13 @@ const Details = () => {
                     </span>
                   </div>
                   <div className={style.media__ranking}>
-                    <span>{getRanking(mediaDetails.vote_average)}</span>
+                    <span
+                      aria-label={`${
+                        getRanking(mediaDetails.vote_average).number
+                      } stars ranking`}
+                    >
+                      {getRanking(mediaDetails.vote_average).stars}
+                    </span>
                   </div>
                   {mediaDetails.videos.results.length !== 0 && (
                     <div className={style.trailer__button}>
@@ -122,11 +142,11 @@ const Details = () => {
                     </div>
                   )}
                   <div className={style.genres__list}>
-                    <p>
+                    <ul>
                       {mediaDetails.genres.map((genre) => (
-                        <span key={genre.id}>{genre.name}</span>
+                        <li key={genre.id}>{genre.name}</li>
                       ))}
-                    </p>
+                    </ul>
                   </div>
                   <div className={style.media__description}>
                     <p>{mediaDetails.overview}</p>

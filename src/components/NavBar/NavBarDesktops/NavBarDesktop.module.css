@@ -1,15 +1,34 @@
+.navBarDesktop {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mainContainer {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+
 .containerNavBar {
   width: 100%;
   height: 60px;
-  background-color: #141414;
+  background-color: rgba(20, 20, 20, .4);
   color: #ffffffb3;
-  padding: 5px 10px;
+  padding: 5px 5%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: fixed;
   top: 0;
   z-index: 10;
+  transition: 0.4s;
+}
+
+.containerNavBar.active {
+  background-color: #141414;
+  transition: 0.4s;
 }
 
 .menuNavBar {
@@ -17,24 +36,28 @@
   display: flex;
   flex-direction: row;
   font-size: 16px;
-  margin-left: 5%;
   font-weight: bold;
 }
 
 .spanMenu {
-  margin-left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
+  color: #ffffffb3;
+  transition: 0.2s;
+}
+
+.spanMenu.activeTab {
+  color: white;
 }
 
 .linkRoute {
   text-decoration: none;
-  color: #ffffffb3;
 }
 
 .spanMenu:hover {
-  color: whitesmoke;
+  color: white;
 }
 
 .icon {
@@ -57,12 +80,10 @@
 
 .containerSearchLanguage {
   width: 40%;
-  padding: 2%;
   display: flex;
   justify-content: flex-end;
   font-size: 16px;
   align-items: center;
-  margin-right: 5%;
 }
 
 .containerSearchLanguage .icon {
@@ -74,16 +95,17 @@
   color: whitesmoke;
 }
 
-.buttonsSearchLanguage {
+.rightSideButtons {
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
   color: #ffffffb3;
+  cursor: pointer;
 }
 
-.buttonsSearchLanguage:hover {
+.rightSideButtons:hover {
   color: whitesmoke;
 }
 
@@ -99,14 +121,14 @@
   width: 70%;
   height: 45px;
   display: flex;
-  justify-content: flex-start;
-  position: relative;
+  position: fixed;
   z-index: 10;
   padding: 10px 0;
   background-color: #303030;
+  border: 1px solid #ffffffb3;
   border-radius: 5px;
   margin: auto;
-  margin-top: 60px;
+  margin-top: 62px;
 }
 
 .formInputSearch {
@@ -135,9 +157,11 @@
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .iconClose {
   left: unset;
   font-size: 20px;
+  cursor: pointer;
 }

@@ -1,17 +1,21 @@
-import React from "react";
-import s from "./AllMoviesSeries.module.css";
+import style from "./AllMoviesSeries.module.css";
 
+import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
+import { useParams } from "react-router-dom";
 import { usePagination } from "../../hooks/usePagination";
-import { Card } from "../SeriesAndMovies/Card/Card";
+
+import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
 import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 import { Loading } from "../Loading/Loading";
 
+import { scrollToTop } from "../../utils/scrollToTop";
+
 const AllMoviesSeries = () => {
   const params = useParams();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [currentItems, setCurrentItems] = useState([]);
 
@@ -24,41 +28,41 @@ const AllMoviesSeries = () => {
   );
 
   const setTitle = () => {
-    const paramsType = params.type === "tv" ? "series" : "movies";
+    const type = params.type === "tv" ? "Series" : "Movies";
     if (params.category) {
-      const paramsCategory = params.category;
-      const capitalLetter =
-        paramsCategory.charAt(0).toUpperCase() + paramsCategory.slice(1);
-
-      return `${capitalLetter} ${paramsType}`;
-    } else return `Trending ${paramsType}`;
+      const category =
+        params.category === "top_rated" ? "Best Rated" : "Popular";
+      return `${category} ${type}`;
+    } else return `Trending ${type}`;
   };
 
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
   return (
-    <div className={s.main__container}>
+    <div className={style.main__container}>
       {loadingSeriesMovies ? (
-        <div className={s.container__loader}>
+        <div className={style.container__loader}>
           <Loading />
         </div>
       ) : (
         <div>
-          <h2 className={s.allMoviesSeries__title}>{setTitle()}</h2>
-          <div className={s.allMoviesSeries__container}>
+          <h2 className={style.category__title}>All {setTitle()}</h2>
+          <div className={style.cards__container}>
             {currentItems ? (
-              currentItems.map((media) => (
-                <Card key={media.id} media={media} mediaType={params.type} />
-              ))
+              currentItems.map((media) => <Card key={media.id} media={media} />)
             ) : (
               <ErrorApi />
             )}
           </div>
-          <div className={s.container__pagination}>
+          <div className={style.pagination__container}>
             <Pagination
               seriesMovies={seriesMovies}
               setCurrentItems={setCurrentItems}
               setCurrentPage={setCurrentPage}
             />
-          </div>{" "}
+          </div>
         </div>
       )}
     </div>

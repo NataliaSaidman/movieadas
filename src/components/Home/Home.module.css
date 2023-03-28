@@ -2,6 +2,11 @@
   margin-bottom: 3rem;
 }
 
+.seriesTrending__container,
+.moviesTrending__container {
+  margin: 0px 5%;
+}
+
 .container__loader {
   width: 100%;
   min-height: 90vh;

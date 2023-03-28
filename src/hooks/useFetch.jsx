@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const useFetch = (type, category, week) => {
+export const useFetch = (type, category, week) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -10,7 +10,7 @@ const useFetch = (type, category, week) => {
     fetch(
       `https://api.themoviedb.org/3/${type}/${category}/${
         week ? week : ""
-      }?api_key=${apiKey}&language=es-AR&page=1`
+      }?api_key=${apiKey}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -25,5 +25,3 @@ const useFetch = (type, category, week) => {
     isLoading: isLoading,
   };
 };
-
-export { useFetch };

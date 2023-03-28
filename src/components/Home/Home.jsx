@@ -1,9 +1,13 @@
+import style from "./Home.module.css";
+
 import { useFetch } from "../../hooks/useFetch";
+import { useEffect } from "react";
+
 import { MainCarousel } from "./MainCarousel/MainCarousel";
 import { SecondaryCarousel } from "./SecondaryCarousel/SecondaryCarousel";
+import { scrollToTop } from "../../utils/scrollToTop";
 import { Loading } from "../Loading/Loading";
 import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
-import style from "./Home.module.css";
 
 const Home = () => {
   const { data: trendingMovies, isLoading: loadingMovies } = useFetch(
@@ -17,6 +21,10 @@ const Home = () => {
     "week"
   );
   const moviesOrSeries = Math.round(Math.random() * 1);
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return (
     <div className={style.home__container}>
@@ -49,7 +57,7 @@ const Home = () => {
           <div className={style.moviesTrending__container}>
             <SecondaryCarousel
               trending={trendingMovies}
-              title={"Películas"}
+              title={"Movies"}
               route={"/trending/movie"}
             />
           </div>

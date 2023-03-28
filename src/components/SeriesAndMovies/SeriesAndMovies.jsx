@@ -1,9 +1,15 @@
-import React from "react";
+import style from "./SeriesAndMovies.module.css";
+
+import { useEffect } from "react";
+
 import { useParams } from "react-router-dom";
-import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
+
 import { useFetch } from "../../hooks/useFetch";
+
+import { scrollToTop } from "../../utils/scrollToTop";
+
+import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
 import { Loading } from "../Loading/Loading";
-import s from "./SeriesAndMovies.module.css";
 import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 
 const SeriesAndMovies = () => {
@@ -17,19 +23,23 @@ const SeriesAndMovies = () => {
     "top_rated"
   );
 
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
   return (
-    <div className={s.seriesAndMovies__container}>
-      {isLoadingTopRated && isLoadingPopular ? (
-        <div className={s.container__loader}>
+    <div className={style.seriesAndMovies__container}>
+      {isLoadingPopular && isLoadingTopRated ? (
+        <div className={style.container__loader}>
           <Loading />
         </div>
       ) : (
-        <div className={s.seriesAndMovies__container}>
+        <div className={style.seriesAndMovies__container}>
           {seriesMoviesPopular ? (
             <PopularAndTopRated
               title={params.type === "tv" ? "Popular Series" : "Popular Movies"}
               route={params.type === "tv" ? "/tv/popular" : "/movie/popular"}
-              seriesMovies={seriesMoviesPopular.slice(0, 5)}
+              seriesMovies={seriesMoviesPopular.slice(0, 12)}
             />
           ) : (
             <ErrorApi />
@@ -43,7 +53,7 @@ const SeriesAndMovies = () => {
               route={
                 params.type === "tv" ? "/tv/top_rated" : "/movie/top_rated"
               }
-              seriesMovies={seriesMoviesTopRated.slice(0, 5)}
+              seriesMovies={seriesMoviesTopRated.slice(0, 12)}
             />
           ) : (
             <ErrorApi />
