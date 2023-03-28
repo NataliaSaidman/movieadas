@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const UseDetails = (type, id, videos) => {
+const useDetails = (type, id, videos) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -17,4 +17,4 @@ const UseDetails = (type, id, videos) => {
   return data;
 };
 
-export { UseDetails };
+export { useDetails };

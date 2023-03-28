@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const UsePagination = (type, category, week, page) => {
+const usePagination = (type, category, week, page) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const UsePagination = (type, category, week, page) => {
   return data;
 };
 
-export { UsePagination };
+export { usePagination };

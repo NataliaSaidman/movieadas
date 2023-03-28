@@ -2,7 +2,7 @@ import style from "./Search.module.css";
 
 import { useEffect, useState } from "react";
 
-import { UseSearch } from "../../hooks/UseSearch";
+import { useSearch } from "../../hooks/useSearch";
 
 import { useParams } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const Search = () => {
   const [currentItems, setCurrentItems] = useState([]);
 
   const params = useParams();
-  const search = UseSearch(params.wordSearch, currentPage + 1);
+  const Search = useSearch(params.wordSearch, currentPage + 1);
 
   useEffect(() => {
     scrollToTop()
@@ -40,8 +40,8 @@ const Search = () => {
       </div>
       <div className={style.pagination__container}>
         <Pagination
-          seriesMovies={search}
-          totalPages={search}
+          seriesMovies={Search}
+          totalPages={Search}
           setCurrentItems={setCurrentItems}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 
 import { useParams, Link } from "react-router-dom"
 
-import { UseDetails } from "../../hooks/UseDetails"
+import { useDetails } from "../../hooks/useDetails"
 import { scrollToTop } from "../../utils/scrollToTop"
 
 import { AiFillStar } from "react-icons/ai"
@@ -17,12 +17,12 @@ const Details = () => {
   const windowSize = useRef(window.innerWidth)
 
   const params = useParams()
-  const mediaDetails = UseDetails(params.type, params.id)
+  const mediaDetails = useDetails(params.type, params.id)
 
   console.log(mediaDetails)
 
   const setBackgroundImage = () => {
-    if (mediaDetails.backdrop_path !== null || mediaDetails.known_for.backdrop_path !== null) {
+    if (mediaDetails.backdrop_path && mediaDetails.backdrop_path !== null) {
         if (windowSize.current >= 500) {
             return `url('https://image.tmdb.org/t/p/original${mediaDetails.backdrop_path}')`
         } 
@@ -92,7 +92,7 @@ const Details = () => {
                     </h2>
                     <div className={style.media__time}>
                         <span>
-                            {shortYear(mediaDetails.release_date !== null ? mediaDetails.release_date : mediaDetails.first_air_date)}
+                            {shortYear(mediaDetails.release_date && mediaDetails.release_date !== null ? mediaDetails.release_date : mediaDetails.first_air_date)}
                         </span>
                         <span>
                             {mediaDetails.runtime ? runtime(mediaDetails.runtime) : `${mediaDetails.number_of_episodes} Episodes`}

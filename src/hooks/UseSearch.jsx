@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { apiKey } from "../ApiKey/apiKey";
 
-const UseSearch = (search, page) => {
+const useSearch = (search, page) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const UseSearch = (search, page) => {
   return data;
 };
 
-export { UseSearch };
+export { useSearch };
