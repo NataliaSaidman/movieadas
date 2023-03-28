@@ -26,7 +26,7 @@ const Details = () => {
         if (windowSize.current >= 500) {
             return `url('https://image.tmdb.org/t/p/original${mediaDetails.backdrop_path}')`
         } 
-        else {
+        else if (mediaDetails.poster_path && mediaDetails.poster_path !== null) {
             return `url('https://image.tmdb.org/t/p/w300${mediaDetails.poster_path}')`
         }
     } 
