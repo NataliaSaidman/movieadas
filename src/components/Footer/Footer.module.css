@@ -72,6 +72,10 @@ footer {
   font-size: 10px;
 }
 
+.copyrightContainer p {
+  margin: 0;
+}
+
 @media (min-width: 700px) {
   footer {
     display: flex;

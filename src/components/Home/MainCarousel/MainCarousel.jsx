@@ -25,9 +25,7 @@ const MainCarousel = ({ trending }) => {
       >
         {trending?.map((trend) => (
           <SwiperSlide key={trend.id}>
-              <Card
-                trend={trend}
-              />
+            <Card trend={trend} />
           </SwiperSlide>
         ))}
       </Swiper>

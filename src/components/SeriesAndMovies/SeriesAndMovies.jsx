@@ -6,41 +6,58 @@ import { useParams } from "react-router-dom";
 
 import { useFetch } from "../../hooks/useFetch";
 
-import { scrollToTop } from "../../utils/scrollToTop"
+import { scrollToTop } from "../../utils/scrollToTop";
 
 import { PopularAndTopRated } from "./PopularAndTopRated/PopularAndTopRated";
+import { Loading } from "../Loading/Loading";
+import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 
 const SeriesAndMovies = () => {
   const params = useParams();
-  const seriesMoviesPopular = useFetch(params.type, "popular");
-  const seriesMoviesTopRated = useFetch(params.type, "top_rated");
+  const { data: seriesMoviesPopular, isLoading: isLoadingPopular } = useFetch(
+    params.type,
+    "popular"
+  );
+  const { data: seriesMoviesTopRated, isLoading: isLoadingTopRated } = useFetch(
+    params.type,
+    "top_rated"
+  );
 
   useEffect(() => {
-    scrollToTop()
-  }, [])
+    scrollToTop();
+  }, []);
 
   return (
     <div className={style.seriesAndMovies__container}>
-      {seriesMoviesPopular ? (
-        <PopularAndTopRated
-          title={params.type === "tv" ? "Popular Series" : "Popular Movies"}
-          route={params.type === "tv" ? "/tv/popular" : "/movie/popular"}
-          seriesMovies={seriesMoviesPopular.slice(0, 12)}
-        />
+      {isLoadingPopular && isLoadingTopRated ? (
+        <div className={style.container__loader}>
+          <Loading />
+        </div>
       ) : (
-        "Error"
-      )}
+        <div className={style.seriesAndMovies__container}>
+          {seriesMoviesPopular && (
+            <PopularAndTopRated
+              title={params.type === "tv" ? "Popular Series" : "Popular Movies"}
+              route={params.type === "tv" ? "/tv/popular" : "/movie/popular"}
+              seriesMovies={seriesMoviesPopular.slice(0, 12)}
+            />
+          )}
 
-      {seriesMoviesTopRated ? (
-        <PopularAndTopRated
-          title={
-            params.type === "tv" ? "Best rated series" : "Best rated movies"
-          }
-          route={params.type === "tv" ? "/tv/top_rated" : "/movie/top_rated"}
-          seriesMovies={seriesMoviesTopRated.slice(0, 12)}
-        />
-      ) : (
-        "Error"
+          {seriesMoviesTopRated && (
+            <PopularAndTopRated
+              title={
+                params.type === "tv" ? "Best rated series" : "Best rated movies"
+              }
+              route={
+                params.type === "tv" ? "/tv/top_rated" : "/movie/top_rated"
+              }
+              seriesMovies={seriesMoviesTopRated.slice(0, 12)}
+            />
+          )}
+          <div className={style.error__container}>
+            {!seriesMoviesPopular && !seriesMoviesTopRated && <ErrorApi />}
+          </div>
+        </div>
       )}
     </div>
   );

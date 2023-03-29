@@ -8,7 +8,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import logo from "../../../assets/logo.png";
 
-import { MdLanguage } from "react-icons/md";
 import { BsSearch, BsMoonStars, BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
@@ -18,13 +17,12 @@ import { tabs } from "../tabs";
 const NavBarMobile = () => {
   const navigate = useNavigate();
 
-  const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
-  const [language, setLanguage] = useState("es");
+
   const [dark, setDark] = useState(true);
   const [transparency, setTransparency] = useState(false);
   const location = useLocation();
-  const [tabSelected, setTabSelected] = useState(location.pathname)
+  const [tabSelected, setTabSelected] = useState(location.pathname);
 
   const context = useContext(menuContext);
 
@@ -35,11 +33,11 @@ const NavBarMobile = () => {
 
   const handleClickMenu = () => {
     context.setMenu(!context.menu);
-    setInputSearch(false);
+    context.setInputSearch(false);
   };
 
   const handleClickSearch = () => {
-    setInputSearch(!inputSearch);
+    context.setInputSearch(!context.inputSearch);
   };
 
   const handleChangeInput = (e) => {
@@ -49,16 +47,10 @@ const NavBarMobile = () => {
     setInput("");
   };
 
-  const handleClickChangeLanguage = () => {
-    if (language === "es") {
-      return setLanguage("en");
-    } else return setLanguage("es");
-  };
-
   const handleClickChangeColor = () => {
     setDark(!dark);
   };
-  
+
   const changeTransparencyBackground = () => {
     window.scrollY >= 100 ? setTransparency(true) : setTransparency(false);
   };
@@ -88,7 +80,7 @@ const NavBarMobile = () => {
           </button>
         </div>
       </nav>
-      {inputSearch ? (
+      {context.inputSearch ? (
         <div className={style.containerInput}>
           {input === "" ? (
             <BsSearch className={style.iconSearch} />
@@ -120,29 +112,51 @@ const NavBarMobile = () => {
       ) : (
         ""
       )}
-      <div className={context.menu ? style.menuContainerShow : style.menuContainerHide} onClick={context.menu ? handleClickMenu : undefined}>
+      <div
+        className={
+          context.menu ? style.menuContainerShow : style.menuContainerHide
+        }
+        onClick={context.menu ? handleClickMenu : undefined}
+      >
         <div
-          className={`${style.menuMobile} ${context.menu ? style.menuMobileOpen : ""}`}
+          className={`${style.menuMobile} ${
+            context.menu ? style.menuMobileOpen : ""
+          }`}
         >
           <button onClick={handleClickMenu}>
             <RxCross1 />
           </button>
-          {tabs.map(({ name, path, Icon}, i) => (
-            <Link to={path} onClick={() => setTabSelected(path)} key={`${name}-${i}`} className={style.linkRoute}>
-              <span className={tabSelected === path ? `${style.spanMenu} ${style.activeTab}` : `${style.spanMenu}`}>
-                <Icon className={style.icon} />  {name}
+          {tabs.map(({ name, path, Icon }, i) => (
+            <Link
+              to={path}
+              onClick={() => setTabSelected(path)}
+              key={`${name}-${i}`}
+              className={style.linkRoute}
+            >
+              <span
+                className={
+                  tabSelected === path
+                    ? `${style.spanMenu} ${style.activeTab}`
+                    : `${style.spanMenu}`
+                }
+              >
+                <Icon className={style.icon} /> {name}
               </span>
             </Link>
-            ))}
-          <span className={style.rightSideButtons} onClick={handleClickChangeLanguage}>
-            <MdLanguage /> {language === "es" ? "Spanish" : "English"}
-          </span>
+          ))}
+
           {dark ? (
-            <span className={style.rightSideButtons} onClick={handleClickChangeColor}>
+            <span
+              className={style.rightSideButtons}
+              onClick={handleClickChangeColor}
+            >
               <BsMoonStars /> Dark{" "}
             </span>
           ) : (
-            <span className={style.rightSideButtons} onClick={handleClickChangeColor}>
+            <span
+              className={style.rightSideButtons}
+              onClick={handleClickChangeColor}
+            >
               <BsSun /> Clear{" "}
             </span>
           )}

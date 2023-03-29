@@ -1,6 +1,8 @@
 import style from "./NavBarDesktop.module.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { menuContext } from "../../../context/menuContext";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
@@ -13,14 +15,13 @@ import { tabs } from "../tabs";
 
 const NavBarDesktop = () => {
   const navigate = useNavigate();
-  const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
-  const [language, setLanguage] = useState("es");
   const [dark, setDark] = useState(true);
   const [transparency, setTransparency] = useState(false);
   const location = useLocation();
-  const [tabSelected, setTabSelected] = useState(location.pathname)
+  const [tabSelected, setTabSelected] = useState(location.pathname);
 
+  const context = useContext(menuContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +29,7 @@ const NavBarDesktop = () => {
   };
 
   const handleClickSearch = () => {
-    setInputSearch(!inputSearch);
+    context.setInputSearch(!context.inputSearch);
   };
 
   const handleChangeInput = (e) => {
@@ -37,12 +38,6 @@ const NavBarDesktop = () => {
 
   const handleDeleteInput = () => {
     setInput("");
-  };
-
-  const handleClickChangeLanguage = () => {
-    if (language === "es") {
-      return setLanguage("en");
-    } else return setLanguage("es");
   };
 
   const handleClickChangeColor = () => {
@@ -58,20 +53,31 @@ const NavBarDesktop = () => {
   return (
     <div>
       <div className={style.navBarDesktop}>
-        <nav 
+        <nav
           className={
             transparency
-            ? `${style.containerNavBar} ${style.active}`
-            : style.containerNavBar
+              ? `${style.containerNavBar} ${style.active}`
+              : style.containerNavBar
           }
         >
           <div className={style.menuNavBar}>
-            {tabs.map(({ name, path, Icon}, i) => (
-            <Link to={path} onClick={() => setTabSelected(path)} key={`${name}-${i}`} className={style.linkRoute}>
-              <span className={tabSelected === path ? `${style.spanMenu} ${style.activeTab}` : `${style.spanMenu}`}>
-                <Icon className={style.icon} />  {name}
-              </span>
-            </Link>
+            {tabs.map(({ name, path, Icon }, i) => (
+              <Link
+                to={path}
+                onClick={() => setTabSelected(path)}
+                key={`${name}-${i}`}
+                className={style.linkRoute}
+              >
+                <span
+                  className={
+                    tabSelected === path
+                      ? `${style.spanMenu} ${style.activeTab}`
+                      : `${style.spanMenu}`
+                  }
+                >
+                  <Icon className={style.icon} /> {name}
+                </span>
+              </Link>
             ))}
           </div>
           <div className={style.containerLogo}>
@@ -96,17 +102,9 @@ const NavBarDesktop = () => {
                 <BsSun className={style.icon} />
               )}
             </button>
-            <button
-              className={style.rightSideButtons}
-              onClick={handleClickChangeLanguage}
-            >
-              <span className={style.spanLanguage}>
-                {language === "es" ? "Es" : "En"}
-              </span>
-            </button>
           </div>
         </nav>
-        {inputSearch ? (
+        {context.inputSearch ? (
           <div className={style.containerInput}>
             {input === "" ? (
               <BsSearch className={style.iconSearch} />

@@ -1,7 +1,29 @@
 .mainCarousel__container {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
-.seriesTrending__container, .moviesTrending__container {
-    margin: 0px 5%;
+.seriesTrending__container,
+.moviesTrending__container {
+  margin: 0px 5%;
+}
+
+.container__loader {
+  width: 100%;
+  min-height: 90vh;
+  margin-left: -30px;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.error__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 500px) {
+  .container__loader {
+    margin-left: -50px;
+  }
 }

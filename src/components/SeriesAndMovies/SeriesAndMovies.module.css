@@ -1,3 +1,18 @@
 .seriesAndMovies__container {
   margin-top: calc(3rem + 60px);
 }
+
+.container__loader {
+  width: 100%;
+  min-height: 90vh;
+  margin-left: -30px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 500px) {
+  .container__loader {
+    margin-top: 60px;
+    margin-left: -50px;
+  }
+}
