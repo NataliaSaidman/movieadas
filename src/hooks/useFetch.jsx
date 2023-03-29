@@ -7,6 +7,7 @@ export const useFetch = (type, category, week) => {
 
   useEffect(() => {
     setIsLoading(true);
+
     fetch(
       `https://api.themoviedb.org/3/${type}/${category}/${
         week ? week : ""

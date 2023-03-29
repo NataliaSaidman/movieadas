@@ -39,7 +39,7 @@ const Search = () => {
           <h2 className={style.search__title}>
             Results for: {params.wordSearch}
           </h2>
-          {search && search.results.length !== 0 ? (
+          {search && !search.success && search.results.length !== 0 ? (
             <div className={style.show__container}>
               <div className={style.cards__container}>
                 {currentItems.map(
