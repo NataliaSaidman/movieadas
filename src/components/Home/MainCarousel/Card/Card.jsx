@@ -1,11 +1,24 @@
 import style from './Card.module.css'
+
 import { Link } from 'react-router-dom'
 
+import { useContext } from "react"
+
+import { menuContext } from "../../../../context/menuContext"
+
 const Card = ({ trend }) => {
+
+    const context = useContext(menuContext)
+
+    const handleSearchBar = () => {
+        context.setInputSearch(false)
+    }
+
     return (
         <Link
         to={`/details/${trend.media_type}/${trend.id}`}
         className={style.link__container}
+        onClick={handleSearchBar}
         >
             <div
             className={style.card__container}

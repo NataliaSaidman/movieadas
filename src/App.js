@@ -12,10 +12,13 @@ import { Search } from "./components/Search/Search";
 
 function App() {
   const [menu, setMenu] = useState(false);
+  const [inputSearch, setInputSearch] = useState(false);
 
   const menuOpen = {
     menu,
     setMenu,
+    setInputSearch,
+    inputSearch
   };
   return (
     <menuContext.Provider value={menuOpen}>
