@@ -68,7 +68,7 @@ const Details = () => {
 
 
   return (
-    <>
+    <div>
       {mediaDetails ? (
         <div className={style.details__container}>
             <div
@@ -126,10 +126,13 @@ const Details = () => {
                 </div>
             </div>
         </div>
-        ) : (
-        "Error"
-        )}
-    </>
+        ) 
+        :
+        <div className={style.error__container}>
+            {/* que muestre el componente de error sin redirigir */}
+        </div>
+        }
+    </div>
     )
 }
 

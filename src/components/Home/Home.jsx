@@ -28,22 +28,37 @@ const Home = () => {
             }
           />
         ) : (
-          "Error"
+          <div className={style.error__container}>
+            {/* componente de error que no sea el de 404, uno más chico */}
+          </div>
         )}
       </div>
       <div className={style.seriesTrending__container}>
+        {trendingSeries
+        ? 
         <SecondaryCarousel
           trending={trendingSeries}
           title={"Series"}
           route={"/trending/tv"}
         />
+        :
+        <div className={style.error__container}>
+          {/* componente de error que no sea el de 404, uno más chico */}
+        </div>
+        }
       </div>
       <div className={style.moviesTrending__container}>
+        {trendingMovies 
+        ? 
         <SecondaryCarousel
           trending={trendingMovies}
           title={"Movies"}
           route={"/trending/movie"}
         />
+        :
+        <div className={style.error__container}>
+          {/* componente de error que no sea el de 404, uno más chico */}
+        </div>}
       </div>
     </div>
   );

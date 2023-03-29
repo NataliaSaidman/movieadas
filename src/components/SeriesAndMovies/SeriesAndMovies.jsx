@@ -28,7 +28,9 @@ const SeriesAndMovies = () => {
           seriesMovies={seriesMoviesPopular.slice(0, 12)}
         />
       ) : (
-        "Error"
+        <div className={style.error__container}>
+          {/* componente de error que no sea el de 404, uno más chico */}
+        </div>
       )}
 
       {seriesMoviesTopRated ? (
@@ -40,7 +42,9 @@ const SeriesAndMovies = () => {
           seriesMovies={seriesMoviesTopRated.slice(0, 12)}
         />
       ) : (
-        "Error"
+        <div className={style.error__container}>
+          {/* componente de error que no sea el de 404, uno más chico */}
+        </div>
       )}
     </div>
   );
