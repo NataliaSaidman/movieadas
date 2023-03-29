@@ -1,4 +1,6 @@
 .container__error {
+  width: 90%;
+  margin: auto;
   margin-top: 60px;
   min-height: 100vh;
   display: flex;
@@ -33,16 +35,20 @@
   max-width: 280px;
 }
 
+.img__explotion {
+  width: 100%;
+}
+
 .button__home {
   display: block;
   margin: 0 auto;
-  width: 260px;
-  height: 64px;
+  width: 250px;
+  height: 60px;
   box-shadow: 0 5px 0 #881988, inset 0 0 18px #b121b1;
   background-color: #cf3ecf;
   color: #fff;
   font-family: "Open Sans", sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 64px;
   text-transform: uppercase;
@@ -53,4 +59,13 @@
 .button__home:hover,
 .button__home:focus {
   background-color: #b121b1;
+}
+
+@media (min-width: 500px) {
+  .text__error {
+    font-size: 18px;
+  }
+  .container__img {
+    max-width: 440px;
+  }
 }

@@ -35,17 +35,15 @@ const SeriesAndMovies = () => {
         </div>
       ) : (
         <div className={style.seriesAndMovies__container}>
-          {seriesMoviesPopular ? (
+          {seriesMoviesPopular && (
             <PopularAndTopRated
               title={params.type === "tv" ? "Popular Series" : "Popular Movies"}
               route={params.type === "tv" ? "/tv/popular" : "/movie/popular"}
               seriesMovies={seriesMoviesPopular.slice(0, 12)}
             />
-          ) : (
-            <ErrorApi />
           )}
 
-          {seriesMoviesTopRated ? (
+          {seriesMoviesTopRated && (
             <PopularAndTopRated
               title={
                 params.type === "tv" ? "Best rated series" : "Best rated movies"
@@ -55,9 +53,10 @@ const SeriesAndMovies = () => {
               }
               seriesMovies={seriesMoviesTopRated.slice(0, 12)}
             />
-          ) : (
-            <ErrorApi />
           )}
+          <div className={style.error__container}>
+            {!seriesMoviesPopular && !seriesMoviesTopRated && <ErrorApi />}
+          </div>
         </div>
       )}
     </div>

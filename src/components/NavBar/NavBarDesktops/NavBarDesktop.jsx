@@ -1,6 +1,8 @@
 import style from "./NavBarDesktop.module.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { menuContext } from "../../../context/menuContext";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
@@ -13,12 +15,13 @@ import { tabs } from "../tabs";
 
 const NavBarDesktop = () => {
   const navigate = useNavigate();
-  const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
   const [dark, setDark] = useState(true);
   const [transparency, setTransparency] = useState(false);
   const location = useLocation();
   const [tabSelected, setTabSelected] = useState(location.pathname);
+
+  const context = useContext(menuContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ const NavBarDesktop = () => {
   };
 
   const handleClickSearch = () => {
-    setInputSearch(!inputSearch);
+    context.setInputSearch(!context.inputSearch);
   };
 
   const handleChangeInput = (e) => {
@@ -101,7 +104,7 @@ const NavBarDesktop = () => {
             </button>
           </div>
         </nav>
-        {inputSearch ? (
+        {context.inputSearch ? (
           <div className={style.containerInput}>
             {input === "" ? (
               <BsSearch className={style.iconSearch} />

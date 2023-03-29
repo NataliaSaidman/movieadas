@@ -12,7 +12,7 @@ const ErrorApi = () => {
         nuevo
       </p>
       <div className={s.container__img}>
-        <img src={img} alt="volcan" />
+        <img className={s.img__explotion} src={img} alt="volcan" />
         <Link to="/">
           <button className={s.button__home}>Pagina principal</button>
         </Link>

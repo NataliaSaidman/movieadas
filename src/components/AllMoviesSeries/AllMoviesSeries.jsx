@@ -16,12 +16,12 @@ import { scrollToTop } from "../../utils/scrollToTop";
 const AllMoviesSeries = () => {
   const params = useParams();
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
 
   const paramsTernary = params.category
-    ? [params.type, params.category, false, currentPage]
-    : ["trending", params.type, "week", currentPage];
+    ? [params.type, params.category, false, currentPage + 1]
+    : ["trending", params.type, "week", currentPage + 1];
 
   const { data: seriesMovies, isLoading: loadingSeriesMovies } = usePagination(
     ...paramsTernary
@@ -37,6 +37,7 @@ const AllMoviesSeries = () => {
   };
 
   useEffect(() => {
+    setCurrentPage(0);
     scrollToTop();
   }, []);
 
@@ -48,21 +49,27 @@ const AllMoviesSeries = () => {
         </div>
       ) : (
         <div>
-          <h2 className={style.category__title}>All {setTitle()}</h2>
-          <div className={style.cards__container}>
-            {currentItems ? (
-              currentItems.map((media) => <Card key={media.id} media={media} />)
-            ) : (
+          {seriesMovies ? (
+            <div className={style.show__container}>
+              <h2 className={style.category__title}>All {setTitle()}</h2>
+              <div className={style.cards__container}>
+                {currentItems?.map((media) => (
+                  <Card key={media.id} media={media} />
+                ))}
+              </div>
+              <div className={style.pagination__container}>
+                <Pagination
+                  seriesMovies={seriesMovies}
+                  setCurrentItems={setCurrentItems}
+                  setCurrentPage={setCurrentPage}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className={style.error__container}>
               <ErrorApi />
-            )}
-          </div>
-          <div className={style.pagination__container}>
-            <Pagination
-              seriesMovies={seriesMovies}
-              setCurrentItems={setCurrentItems}
-              setCurrentPage={setCurrentPage}
-            />
-          </div>
+            </div>
+          )}
         </div>
       )}
     </div>

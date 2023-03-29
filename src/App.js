@@ -13,10 +13,13 @@ import { Footer } from "./components/Footer/Footer";
 
 function App() {
   const [menu, setMenu] = useState(false);
+  const [inputSearch, setInputSearch] = useState(false);
 
   const menuOpen = {
     menu,
     setMenu,
+    setInputSearch,
+    inputSearch
   };
   return (
     <menuContext.Provider value={menuOpen}>

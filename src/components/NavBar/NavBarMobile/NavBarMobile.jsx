@@ -17,7 +17,6 @@ import { tabs } from "../tabs";
 const NavBarMobile = () => {
   const navigate = useNavigate();
 
-  const [inputSearch, setInputSearch] = useState(false);
   const [input, setInput] = useState("");
 
   const [dark, setDark] = useState(true);
@@ -34,11 +33,11 @@ const NavBarMobile = () => {
 
   const handleClickMenu = () => {
     context.setMenu(!context.menu);
-    setInputSearch(false);
+    context.setInputSearch(false);
   };
 
   const handleClickSearch = () => {
-    setInputSearch(!inputSearch);
+    context.setInputSearch(!context.inputSearch);
   };
 
   const handleChangeInput = (e) => {
@@ -81,7 +80,7 @@ const NavBarMobile = () => {
           </button>
         </div>
       </nav>
-      {inputSearch ? (
+      {context.inputSearch ? (
         <div className={style.containerInput}>
           {input === "" ? (
             <BsSearch className={style.iconSearch} />

@@ -5,15 +5,14 @@
 .container__loader {
   width: 100%;
   min-height: 90vh;
-  padding-top: 60px;
-  padding-right: 50px;
+  margin-left: -30px;
   display: flex;
   justify-content: center;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 500px) {
   .container__loader {
     margin-top: 60px;
-    padding-right: 100px;
+    margin-left: -50px;
   }
 }

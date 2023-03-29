@@ -73,7 +73,7 @@ const Details = () => {
   }, []);
 
   return (
-    <>
+    <div>
       {loadingMediaDetails ? (
         <div className={style.container__loader}>
           <Loading />
@@ -155,11 +155,13 @@ const Details = () => {
               </div>
             </div>
           ) : (
-            <ErrorApi />
+            <div className={style.error__container}>
+              <ErrorApi />
+            </div>
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

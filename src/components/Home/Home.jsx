@@ -33,9 +33,9 @@ const Home = () => {
           <Loading />
         </div>
       ) : (
-        <div className={style.home__container}>
+        <div>
           <div className={style.mainCarousel__container}>
-            {trendingMovies && trendingSeries ? (
+            {trendingMovies && trendingSeries && (
               <MainCarousel
                 trending={
                   moviesOrSeries
@@ -43,23 +43,28 @@ const Home = () => {
                     : trendingSeries.slice(0, 3)
                 }
               />
-            ) : (
-              <ErrorApi />
             )}
           </div>
           <div className={style.seriesTrending__container}>
-            <SecondaryCarousel
-              trending={trendingSeries}
-              title={"Series"}
-              route={"/trending/tv"}
-            />
+            {trendingSeries && (
+              <SecondaryCarousel
+                trending={trendingSeries}
+                title={"Series"}
+                route={"/trending/tv"}
+              />
+            )}
           </div>
           <div className={style.moviesTrending__container}>
-            <SecondaryCarousel
-              trending={trendingMovies}
-              title={"Movies"}
-              route={"/trending/movie"}
-            />
+            {trendingMovies && (
+              <SecondaryCarousel
+                trending={trendingMovies}
+                title={"Movies"}
+                route={"/trending/movie"}
+              />
+            )}
+            <div className={style.error__container}>
+              {!trendingMovies && !trendingSeries && <ErrorApi />}
+            </div>
           </div>
         </div>
       )}

@@ -2,11 +2,22 @@ import style from "./Card.module.css"
 
 import { Link } from 'react-router-dom'
 
+import { useContext } from "react";
+
+import { menuContext } from "../../context/menuContext";
+
 import notFound from "../../assets/no-image.png"
 
 const Card = ({ media }) => {
+
+  const context = useContext(menuContext);
+
+  const handleSearchBar = () => {
+    context.setInputSearch(false);
+  }
+
   return (
-    <Link to={`/details/${media.title ? "movie" : "tv"}/${media.id}`}>
+    <Link to={`/details/${media.title ? "movie" : "tv"}/${media.id}`} onClick={handleSearchBar}>
       <div className={style.card}>
         <div className={style.container__image}>
           <img 

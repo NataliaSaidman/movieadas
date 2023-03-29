@@ -18,7 +18,7 @@ const Search = () => {
   const [currentItems, setCurrentItems] = useState([]);
 
   const params = useParams();
-  const { data: Search, isLoading: loadingSearch } = useSearch(
+  const { data: search, isLoading: loadingSearch } = useSearch(
     params.wordSearch,
     currentPage + 1
   );
@@ -39,27 +39,31 @@ const Search = () => {
           <h2 className={style.search__title}>
             Results for: {params.wordSearch}
           </h2>
-          <div className={style.cards__container}>
-            {currentItems ? (
-              currentItems.map(
-                (media) =>
-                  media.media_type !== "person" && (
-                    <Card key={media.id} media={media} />
-                  )
-              )
-            ) : (
+          {search && search.results.length !== 0 ? (
+            <div className={style.show__container}>
+              <div className={style.cards__container}>
+                {currentItems.map(
+                  (media) =>
+                    media.media_type !== "person" && (
+                      <Card key={media.id} media={media} />
+                    )
+                )}
+              </div>
+              <div className={style.pagination__container}>
+                <Pagination
+                  seriesMovies={search}
+                  totalPages={search}
+                  setCurrentItems={setCurrentItems}
+                  setCurrentPage={setCurrentPage}
+                  currentPage={currentPage}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className={style.error__container}>
               <ErrorApi />
-            )}
-          </div>
-          <div className={style.pagination__container}>
-            <Pagination
-              seriesMovies={Search}
-              totalPages={Search}
-              setCurrentItems={setCurrentItems}
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-            />
-          </div>
+            </div>
+          )}
         </div>
       )}
     </div>

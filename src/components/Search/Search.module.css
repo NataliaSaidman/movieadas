@@ -1,5 +1,5 @@
 .main__container {
-  margin-top: calc(3rem + 60px);
+  margin-top: calc(3rem + 100px);
   margin-inline: 5%;
   min-height: 100vh;
 }
@@ -25,8 +25,7 @@
 .container__loader {
   width: 100%;
   min-height: 90vh;
-  padding-top: 30px;
-  padding-right: 50px;
+  margin-left: -30px;
   display: flex;
   justify-content: center;
 }
@@ -34,6 +33,11 @@
 @media (min-width: 500px) {
   .cards__container {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .container__loader {
+    margin-top: 60px;
+    margin-left: -50px;
   }
 }
 
