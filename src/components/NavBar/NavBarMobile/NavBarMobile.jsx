@@ -34,6 +34,7 @@ const NavBarMobile = () => {
   const handleClickMenu = () => {
     context.setMenu(!context.menu);
     context.setInputSearch(false);
+    handleDeleteInput()
   };
 
   const handleClickSearch = () => {
@@ -43,6 +44,7 @@ const NavBarMobile = () => {
   const handleChangeInput = (e) => {
     setInput(e.target.value);
   };
+  
   const handleDeleteInput = () => {
     setInput("");
   };

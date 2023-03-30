@@ -55,6 +55,7 @@
   text-decoration: none;
   border-radius: 30px;
   text-align: center;
+  cursor: pointer;
 }
 .button__home:hover,
 .button__home:focus {
