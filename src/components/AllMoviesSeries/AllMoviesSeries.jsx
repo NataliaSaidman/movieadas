@@ -1,7 +1,8 @@
 import style from "./AllMoviesSeries.module.css";
 
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
+
+import { menuContext } from "../../context/menuContext"
 
 import { useParams } from "react-router-dom";
 import { usePagination } from "../../hooks/usePagination";
@@ -14,6 +15,9 @@ import { Loading } from "../Loading/Loading";
 import { scrollToTop } from "../../utils/scrollToTop";
 
 const AllMoviesSeries = () => {
+
+  const theme = useContext(menuContext)
+
   const params = useParams();
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -37,12 +41,11 @@ const AllMoviesSeries = () => {
   };
 
   useEffect(() => {
-    setCurrentPage(0);
     scrollToTop();
   }, []);
 
   return (
-    <div className={style.main__container}>
+    <div className={`${style.main__container} ${theme.lightMode && style.active}`}>
       {loadingSeriesMovies ? (
         <div className={style.container__loader}>
           <Loading />
@@ -62,6 +65,7 @@ const AllMoviesSeries = () => {
                   seriesMovies={seriesMovies}
                   setCurrentItems={setCurrentItems}
                   setCurrentPage={setCurrentPage}
+                  currentPage={currentPage}
                 />
               </div>
             </div>

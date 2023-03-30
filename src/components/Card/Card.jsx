@@ -18,7 +18,7 @@ const Card = ({ media }) => {
 
   return (
     <Link to={`/details/${media.title ? "movie" : "tv"}/${media.id}`} onClick={handleSearchBar}>
-      <div className={style.card}>
+      <div className={`${style.card} ${context.lightMode && style.active}`}>
         <div className={style.container__image}>
           <img 
             className={style.card__image} 

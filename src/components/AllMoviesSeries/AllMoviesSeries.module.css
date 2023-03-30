@@ -30,6 +30,10 @@
   justify-content: center;
 }
 
+.main__container.active .category__title {
+  color: black;
+}
+
 @media (min-width: 500px) {
   .cards__container {
     grid-template-columns: repeat(3, 1fr);

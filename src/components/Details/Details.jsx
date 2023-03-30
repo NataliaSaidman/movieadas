@@ -1,8 +1,10 @@
 import style from "./details.module.css";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 
 import { useParams, Link } from "react-router-dom";
+
+import { menuContext } from "../../context/menuContext";
 
 import { useDetails } from "../../hooks/useDetails";
 import { scrollToTop } from "../../utils/scrollToTop";
@@ -16,6 +18,8 @@ import notFound from "../../assets/no-image.png";
 import notFoundHeader from "../../assets/image-header.png";
 
 const Details = () => {
+  const theme = useContext(menuContext)
+
   const windowSize = useRef(window.innerWidth);
 
   const params = useParams();
@@ -81,7 +85,7 @@ const Details = () => {
       ) : (
         <div>
           {mediaDetails ? (
-            <div className={style.details__container}>
+            <div className={`${style.details__container} ${theme.lightMode && style.active}`}>
               <div
                 className={style.background__image}
                 style={{ backgroundImage: setBackgroundImage() }}

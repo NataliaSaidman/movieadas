@@ -4,6 +4,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: whitesmoke;
+}
+
+.bl_page404.active {
+  color: black;
 }
 
 .page404__title {
@@ -12,14 +17,12 @@
   font-size: 25px;
   font-weight: 400;
   text-transform: uppercase;
-  color: whitesmoke;
 }
 .page404__text {
   display: block;
   margin: 25px auto;
   max-width: 776px;
-  text-align: center;
-  color: whitesmoke;
+  text-align: center;;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -30,8 +33,6 @@
   width: 100%;
   margin: 10px auto 10px;
   max-width: 280px;
-  /* max-width: 440px;
-  min-height: 410px; */
 }
 .bl_page404__img {
   width: 100%;
@@ -52,6 +53,7 @@
   text-decoration: none;
   border-radius: 30px;
   text-align: center;
+
 }
 .bl_page404__link:hover,
 .bl_page404__link:focus {
@@ -131,6 +133,10 @@
 }
 
 @media (min-width: 500px) {
+  .bl_page404__link {
+    cursor: pointer;
+  }
+
   .page404__title {
     font-size: 30px;
   }

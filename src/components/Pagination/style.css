@@ -18,9 +18,18 @@
   color: whitesmoke;
 }
 
+.main__container.active .pagination .page-num {
+  color: black;
+}
+
 .pagination .page-num:hover {
   background-color: #b121b1;
   color: whitesmoke;
+}
+
+.main__container.active .pagination .page-num:hover {
+  background-color: purple;
+  color: black;
 }
 
 .pagination .active {
@@ -29,4 +38,8 @@
 
 .pagination .break {
   color: whitesmoke;
+}
+
+.main__container.active .pagination .break {
+  color: black;
 }

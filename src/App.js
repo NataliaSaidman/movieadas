@@ -1,5 +1,5 @@
 import { menuContext } from "./context/menuContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import s from "./App.module.css";
 import { NavBar } from "./components/NavBar/NavBar";
@@ -14,17 +14,30 @@ import { Footer } from "./components/Footer/Footer";
 function App() {
   const [menu, setMenu] = useState(false);
   const [inputSearch, setInputSearch] = useState(false);
+  const [lightMode, setLightMode] = useState(false)
+  const selectedTheme = localStorage.getItem("selectedTheme")
+
+  useEffect(() => {
+    if (selectedTheme === "light") {
+      setLightMode(true)
+    } 
+    else {
+      setLightMode(false)
+    }
+  }, [selectedTheme])
 
   const menuOpen = {
     menu,
     setMenu,
     setInputSearch,
-    inputSearch
+    inputSearch,
+    setLightMode,
+    lightMode
   };
   return (
     <menuContext.Provider value={menuOpen}>
       <BrowserRouter>
-        <div className={s.app}>
+        <div className={`${s.app} ${lightMode && s.active}` }>
           <NavBar />
             <Routes>
               <Route path="/" element={<Home />}></Route>

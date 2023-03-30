@@ -1,12 +1,13 @@
 import style from "./Search.module.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { useSearch } from "../../hooks/useSearch";
 
 import { useParams } from "react-router-dom";
 
 import { scrollToTop } from "../../utils/scrollToTop";
+import { menuContext } from "../../context/menuContext";
 
 import { Card } from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
@@ -14,6 +15,8 @@ import { Loading } from "../Loading/Loading";
 import { ErrorApi } from "../Error/ErrorApi/ErrorApi";
 
 const Search = () => {
+  const theme = useContext(menuContext)
+
   const [currentPage, setCurrentPage] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
 
@@ -29,7 +32,7 @@ const Search = () => {
   }, [params]);
 
   return (
-    <div className={style.main__container}>
+    <div className={`${style.main__container} ${theme.lightMode && style.active}`}>
       {loadingSearch ? (
         <div className={style.container__loader}>
           <Loading />

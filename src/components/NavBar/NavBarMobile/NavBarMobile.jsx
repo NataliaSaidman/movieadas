@@ -19,7 +19,6 @@ const NavBarMobile = () => {
 
   const [input, setInput] = useState("");
 
-  const [dark, setDark] = useState(true);
   const [transparency, setTransparency] = useState(false);
   const location = useLocation();
   const [tabSelected, setTabSelected] = useState(location.pathname);
@@ -43,12 +42,15 @@ const NavBarMobile = () => {
   const handleChangeInput = (e) => {
     setInput(e.target.value);
   };
+  
   const handleDeleteInput = () => {
     setInput("");
   };
 
   const handleClickChangeColor = () => {
-    setDark(!dark);
+    context.setLightMode(!context.lightMode);
+    const theme = context.lightMode ? "dark" : "light"
+    localStorage.setItem("selectedTheme", theme)
   };
 
   const changeTransparencyBackground = () => {
@@ -145,7 +147,7 @@ const NavBarMobile = () => {
             </Link>
           ))}
 
-          {dark ? (
+          {!context.lightMode ? (
             <span
               className={style.rightSideButtons}
               onClick={handleClickChangeColor}

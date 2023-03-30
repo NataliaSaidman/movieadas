@@ -11,6 +11,10 @@
   font-weight: bold;
 }
 
+.main__container.active .search__title {
+  color: black;
+}
+
 .cards__container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

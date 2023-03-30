@@ -17,7 +17,7 @@ const Card = ({ trend }) => {
     return (
         <Link
         to={`/details/${trend.media_type}/${trend.id}`}
-        className={style.link__container}
+        className={`${style.link__container} ${context.lightMode && style.active}`}
         onClick={handleSearchBar}
         >
             <div
