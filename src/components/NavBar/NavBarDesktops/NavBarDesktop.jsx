@@ -30,7 +30,6 @@ const NavBarDesktop = () => {
 
   const handleClickSearch = () => {
     context.setInputSearch(!context.inputSearch);
-    handleDeleteInput()
   };
 
   const handleChangeInput = (e) => {

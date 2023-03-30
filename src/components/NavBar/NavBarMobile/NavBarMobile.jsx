@@ -34,7 +34,6 @@ const NavBarMobile = () => {
   const handleClickMenu = () => {
     context.setMenu(!context.menu);
     context.setInputSearch(false);
-    handleDeleteInput()
   };
 
   const handleClickSearch = () => {

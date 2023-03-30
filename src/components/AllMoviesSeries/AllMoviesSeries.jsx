@@ -37,7 +37,6 @@ const AllMoviesSeries = () => {
   };
 
   useEffect(() => {
-    setCurrentPage(0);
     scrollToTop();
   }, []);
 
@@ -62,6 +61,7 @@ const AllMoviesSeries = () => {
                   seriesMovies={seriesMovies}
                   setCurrentItems={setCurrentItems}
                   setCurrentPage={setCurrentPage}
+                  currentPage={currentPage}
                 />
               </div>
             </div>

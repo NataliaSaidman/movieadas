@@ -13,7 +13,7 @@ const Pagination = ({
   setCurrentPage,
   currentPage
 }) => {
-  const [pageCount, setPageCount] = useState();
+  const [pageCount, setPageCount] = useState(0);
 
   const handlePageClick = (event) => {
     scrollToTop()
