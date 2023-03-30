@@ -10,15 +10,14 @@ import { menuContext } from "../../../context/menuContext";
 
 import { Link } from "react-router-dom";
 
-import { IoIosArrowForward } from "react-icons/io"
+import { IoIosArrowForward } from "react-icons/io";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-
 const SecondaryCarousel = ({ trending, title, route }) => {
-  const theme = useContext(menuContext)
+  const theme = useContext(menuContext);
 
   return (
     <div className={`${theme.lightMode ? "active" : ""}`}>
@@ -58,9 +57,7 @@ const SecondaryCarousel = ({ trending, title, route }) => {
         >
           {trending?.map((trend) => (
             <SwiperSlide key={trend.id}>
-              <Card
-                media={trend}
-              />
+              <Card media={trend} />
             </SwiperSlide>
           ))}
         </Swiper>

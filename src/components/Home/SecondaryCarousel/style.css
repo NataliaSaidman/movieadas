@@ -24,7 +24,8 @@
   border-radius: 8px;
 }
 
-.active .swiper-button-next::after, .active .swiper-button-prev::after {
+.active .swiper-button-next::after,
+.active .swiper-button-prev::after {
   background-color: rgba(137, 43, 226, 0.538);
 }
 
@@ -39,7 +40,7 @@
 .category__container a {
   display: flex;
   align-items: center;
-  color:#e5e5e5;
+  color: #e5e5e5;
   margin-bottom: 16px;
   transition: 0.2s;
 }
@@ -63,6 +64,10 @@
 
 .active .category__container a:hover .arrow__icon {
   color: blueviolet;
+}
+
+.active .category__container a:hover {
+  color: black;
 }
 
 .hide {

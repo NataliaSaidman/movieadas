@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { apiKey } from "../ApiKey/apiKey";
 
 export const useFetch = (type, category, week) => {
   const [data, setData] = useState();
@@ -11,7 +10,7 @@ export const useFetch = (type, category, week) => {
     fetch(
       `https://api.themoviedb.org/3/${type}/${category}/${
         week ? week : ""
-      }?api_key=${apiKey}&language=en-US&page=1`
+      }?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
