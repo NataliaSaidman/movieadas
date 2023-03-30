@@ -110,6 +110,10 @@
   margin-top: 100px;
 }
 
+.details__container.active {
+  color: black;
+}
+
 @media (min-width: 700px) {
   .background__image {
     height: 70vh;

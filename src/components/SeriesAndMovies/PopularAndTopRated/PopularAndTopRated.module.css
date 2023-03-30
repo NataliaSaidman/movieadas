@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.main__container.active .category__container {
+  color: black;
+}
+
 .category__container h2, .arrow__icon {
   font-size: 25px;
   font-weight: bold;
@@ -29,6 +33,10 @@
   transition: 0.2s;
 }
 
+.main__container.active .category__container a {
+  color: black;
+}
+
 .category__container a:hover {
   color: white;
 }
@@ -40,6 +48,10 @@
 .category__container a:hover .arrow__icon {
   color: #1496c4;
   margin-left: 8px;
+}
+
+.main__container.active .category__container a:hover .arrow__icon {
+  color: blueviolet;
 }
 
 @media (min-width: 1200px) {

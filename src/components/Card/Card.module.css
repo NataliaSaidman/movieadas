@@ -40,6 +40,14 @@ a {
   overflow: hidden;
 }
 
+.card.active .title__media {
+  color: black;
+}
+
+.card.active:hover .container__image {
+  border-color: blueviolet;
+}
+
 @media (min-width: 1400px) {
   .card {
     height: 500px;

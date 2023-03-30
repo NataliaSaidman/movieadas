@@ -4,6 +4,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: whitesmoke;
+}
+
+.bl_page404.active {
+  color: black;
 }
 
 .page404__title {
@@ -12,14 +17,12 @@
   font-size: 25px;
   font-weight: 400;
   text-transform: uppercase;
-  color: whitesmoke;
 }
 .page404__text {
   display: block;
   margin: 25px auto;
   max-width: 776px;
-  text-align: center;
-  color: whitesmoke;
+  text-align: center;;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;

@@ -14,7 +14,18 @@
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100px;
+  padding: 13px;
+  display: flex;
+  justify-content: center;
+  background-color: #1495c485;
+  border-radius: 8px;
+}
+
+.active .swiper-button-next::after, .active .swiper-button-prev::after {
+  background-color: rgba(137, 43, 226, 0.538);
 }
 
 .category__container {
@@ -33,6 +44,10 @@
   transition: 0.2s;
 }
 
+.active .category__container a {
+  color: black;
+}
+
 .category__container a:hover {
   color: white;
 }
@@ -44,6 +59,10 @@
 .category__container a:hover .arrow__icon {
   color: #1496c4;
   margin-left: 8px;
+}
+
+.active .category__container a:hover .arrow__icon {
+  color: blueviolet;
 }
 
 .hide {

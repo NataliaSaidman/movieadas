@@ -1,9 +1,12 @@
 import "./style.css";
 
+import { useContext } from "react";
+
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Card } from "../../Card/Card";
+import { menuContext } from "../../../context/menuContext";
 
 import { Link } from "react-router-dom";
 
@@ -15,8 +18,10 @@ import "swiper/css/navigation";
 
 
 const SecondaryCarousel = ({ trending, title, route }) => {
+  const theme = useContext(menuContext)
+
   return (
-    <div>
+    <div className={`${theme.lightMode ? "active" : ""}`}>
       <div className={title ? "category__container" : "hide"}>
         <Link to={route}>
           <p>Trending {title}</p>

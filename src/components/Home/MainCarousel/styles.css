@@ -24,3 +24,7 @@
   color: white;
   transition: 0.1s;
 }
+
+.active .swiper-button-next::after, .active .swiper-button-prev::after {
+  background-color: rgba(137, 43, 226, 0.538);
+}

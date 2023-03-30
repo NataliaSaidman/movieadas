@@ -1,3 +1,17 @@
 .app {
   min-height: 100vh;
+  background-image: linear-gradient(
+    to right bottom,
+    #141414,
+    #201a2d,
+    #321e43,
+    #4a1d57,
+    #671367
+  );
+  background-size: cover;
+}
+
+.app.active {
+  background-image: none;
+  background-color: #e7e7e7;
 }

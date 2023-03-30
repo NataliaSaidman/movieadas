@@ -28,18 +28,6 @@
     text-shadow: -2px -5px 29px rgba(0,0,0,1);
 }
 
-@media (min-width: 767px) {
-    .card__title {
-        font-size: 3rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .card__title {
-        font-size: 4rem;
-    }
-}
-
 .card__button {
     font-size: 1rem;
     font-weight: bold;
@@ -53,13 +41,29 @@
     transition: 0.2s;
 }
 
+.card__button:hover {
+    border: 3px solid #1496c4;
+    background-color: black;
+}
+
+.link__container .card__button:hover {
+    border: 3px solid blueviolet;
+}
+
+@media (min-width: 767px) {
+    .card__title {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card__title {
+        font-size: 4rem;
+    }
+}
+
 @media (min-width: 1024px) {
     .card__button {
         font-size: 1.3rem;
     }
-}
-
-.card__button:hover {
-    border: 3px solid #1496c4;
-    background-color: black;
 }

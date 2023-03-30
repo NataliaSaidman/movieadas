@@ -1,5 +1,3 @@
-import React from "react";
-
 import s from "./Error.module.css";
 
 import img from "../../assets/error.png";
@@ -19,7 +17,7 @@ const Error = () => {
   }
 
   return (
-    <div className={s.bl_page404}>
+    <div className={`${s.bl_page404} ${context.lightMode && s.active}`}>
       <h1 className={s.page404__title}>Error 404. Page not found.</h1>
       <p className={s.page404__text}>
         ¡We're sorry! The page you requested was not found.

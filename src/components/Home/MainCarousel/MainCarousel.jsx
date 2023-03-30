@@ -10,9 +10,15 @@ import "./styles.css";
 import { Navigation, Autoplay } from "swiper";
 import { Card } from "./Card/Card";
 
+import { useContext } from "react"
+
+import { menuContext } from "../../../context/menuContext"
+
 const MainCarousel = ({ trending }) => {
+  const theme = useContext(menuContext)
+
   return (
-    <div className="carousel__container">
+    <div className={`carousel__container ${theme.lightMode && "active"}`}>
       <Swiper
         loop={true}
         navigation={true}

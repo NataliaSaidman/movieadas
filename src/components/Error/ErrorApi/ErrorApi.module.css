@@ -6,6 +6,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: whitesmoke;
+}
+
+.container__error.active {
+  color: black;
 }
 
 .title__error {
@@ -14,14 +19,12 @@
   font-size: 25px;
   font-weight: 400;
   text-transform: uppercase;
-  color: whitesmoke;
 }
 .text__error {
   display: block;
   margin: 25px auto;
   max-width: 776px;
   text-align: center;
-  color: whitesmoke;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;

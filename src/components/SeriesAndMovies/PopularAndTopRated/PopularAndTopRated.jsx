@@ -1,5 +1,9 @@
 import style from "./PopularAndTopRated.module.css"
 
+import { useContext } from "react";
+
+import { menuContext } from "../../../context/menuContext";
+
 import { Link } from "react-router-dom";
 
 import { SecondaryCarousel } from "../../Home/SecondaryCarousel/SecondaryCarousel";
@@ -8,8 +12,10 @@ import { Card } from "../../Card/Card";
 import { IoIosArrowForward } from "react-icons/io"
 
 const PopularAndTopRated = ({ title, seriesMovies, route }) => {
+  const theme = useContext(menuContext)
+
   return (
-    <div className={style.main__container}>
+    <div className={`${style.main__container} ${theme.lightMode && style.active}`}>
       <div className={style.category__container}>
         <Link to={route}>
           <h2>{title}</h2>

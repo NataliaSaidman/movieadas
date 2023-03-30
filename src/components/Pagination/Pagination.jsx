@@ -1,7 +1,8 @@
 import "./style.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
+import { menuContext } from "../../context/menuContext"
 import { scrollToTop } from '../../utils/scrollToTop';
 
 import ReactPaginate from "react-paginate";
@@ -13,6 +14,9 @@ const Pagination = ({
   setCurrentPage,
   currentPage
 }) => {
+
+  const theme = useContext(menuContext)
+
   const [pageCount, setPageCount] = useState(0);
 
   const handlePageClick = (event) => {
@@ -27,7 +31,7 @@ const Pagination = ({
   }, [seriesMovies, setCurrentItems, totalPages]);
 
   return (
-    <>
+    <div className={`main__container ${theme.lightMode ? "active" : ""}`}>
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
@@ -44,7 +48,7 @@ const Pagination = ({
         activeLinkClassName="active"
         breakLinkClassName="break"
       />
-    </>
+    </div>
   );
 };
 

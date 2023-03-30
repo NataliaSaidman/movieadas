@@ -16,11 +16,9 @@ import { tabs } from "../tabs";
 const NavBarDesktop = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
-  const [dark, setDark] = useState(true);
   const [transparency, setTransparency] = useState(false);
   const location = useLocation();
   const [tabSelected, setTabSelected] = useState(location.pathname);
-
   const context = useContext(menuContext);
 
   const handleSubmit = (e) => {
@@ -41,7 +39,9 @@ const NavBarDesktop = () => {
   };
 
   const handleClickChangeColor = () => {
-    setDark(!dark);
+    context.setLightMode(!context.lightMode);
+    const theme = context.lightMode ? "dark" : "light"
+    localStorage.setItem("selectedTheme", theme)
   };
 
   const changeTransparencyBackground = () => {
@@ -52,7 +52,7 @@ const NavBarDesktop = () => {
 
   return (
     <div>
-      <div className={style.navBarDesktop}>
+      <div className={`${style.navBarDesktop}`}>
         <nav
           className={
             transparency
@@ -96,7 +96,7 @@ const NavBarDesktop = () => {
               className={style.rightSideButtons}
               onClick={handleClickChangeColor}
             >
-              {dark ? (
+              {!context.lightMode ? (
                 <BsMoonStars className={style.icon} />
               ) : (
                 <BsSun className={style.icon} />

@@ -1,5 +1,3 @@
-import React from "react";
-
 import s from "./ErrorApi.module.css";
 
 import img from "../../../assets/error.png";
@@ -19,7 +17,7 @@ const ErrorApi = () => {
   }
 
   return (
-    <div className={s.container__error}>
+    <div className={`${s.container__error} ${context.lightMode && s.active}`}>
       <h1 className={s.title__error}>Unexpected error</h1>
       <p className={s.text__error}>
         An unexpected error occurred. Please try again.
